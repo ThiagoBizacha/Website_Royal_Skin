@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Royal Skin Agency | Marketing de Alta Performance para Clinicas Esteticas</title>
+  <meta name="description" content="Royal Skin Agency: marketing de alta performance para clinicas esteticas com crescimento previsivel, escalavel e lucrativo."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/styles/brand-lockup.css"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            elegant: ['"Playfair Display"', 'serif']
+          },
+          colors: {
+            gold: {
+              50: '#fff7ee',
+              100: '#ffe8cf',
+              200: '#f8c68f',
+              300: '#f0a75d',
+              400: '#e78b36',
+              500: '#d9721f',
+              600: '#ba5c18',
+              700: '#934515',
+              800: '#68300f',
+              900: '#421d0a'
+            },
+            dark: {
+              900: '#070707',
+              800: '#0b0b0b',
+              700: '#111111',
+              600: '#171717',
+              500: '#1e1e1e'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --bg: #080808;
+      --bg-alt: #111111;
+      --text: #f6f1e8;
+      --accent: #e78b36;
+      --success: #86efac;
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; }
+    .grid-bg {
+      background-image: linear-gradient(to right, rgba(255,255,255,.02) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 32%, transparent 72%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 32%, transparent 72%);
+    }
+    .text-transparent-stroke-accent {
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 1.5px rgba(231,139,54,.52);
+    }
+    .text-glow { text-shadow: 0 0 40px rgba(255,255,255,.08), 0 0 80px rgba(255,255,255,.04); }
+    .beam-border-v, .beam-border-h { position: absolute; background: rgba(255,255,255,.04); overflow: hidden; z-index: 10; pointer-events:none; }
+    .beam-border-v { top: 0; bottom: 0; width: 1px; }
+    .beam-border-h { left: 0; right: 0; height: 1px; }
+    .beam-border-v::after, .beam-border-h::after { content:''; position:absolute; inset:0; opacity:.65; }
+    .beam-border-v::after { background: linear-gradient(to bottom, transparent, var(--accent), transparent); transform: translateY(-100%); animation: beam-drop 6s cubic-bezier(.4,0,.2,1) infinite; }
+    .beam-border-h::after { background: linear-gradient(to right, transparent, var(--accent), transparent); transform: translateX(-100%); animation: beam-slide 8s cubic-bezier(.4,0,.2,1) infinite; }
+    @keyframes beam-drop { 0%{transform:translateY(-100%);opacity:0} 10%,90%{opacity:.85} 100%{transform:translateY(100%);opacity:0} }
+    @keyframes beam-slide { 0%{transform:translateX(-100%);opacity:0} 10%,90%{opacity:.85} 100%{transform:translateX(100%);opacity:0} }
+    @keyframes fadeSlideIn { 0%{opacity:0; transform:translateY(28px); filter:blur(8px)} 100%{opacity:1; transform:translateY(0); filter:blur(0)} }
+    @keyframes rotateOrb { 0%{transform:translate(-50%,-50%) rotate(0)} 100%{transform:translate(-50%,-50%) rotate(360deg)} }
+    @keyframes floatLift { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    @keyframes morphBlob { 0%,100%{border-radius:60% 40% 30% 70% / 60% 30% 70% 40%} 50%{border-radius:50% 60% 30% 60% / 40% 70% 60% 30%} }
+    @keyframes spin { to { transform: rotate(360deg);} }
+    @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    @keyframes controlledShine { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+    @keyframes heroAuraPulse { 0%,100%{opacity:.8; transform:scale(1) translate3d(0,0,0)} 50%{opacity:1; transform:scale(1.05) translate3d(-1.5%,-1%,0)} }
+    @keyframes heroDustDrift { 0%,100%{opacity:.46; transform:translate3d(0,0,0) scale(1)} 50%{opacity:.72; transform:translate3d(-2%,2%,0) scale(1.03)} }
+    .animate-on-scroll { animation-play-state: paused !important; }
+    .animate-on-scroll.animate { animation-play-state: running !important; }
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .64s ease, transform .64s ease; }
+    .reveal.is-visible { opacity:1; transform:translateY(0); }
+    .floating-card { transition: transform .5s cubic-bezier(.25,.46,.45,.94), box-shadow .5s ease; }
+    .floating-card:hover { transform: scale(1.05) translateY(-8px)!important; box-shadow: 0 24px 48px -14px rgba(0,0,0,.5); border-color: rgba(231,139,54,.42)!important; }
+    .hero-brand-primary {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: linear-gradient(180deg, #fffaf4 0%, #f8e8d3 22%, #efc284 54%, #e78b36 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 28px rgba(231,139,54,.12), 0 0 70px rgba(231,139,54,.06);
+    }
+    .hero-brand-secondary {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      color: rgba(224,180,112,.92);
+      -webkit-text-stroke: .5px rgba(255,255,255,.04);
+      text-shadow: 0 0 18px rgba(231,139,54,.06);
+    }
+    .hero-right-atmosphere,
+    .hero-right-dust,
+    .hero-right-lens {
+      position: absolute;
+      pointer-events: none;
+    }
+    .hero-right-atmosphere {
+      inset: 2% -10% -10% 8%;
+      background:
+        radial-gradient(circle at 72% 44%, rgba(231,139,54,.24) 0%, rgba(231,139,54,.14) 16%, rgba(231,139,54,.05) 34%, transparent 58%),
+        radial-gradient(circle at 58% 74%, rgba(231,139,54,.18) 0%, rgba(231,139,54,.08) 20%, transparent 50%),
+        radial-gradient(circle at 86% 82%, rgba(255,224,188,.12) 0%, transparent 24%);
+      filter: blur(22px);
+      opacity: .96;
+      animation: heroAuraPulse 12s ease-in-out infinite;
+    }
+    .hero-right-dust {
+      inset: 8% -12% -12% 16%;
+      background:
+        radial-gradient(circle at 14% 22%, rgba(231,139,54,.34) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 72% 34%, rgba(255,235,212,.22) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 56% 70%, rgba(231,139,54,.24) 0 1.2px, transparent 2px),
+        radial-gradient(circle at 80% 84%, rgba(231,139,54,.32) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 40% 88%, rgba(255,220,180,.16) 0 .8px, transparent 1.4px),
+        radial-gradient(circle at 88% 58%, rgba(231,139,54,.18) 0 .8px, transparent 1.2px);
+      opacity: .62;
+      filter: blur(.15px);
+      mask-image: radial-gradient(circle at 70% 62%, black 0, rgba(0,0,0,.95) 24%, rgba(0,0,0,.75) 52%, transparent 84%);
+      -webkit-mask-image: radial-gradient(circle at 70% 62%, black 0, rgba(0,0,0,.95) 24%, rgba(0,0,0,.75) 52%, transparent 84%);
+      animation: heroDustDrift 18s linear infinite;
+    }
+    .hero-right-lens {
+      inset: 18% 2% 8% 28%;
+      background:
+        radial-gradient(circle at 66% 56%, rgba(231,139,54,.22), transparent 34%),
+        radial-gradient(circle at 84% 76%, rgba(231,139,54,.18), transparent 22%),
+        linear-gradient(180deg, transparent 0%, rgba(231,139,54,.05) 55%, transparent 100%);
+      mix-blend-mode: screen;
+      opacity: .84;
+      filter: blur(40px);
+      animation: floatLift 10s ease-in-out infinite;
+    }
+    .hero-feature-card {
+      position: absolute;
+      overflow: hidden;
+      isolation: isolate;
+      background: linear-gradient(180deg, rgba(20,20,20,.96), rgba(10,10,10,.93));
+      box-shadow: 0 28px 60px -34px rgba(0,0,0,.88), 0 0 44px -34px rgba(231,139,54,.58);
+    }
+    .hero-feature-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(231,139,54,.09), transparent 32%, transparent 72%, rgba(231,139,54,.06));
+      pointer-events: none;
+      z-index: -1;
+    }
+    .hero-feature-card::after {
+      content: '';
+      position: absolute;
+      left: 14%;
+      right: 14%;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(231,139,54,.42), transparent);
+      pointer-events: none;
+    }
+    @media (max-width: 1023px) {
+      .hero-right-atmosphere { inset: 8% -8% -8% -2%; opacity: .72; }
+      .hero-right-dust { inset: 14% -10% -12% 0; opacity: .5; }
+      .hero-right-lens { inset: 16% -4% 8% 8%; opacity: .58; }
+    }
+    .btn-shine { position:relative; overflow:hidden; }
+    .btn-shine::after { content:''; position:absolute; inset:0; transform:translateX(-110%); background:linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); transition:transform .5s ease; }
+    .btn-shine:hover::after { transform:translateX(110%); }
+    .spinning-border { --spread: 90deg; --shimmer-color:#e78b36; }
+    .spinning-border .border-spin { position:absolute; inset:0; z-index:-2; overflow:hidden; }
+    .spinning-border .border-spin > div { position:absolute; inset:-100%; width:300%; height:300%; animation: spin 3s linear infinite; background:conic-gradient(from calc(270deg - (var(--spread) * .5)), transparent 0, var(--shimmer-color) var(--spread), transparent var(--spread)); }
+    .spinning-border .border-fill { position:absolute; inset:1px; z-index:-1; background:var(--bg); transition:background-color .3s; }
+    .spinning-border:hover .border-fill { background:var(--bg-alt); }
+    .noise-overlay::before { content:''; position:absolute; inset:0; opacity:.03; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); pointer-events:none; }
+    .section-divider { height:1px; background:linear-gradient(90deg, transparent, rgba(231,139,54,.44), transparent); }
+    .gradient-text { background:linear-gradient(135deg,#fff 0%,#e78b36 50%,#fff 100%); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:gradientShift 4s linear infinite; }
+    .sector-card { position:relative; min-height:32rem; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:#0c0c0c; isolation:isolate; }
+    .sector-card::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(5,5,5,.08) 0%, rgba(5,5,5,.24) 32%, rgba(5,5,5,.92) 100%); z-index:1; }
+    .sector-card::after { content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 14%, rgba(231,139,54,.24), transparent 42%), linear-gradient(180deg, transparent 18%, rgba(8,8,8,.24) 48%, rgba(8,8,8,.82) 100%); z-index:1; }
+    .sector-card-media { position:absolute; inset:0; background-image:var(--card-image); background-size:cover; background-position:var(--card-position, center); filter:saturate(.72) brightness(.56); transform:scale(1.01); transition:transform .9s cubic-bezier(.25,.46,.45,.94), filter .6s ease; }
+    .sector-card:hover .sector-card-media { transform:scale(1.08); filter:saturate(.9) brightness(.64); }
+    .sector-card-content { position:relative; z-index:2; min-height:32rem; display:flex; flex-direction:column; justify-content:space-between; padding:2rem; }
+    .sector-card-icon { width:5.5rem; height:5.5rem; display:grid; place-items:center; border:1px solid rgba(231,139,54,.42); background:rgba(9,9,9,.26); box-shadow:0 0 0 1px rgba(255,255,255,.03) inset, 0 24px 64px -40px rgba(231,139,54,.55); backdrop-filter:blur(10px); }
+    .sector-card-title { font-family:'Cormorant Garamond', serif; font-size:clamp(2.5rem,3vw,4rem); line-height:.9; letter-spacing:-.03em; }
+    .sector-card-line { width:100%; max-width:7rem; height:1px; background:linear-gradient(90deg, rgba(231,139,54,.9), transparent); }
+    @media (max-width: 767px) {
+      .sector-card,
+      .sector-card-content { min-height:27rem; }
+    }
+    .tooltip-trigger:hover .tooltip-content { opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto; }
+    .tooltip-content { opacity:0; transform:translateX(-50%) translateY(8px); transition:all .25s ease; pointer-events:none; }
+    .modal-overlay { opacity:0; pointer-events:none; transition:opacity .3s ease; }
+    .modal-overlay.is-open { opacity:1; pointer-events:auto; }
+    .modal-overlay.is-open .modal-content { transform:scale(1) translateY(0); opacity:1; }
+    .modal-content { transform:scale(.95) translateY(20px); opacity:0; transition:all .35s cubic-bezier(.34,1.56,.64,1); }
+    .mobile-panel { display:none; }
+    .mobile-panel.is-open { display:grid; }
+    input:focus, textarea:focus { outline:none; border-color:rgba(231,139,54,.48)!important; box-shadow:0 0 0 3px rgba(231,139,54,.15); }
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:var(--bg); }
+    ::-webkit-scrollbar-thumb { background:rgba(231,139,54,.36); border-radius:3px; }
+    ::-webkit-scrollbar-thumb:hover { background:rgba(231,139,54,.58); }
+  </style>
+  <script>
+    (function () {
+      if (!window.__inViewIO) {
+        window.__inViewIO = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate');
+              window.__inViewIO.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+      }
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => window.__inViewIO.observe(el));
+        document.querySelectorAll('[data-reveal]').forEach((el) => {
+          el.classList.add('reveal');
+          const obs = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.15 });
+          obs.observe(el);
+        });
+      });
+    })();
+  </script>
+</head>
+<body class="antialiased selection:bg-gold-500/30 min-h-screen overflow-x-hidden">
+  <div class="fixed inset-0 z-0 grid-bg pointer-events-none"></div>
+
+  <header class="fixed top-0 left-0 w-full z-[100] bg-[#080808]/80 backdrop-blur-xl border-b border-white/[0.06]">
+    <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 h-20 flex items-center justify-between">
+      <a href="#hero" class="group inline-flex items-center" aria-label="Voltar ao topo">
+        <span class="sr-only">Royal Skin Agency</span>
+        <span class="brand-lockup brand-lockup--nav" aria-hidden="true">
+          <span class="brand-lockup__title">Royal Skin</span>
+          <span class="brand-lockup__subrow">
+            <span class="brand-lockup__line"></span>
+            <span class="brand-lockup__sub">Agency</span>
+            <span class="brand-lockup__line"></span>
+          </span>
+        </span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-6 text-xs font-medium tracking-widest text-white/40 uppercase">
+        <a class="hover:text-gold-400 transition-colors" href="#mercado">Mercado</a>
+        <a class="hover:text-gold-400 transition-colors" href="#problema">Problema</a>
+        <a class="hover:text-gold-400 transition-colors" href="#sistema">Metodo</a>
+        <a class="hover:text-gold-400 transition-colors" href="#servicos">Servicos</a>
+        <a class="hover:text-gold-400 transition-colors" href="#nichos">Nichos</a>
+        <a class="hover:text-gold-400 transition-colors" href="#resultados">Resultados</a>
+        <a class="hover:text-gold-400 transition-colors" href="#como-funciona">Processo</a>
+        <a class="hover:text-gold-400 transition-colors" href="proposta.html">Proposta</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="#diagnostico" class="hidden md:inline-flex btn-shine relative px-5 h-11 items-center text-xs font-bold uppercase tracking-[0.18em] text-white border border-white/10 hover:border-gold-500/40 transition-colors">Agendar diagnostico</a>
+        <button id="menuToggle" type="button" class="lg:hidden w-11 h-11 border border-white/10 text-white/70 hover:text-white hover:border-gold-500/40 transition-colors" aria-expanded="false" aria-label="Abrir menu">
+          <iconify-icon icon="solar:hamburger-menu-bold-duotone" width="20"></iconify-icon>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-panel max-w-[90rem] mx-auto px-5 pb-4 gap-2 border-t border-white/[0.06] lg:hidden">
+      <a href="#hero" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Inicio</a>
+      <a href="#mercado" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Mercado</a>
+      <a href="#problema" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Problema</a>
+      <a href="#sistema" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Metodo</a>
+      <a href="#servicos" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Servicos</a>
+      <a href="#nichos" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Nichos</a>
+      <a href="#resultados" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Resultados</a>
+      <a href="#como-funciona" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Processo</a>
+      <a href="#diagnostico" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Diagnostico</a>
+      <a href="proposta.html" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Proposta</a>
+    </div>
+  </header>
+
+  <main class="relative z-20">
+    <section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <div class="absolute top-1/2 left-1/2 w-[620px] h-[620px] opacity-20 pointer-events-none" style="animation: rotateOrb 22s linear infinite, morphBlob 12s ease-in-out infinite;">
+        <div class="w-full h-full rounded-full bg-gradient-to-br from-gold-500/45 via-transparent to-gold-900/20 blur-3xl"></div>
+      </div>
+      <div class="absolute top-[18%] right-[10%] w-[320px] h-[320px] opacity-12 pointer-events-none" style="animation: floatLift 8s ease-in-out infinite;">
+        <div class="w-full h-full rounded-full bg-gradient-to-tl from-white/20 to-transparent blur-2xl"></div>
+      </div>
+      <div class="beam-border-v" style="left: 6%;"></div>
+      <div class="beam-border-v" style="right: 6%;"></div>
+      <div class="beam-border-h" style="bottom: 0;"></div>
+
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center min-h-[80vh]">
+          <div class="lg:col-span-7">
+            <div class="flex items-center gap-3 mb-8 animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .1s both;">
+              <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+              <span class="text-xs font-bold tracking-[0.3em] uppercase text-gold-400">Marketing de alta performance para clinicas premium</span>
+            </div>
+
+            <h1 class="animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .22s both;">
+              <span class="block text-[4.9rem] sm:text-[6rem] lg:text-[6.35rem] font-semibold leading-[0.84] tracking-[0.025em] hero-brand-primary">Royal Skin</span>
+              <span class="block text-[1.85rem] sm:text-[2.2rem] lg:text-[2.55rem] font-medium leading-none tracking-[0.28em] hero-brand-secondary ml-[0.18rem] mt-1">Agency</span>
+              <span class="block text-4xl sm:text-5xl lg:text-[3.15rem] font-light leading-[1.02] text-white/68 mt-5">Crescimento previsivel para clinicas esteticas, dermatologicas e odontologicas.</span>
+            </h1>
+
+            <p class="mt-8 max-w-[640px] text-base sm:text-lg text-white/45 leading-relaxed animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .38s both;">
+              Integramos trafego pago, posicionamento, funil e gestao comercial para gerar autoridade, agenda qualificada e mais previsibilidade de faturamento.
+            </p>
+
+            <div class="flex flex-wrap gap-4 mt-9 animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .55s both;">
+              <a href="#diagnostico" class="btn-shine relative inline-flex items-center justify-center px-8 py-4 bg-gold-500 hover:bg-gold-400 text-dark-900 text-xs font-bold uppercase tracking-[0.2em] transition-colors">Agendar diagnostico estrategico</a>
+              <a href="#como-funciona" class="spinning-border group relative isolate inline-flex items-center justify-center gap-2 overflow-hidden px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:shadow-[0_0_30px_-5px_rgba(231,139,54,0.38)]">
+                <div class="border-spin"><div></div></div>
+                <div class="border-fill"></div>
+                <iconify-icon icon="solar:map-point-wave-bold-duotone" width="16" class="text-gold-500"></iconify-icon>
+                <span class="relative z-10">Ver como funciona</span>
+              </a>
+            </div>
+
+            <div class="mt-4 flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.16em] text-white/35 animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .63s both;">
+              <span class="inline-flex items-center gap-2">
+                <iconify-icon icon="solar:lock-keyhole-minimalistic-bold-duotone" width="14" class="text-gold-400"></iconify-icon>
+                Proposta comercial liberada apos o diagnostico
+              </span>
+              <a href="#diagnostico" data-proposal-locked class="text-gold-300 hover:text-gold-200 transition-colors">Solicitar proposta privada</a>
+              <a href="proposta.html" data-proposal-unlocked class="hidden text-gold-300 hover:text-gold-200 transition-colors">Acessar proposta liberada</a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-[720px] mt-12 pt-7 border-t border-white/10 animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .72s both;">
+              <div>
+                <span class="block text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">Prova institucional</span>
+                <span class="block text-2xl text-white font-light tracking-tight mt-2">+230 clinicas</span>
+                <span class="block text-xs text-white/38 leading-relaxed mt-2">Atendidas no Brasil com foco em crescimento estruturado.</span>
+              </div>
+              <div>
+                <span class="block text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">Especializacao</span>
+                <span class="block text-2xl text-white font-light tracking-tight mt-2">3 nichos premium</span>
+                <span class="block text-xs text-white/38 leading-relaxed mt-2">Estetica, dermatologia e odontologia.</span>
+              </div>
+              <div>
+                <span class="block text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">Sistema integrado</span>
+                <span class="block text-2xl text-white font-light tracking-tight mt-2">Trafego, funil e gestao</span>
+                <span class="block text-xs text-white/38 leading-relaxed mt-2">Marketing e operacao comercial na mesma estrategia.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 relative h-[480px] sm:h-[560px] animate-on-scroll isolate" style="animation: fadeSlideIn .8s ease-out .85s both;">
+            <div class="hero-right-atmosphere"></div>
+            <div class="hero-right-dust"></div>
+            <div class="hero-right-lens"></div>
+
+            <div class="floating-card hero-feature-card left-[8%] top-[6%] w-[62%] border border-white/10 p-5 backdrop-blur-md rotate-[-4deg]">
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Prova institucional</span>
+                <iconify-icon icon="solar:medal-ribbons-star-bold-duotone" width="18" class="text-gold-400"></iconify-icon>
+              </div>
+              <p class="text-sm text-white/55 leading-relaxed mt-3">Mais de 230 clinicas atendidas em operacoes premium de estetica e saude.</p>
+              <div class="mt-4 h-[1px] bg-gradient-to-r from-transparent via-gold-500/40 to-transparent"></div>
+              <div class="mt-4 flex items-center justify-between text-xs text-white/40"><span>Foco</span><strong class="text-gold-300">ROI e previsibilidade</strong></div>
+            </div>
+
+            <div class="floating-card hero-feature-card right-[4%] top-[20%] w-[38%] border border-white/10 p-5 backdrop-blur-md rotate-[5deg]">
+              <iconify-icon icon="solar:stethoscope-bold-duotone" width="20" class="text-gold-400"></iconify-icon>
+              <div class="text-[10px] uppercase tracking-[0.18em] text-white/35 mt-3">Especializacao</div>
+              <p class="text-xs text-white/45 mt-2 leading-relaxed">Estetica, dermatologia e odontologia com posicionamento premium.</p>
+            </div>
+
+            <div class="floating-card hero-feature-card right-[10%] bottom-[6%] w-[58%] border border-white/10 p-5 backdrop-blur-md rotate-[2deg]">
+              <div class="flex items-center justify-between gap-3">
+                <div class="text-[10px] uppercase tracking-[0.18em] text-white/35">Sistema Royal Skin</div>
+                <iconify-icon icon="solar:chart-square-bold-duotone" width="26" class="text-gold-400"></iconify-icon>
+              </div>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="inline-flex items-center px-3 py-1 border border-gold-500/20 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.16em] text-gold-300">Trafego</span>
+                <span class="inline-flex items-center px-3 py-1 border border-gold-500/20 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.16em] text-gold-300">Funil</span>
+                <span class="inline-flex items-center px-3 py-1 border border-gold-500/20 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.16em] text-gold-300">Gestao</span>
+              </div>
+              <p class="text-xs text-white/40 leading-relaxed mt-4">Aquisicao, conversao e acompanhamento comercial na mesma estrategia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="mercado" class="relative bg-[#080808] noise-overlay overflow-hidden">
+      <div class="beam-border-v" style="left: 0;"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-5 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
+              <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Cenario e Oportunidade</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">O Brasil ja tem demanda. O que falta e posicionamento estrategico.</h2>
+            <p class="mt-6 text-white/45 leading-relaxed max-w-md">
+              O mercado brasileiro ja e potencia em procedimentos esteticos, tratamentos dermatologicos e odontologia estetica.
+              Milhoes de pacientes pesquisam, comparam e decidem todos os dias.
+            </p>
+            <div class="mt-7 border-l-2 border-gold-500/40 pl-5">
+              <p class="text-white/65 italic leading-relaxed">
+                Quem aparece melhor, transmite mais confianca e sustenta uma operacao comercial mais organizada fecha mais.
+              </p>
+            </div>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <span class="inline-flex items-center px-4 py-2 border border-gold-500/25 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300">Estetica</span>
+              <span class="inline-flex items-center px-4 py-2 border border-gold-500/25 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300">Dermatologia</span>
+              <span class="inline-flex items-center px-4 py-2 border border-gold-500/25 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300">Odontologia</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6" data-reveal>
+            <article class="border border-white/10 bg-white/[0.02] p-7">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Mercado premium</span>
+              <h3 class="text-2xl font-medium text-white mt-4">Demanda existe. Visibilidade e autoridade ainda nao.</h3>
+              <p class="text-white/45 mt-3 leading-relaxed">Clinicas tecnicamente excelentes continuam crescendo abaixo do potencial por ausencia de estrategia comercial e leitura real de performance.</p>
+            </article>
+
+            <article class="border border-white/10 bg-white/[0.02] p-7">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Comportamento de compra</span>
+              <h3 class="text-2xl font-medium text-white mt-4">Google e redes sociais moldam a decisao do paciente.</h3>
+              <p class="text-white/45 mt-3 leading-relaxed">Antes do agendamento, o paciente compara presenca digital, reputacao, prova social e percepcao de confianca.</p>
+            </article>
+
+            <article class="md:col-span-2 border border-gold-500/20 bg-gold-500/10 p-7">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-300">Leitura estrategica</span>
+              <h3 class="text-3xl font-medium text-white mt-4">O problema nao e a clinica. O problema e o modelo de aquisicao quebrado.</h3>
+              <p class="text-white/55 mt-3 leading-relaxed max-w-3xl">Quando marketing, comercial, jornada e acompanhamento operam de forma fragmentada, a clinica perde previsibilidade, margem e velocidade de crescimento.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="problema" class="relative bg-[#080808] noise-overlay overflow-hidden">
+      <div class="beam-border-h" style="top: 0;"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+        <div class="max-w-3xl animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
+            <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Problema</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-white">Por que a maioria das clinicas nao cresce de forma estruturada.</h2>
+          <p class="mt-5 text-white/45 leading-relaxed">O crescimento trava quando a operacao depende de indicacao, lead irregular e decisoes sem visibilidade real de ROI.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-5 mt-12">
+          <article class="border border-white/10 bg-white/[0.02] p-6" data-reveal>
+            <span class="text-[10px] uppercase tracking-[0.18em] text-gold-400">01</span>
+            <h3 class="text-xl font-medium text-white mt-4">Marketing sem ROI claro</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Investimento pulverizado sem leitura comercial, sem previsao e sem padrao de crescimento.</p>
+          </article>
+          <article class="border border-white/10 bg-white/[0.02] p-6" data-reveal>
+            <span class="text-[10px] uppercase tracking-[0.18em] text-gold-400">02</span>
+            <h3 class="text-xl font-medium text-white mt-4">Fluxo irregular de leads</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">A agenda oscila, a equipe perde ritmo e a clinica opera sem seguranca de demanda.</p>
+          </article>
+          <article class="border border-white/10 bg-white/[0.02] p-6" data-reveal>
+            <span class="text-[10px] uppercase tracking-[0.18em] text-gold-400">03</span>
+            <h3 class="text-xl font-medium text-white mt-4">Dependencia de indicacao</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Sem aquisicao previsivel, o negocio fica vulneravel e cresce abaixo do potencial.</p>
+          </article>
+          <article class="border border-white/10 bg-white/[0.02] p-6" data-reveal>
+            <span class="text-[10px] uppercase tracking-[0.18em] text-gold-400">04</span>
+            <h3 class="text-xl font-medium text-white mt-4">Processos comerciais soltos</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Leads entram, mas atendimento, follow-up e conversao nao seguem um modelo consistente.</p>
+          </article>
+          <article class="border border-white/10 bg-white/[0.02] p-6" data-reveal>
+            <span class="text-[10px] uppercase tracking-[0.18em] text-gold-400">05</span>
+            <h3 class="text-xl font-medium text-white mt-4">Faturamento incerto</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Sem indicadores comerciais e previsao, fica dificil decidir com seguranca e acelerar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="jornada" class="relative bg-[#080808] noise-overlay overflow-hidden">
+      <div class="beam-border-v" style="right: 0;"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div class="lg:col-span-4 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
+              <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Nova Jornada do Paciente</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">A decisao acontece antes da conversa com a clinica.</h2>
+            <p class="mt-6 text-white/45 leading-relaxed max-w-md">O paciente premium pesquisa, compara, avalia autoridade e agenda com quem transmite mais seguranca na experiencia digital e comercial.</p>
+          </div>
+
+          <div class="lg:col-span-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5" data-reveal>
+              <article class="border border-white/10 bg-white/[0.02] p-6">
+                <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">01</span>
+                <h3 class="text-xl font-medium text-white mt-5">Pesquisa</h3>
+                <p class="text-white/45 mt-3 leading-relaxed">Google, Instagram e redes sociais formam a primeira percepcao.</p>
+              </article>
+              <article class="border border-white/10 bg-white/[0.02] p-6">
+                <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">02</span>
+                <h3 class="text-xl font-medium text-white mt-5">Comparacao</h3>
+                <p class="text-white/45 mt-3 leading-relaxed">O paciente avalia opcoes, diferenciais e percepcao de valor antes do contato.</p>
+              </article>
+              <article class="border border-white/10 bg-white/[0.02] p-6">
+                <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">03</span>
+                <h3 class="text-xl font-medium text-white mt-5">Autoridade</h3>
+                <p class="text-white/45 mt-3 leading-relaxed">Quem comunica melhor reputacao, clareza e confianca fica na frente.</p>
+              </article>
+              <article class="border border-white/10 bg-white/[0.02] p-6">
+                <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">04</span>
+                <h3 class="text-xl font-medium text-white mt-5">Agendamento</h3>
+                <p class="text-white/45 mt-3 leading-relaxed">A clinica que aparece melhor e tem processo mais claro converte primeiro.</p>
+              </article>
+            </div>
+
+            <article class="mt-6 border border-gold-500/20 bg-gold-500/10 p-7" data-reveal>
+              <h3 class="text-2xl font-medium text-white">A jornada mudou. A operacao da clinica tambem precisa mudar.</h3>
+              <p class="text-white/55 mt-3 leading-relaxed">Nao basta atrair leads. E preciso construir confianca, qualificar demanda e transformar interesse em comparecimento, fechamento e recorrencia.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="sistema" class="relative bg-[#080808] noise-overlay overflow-hidden">
+      <div class="beam-border-v" style="right: 0;"></div>
+      <div class="beam-border-h" style="top: 0;"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+        <div class="max-w-3xl animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
+            <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Sistema de Crescimento</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-white">Uma maquina de crescimento previsivel para clinicas premium.</h2>
+          <p class="mt-5 text-white/45 leading-relaxed">A Royal Skin conecta marketing, comercial, atendimento e leitura de indicadores em um mesmo sistema operacional.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6 mt-12">
+          <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300" data-reveal>
+            <iconify-icon icon="solar:cursor-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-2xl font-medium text-white mt-4">Aquisicao</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Campanhas orientadas a demanda qualificada e retorno real.</p>
+          </article>
+          <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300" data-reveal>
+            <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-2xl font-medium text-white mt-4">Funil</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Jornada desenhada para elevar agendamento, comparecimento e fechamento.</p>
+          </article>
+          <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300" data-reveal>
+            <iconify-icon icon="solar:target-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-2xl font-medium text-white mt-4">Processos</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Atendimento, follow-up e conversao com menos improviso e mais controle.</p>
+          </article>
+          <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300" data-reveal>
+            <iconify-icon icon="solar:chart-square-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-2xl font-medium text-white mt-4">Retencao</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Aumento do valor do paciente com relacionamento e recorrencia.</p>
+          </article>
+          <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300" data-reveal>
+            <iconify-icon icon="solar:chart-2-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-2xl font-medium text-white mt-4">Gestao integrada</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">KPIs, ajustes e acompanhamento estrategico em um unico painel.</p>
+          </article>
+        </div>
+
+        <article class="mt-8 p-7 border border-white/10" data-reveal style="background: linear-gradient(120deg, rgba(15,16,32,0.94), rgba(40,30,15,0.9), rgba(15,16,32,0.94)); background-size: 240% 100%; animation: controlledShine 5s linear infinite;">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div class="lg:col-span-8">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-300">Operacao integrada</span>
+              <h3 class="text-3xl font-medium gradient-text mt-3">Marketing, comercial e acompanhamento na mesma direcao.</h3>
+              <p class="text-white/50 mt-3 leading-relaxed max-w-3xl">A integracao reduz ruido, acelera execucao e transforma crescimento em algo mais legivel, mais rentavel e mais sustentavel.</p>
+            </div>
+            <div class="lg:col-span-4 flex flex-wrap gap-3 lg:justify-end">
+              <a href="#servicos" class="btn-shine relative inline-flex items-center justify-center px-5 py-3 bg-gold-500 hover:bg-gold-400 text-dark-900 text-xs font-bold uppercase tracking-[0.16em] transition-colors">Ver servicos</a>
+              <button id="openModal" class="btn-shine relative px-5 py-3 border border-gold-500/35 bg-gold-500/10 text-gold-300 text-xs font-bold uppercase tracking-[0.16em] hover:bg-gold-500/15 transition-colors" type="button">O que recebe no diagnostico</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="servicos" class="relative bg-[#080808] noise-overlay overflow-hidden">
+      <div class="beam-border-v" style="left: 0;"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-4 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
+              <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Servicos Integrados</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">Tudo o que a clinica precisa para crescer com clareza comercial.</h2>
+            <p class="mt-6 text-white/45 leading-relaxed max-w-md">Cada frente resolve uma parte da operacao. Juntas, elas criam previsibilidade, autoridade e crescimento mais consistente.</p>
+          </div>
+
+          <div class="lg:col-span-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" data-reveal>
+              <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300">
+                <iconify-icon icon="solar:cursor-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+                <h3 class="text-2xl font-medium text-white mt-4">Trafego Pago</h3>
+                <p class="text-white/45 mt-3 leading-relaxed">Gestao profissional em Google Ads e Meta Ads focada em conversao, demanda qualificada e ROI.</p>
+              </article>
+              <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300">
+                <iconify-icon icon="solar:gallery-wide-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+                <h3 class="text-2xl font-medium text-white mt-4">Social Media</h3>
+                <p class="text-white/45 mt-3 leading-relaxed">Conteudo orientado a autoridade, reputacao e engajamento qualificado para o nicho premium.</p>
+              </article>
+              <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300">
+                <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+                <h3 class="text-2xl font-medium text-white mt-4">Funil de Vendas</h3>
+                <p class="text-white/45 mt-3 leading-relaxed">Estruturacao da jornada do lead ate o agendamento, comparecimento e fidelizacao.</p>
+              </article>
+              <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300">
+                <iconify-icon icon="solar:target-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+                <h3 class="text-2xl font-medium text-white mt-4">Mentoria Comercial</h3>
+                <p class="text-white/45 mt-3 leading-relaxed">Direcao pratica para discurso, atendimento, follow-up e conversao da equipe comercial.</p>
+              </article>
+              <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300">
+                <iconify-icon icon="solar:chart-2-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+                <h3 class="text-2xl font-medium text-white mt-4">Gestao de Crescimento</h3>
+                <p class="text-white/45 mt-3 leading-relaxed">KPIs, leitura de performance, otimizacao continua e consultoria estrategica.</p>
+              </article>
+              <article class="group border border-gold-500/20 bg-gold-500/10 p-7">
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-300">Porque tudo junto faz mais sentido</span>
+                <p class="text-white/65 mt-4 leading-relaxed">Uma unica estrategia, uma leitura comum de indicadores e uma cadencia operacional mais rapida do que contratar frentes isoladas.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="nichos" class="relative bg-[#080808] noise-overlay overflow-hidden">
+      <div class="beam-border-v" style="left: 0;"></div>
+      <div class="beam-border-v" style="right: 0;"></div>
+      <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-gold-500/10 to-transparent pointer-events-none"></div>
+
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+        <div class="max-w-3xl mx-auto text-center animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
+          <div class="inline-flex items-center gap-3 mb-5">
+            <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
+            <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Para Quem e a Royal Skin</span>
+            <span class="w-10 h-[1px] bg-gradient-to-l from-transparent to-gold-500"></span>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-medium tracking-tight text-white">Especialistas em mercados premium.</h2>
+          <p class="mt-5 text-white/48 leading-relaxed">
+            Estrutura executiva desenhada para clinicas de estetica, dermatologia e odontologia que querem escalar com autoridade, posicionamento e previsibilidade comercial.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
+          <article class="sector-card group reveal" data-reveal style="--card-image:url('https://images.unsplash.com/photo-1686943812586-65d1d30ab40f?auto=format&fit=crop&w=1600&q=80'); --card-position:center center;">
+            <div class="sector-card-media"></div>
+            <div class="sector-card-content">
+              <div class="sector-card-icon">
+                <iconify-icon icon="solar:leaf-bold-duotone" width="42" class="text-gold-300"></iconify-icon>
+              </div>
+              <div>
+                <div class="sector-card-line mb-6"></div>
+                <h3 class="sector-card-title text-gold-200">Clinicas de Estetica</h3>
+                <p class="mt-4 text-white/72 text-lg leading-relaxed max-w-[16rem]">Alta performance e escala para operacoes premium focadas em desejo, conversao e recorrencia.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="sector-card group reveal" data-reveal style="--card-image:url('https://images.unsplash.com/photo-1675773051474-55c4b7d2cf53?auto=format&fit=crop&w=1600&q=80'); --card-position:center center;">
+            <div class="sector-card-media"></div>
+            <div class="sector-card-content">
+              <div class="sector-card-icon">
+                <iconify-icon icon="solar:face-scan-circle-bold-duotone" width="42" class="text-gold-300"></iconify-icon>
+              </div>
+              <div>
+                <div class="sector-card-line mb-6"></div>
+                <h3 class="sector-card-title text-gold-200">Dermatologia</h3>
+                <p class="mt-4 text-white/72 text-lg leading-relaxed max-w-[16rem]">Autoridade medica, elegancia visual e aquisicao qualificada para tickets de maior valor.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="sector-card group reveal" data-reveal style="--card-image:url('https://images.unsplash.com/photo-1675526607070-f5cbd71dde92?auto=format&fit=crop&w=1600&q=80'); --card-position:center center;">
+            <div class="sector-card-media"></div>
+            <div class="sector-card-content">
+              <div class="sector-card-icon">
+                <iconify-icon icon="solar:tooth-bold-duotone" width="42" class="text-gold-300"></iconify-icon>
+              </div>
+              <div>
+                <div class="sector-card-line mb-6"></div>
+                <h3 class="sector-card-title text-gold-200">Odontologia</h3>
+                <p class="mt-4 text-white/72 text-lg leading-relaxed max-w-[16rem]">Valorizacao do sorriso com posicionamento premium, reputacao e agenda comercial consistente.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="diferenciais" class="relative bg-[#080808] noise-overlay overflow-hidden">
+      <div class="beam-border-h" style="bottom: 0;"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+        <div class="max-w-3xl animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
+            <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Diferenciais</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-white">Especializacao real em clinicas premium e mercados de ticket alto.</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-12">
+          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
+            <iconify-icon icon="solar:face-scan-circle-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-2xl font-medium text-white mt-4">Psicologia do paciente</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Entendimento de desejo, confianca, risco percebido e gatilhos de decisao no setor.</p>
+          </article>
+          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
+            <iconify-icon icon="solar:graph-up-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-2xl font-medium text-white mt-4">Ticket alto</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Atuacao em operacoes que exigem posicionamento, reputacao e fechamento consultivo.</p>
+          </article>
+          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
+            <iconify-icon icon="solar:shield-check-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-2xl font-medium text-white mt-4">Confianca e autoridade</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Construimos presenca digital premium para reduzir friccao e elevar percepcao de valor.</p>
+          </article>
+          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
+            <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-2xl font-medium text-white mt-4">Compliance no setor de saude</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Respeito ao contexto regulatorio, linguagem adequada e entendimento do mercado de saude.</p>
+          </article>
+        </div>
+
+        <article class="mt-8 border border-gold-500/20 bg-gold-500/10 p-7" data-reveal>
+          <p class="text-xl text-white leading-relaxed max-w-4xl">A Royal Skin nao vende apenas marketing. Entrega crescimento estruturado, autoridade de marca e mais previsibilidade para a tomada de decisao da clinica.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="resultados" class="relative bg-[#080808] noise-overlay overflow-hidden">
+      <div class="beam-border-v" style="right: 0;"></div>
+      <div class="beam-border-h" style="top: 0;"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-6" data-reveal>
+            <div class="border border-white/10 bg-white/[0.02] p-7 md:p-8">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Transformacao em 90 dias</span>
+              <h2 class="text-3xl md:text-4xl font-medium text-white mt-3">O que muda quando a clinica passa a operar com previsibilidade.</h2>
+              <ul class="mt-7 space-y-4">
+                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Agenda mais cheia e previsivel.</li>
+                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Faturamento mais legivel, escalavel e menos dependente de improviso.</li>
+                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Autoridade de marca e percepcao premium no mercado.</li>
+                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Mais controle sobre crescimento, operacao e tomada de decisao.</li>
+                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Eficiencia operacional com atendimento e conversao melhor estruturados.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 space-y-6" data-reveal>
+            <article class="border border-white/10 bg-white/[0.02] p-7">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Modelos escalaveis</span>
+              <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="border border-white/10 bg-[#111111] p-5"><div class="text-[10px] uppercase tracking-[0.18em] text-gold-400">Fase 01</div><h3 class="text-xl font-medium text-white mt-3">Captacao</h3><p class="text-white/45 mt-2 leading-relaxed">Gerar demanda qualificada e estabilizar o fluxo de oportunidades.</p></div>
+                <div class="border border-white/10 bg-[#111111] p-5"><div class="text-[10px] uppercase tracking-[0.18em] text-gold-400">Fase 02</div><h3 class="text-xl font-medium text-white mt-3">Escala</h3><p class="text-white/45 mt-2 leading-relaxed">Aumentar volume com mais controle comercial e leitura de margem.</p></div>
+                <div class="border border-white/10 bg-[#111111] p-5"><div class="text-[10px] uppercase tracking-[0.18em] text-gold-400">Fase 03</div><h3 class="text-xl font-medium text-white mt-3">Consolidacao</h3><p class="text-white/45 mt-2 leading-relaxed">Fortalecer processo, reputacao, recorrencia e estabilidade operacional.</p></div>
+                <div class="border border-white/10 bg-[#111111] p-5"><div class="text-[10px] uppercase tracking-[0.18em] text-gold-400">Fase 04</div><h3 class="text-xl font-medium text-white mt-3">Expansao</h3><p class="text-white/45 mt-2 leading-relaxed">Abrir espaco para novos tickets, novas frentes e crescimento sustentavel.</p></div>
+              </div>
+            </article>
+
+            <article class="border border-gold-500/20 bg-gold-500/10 p-7">
+              <h3 class="text-2xl font-medium text-white">A decisao e simples.</h3>
+              <p class="text-white/55 mt-3 leading-relaxed">Continuar operando no improviso ou construir um sistema de crescimento previsivel com estrategia, execucao e acompanhamento.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="sobre" class="relative bg-[#080808] noise-overlay">
+      <div class="beam-border-v" style="left: 0;"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div class="lg:col-span-5 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
+              <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Sobre a Royal Skin</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">Especializacao em crescimento previsivel para clinicas premium.</h2>
+            <p class="mt-6 text-white/45 leading-relaxed max-w-md">
+              A Royal Skin Agency ja atendeu mais de 230 clinicas no Brasil e opera com foco em ROI, previsibilidade, performance comercial e crescimento sustentavel.
+            </p>
+            <div class="mt-7 border-l-2 border-gold-500/40 pl-5">
+              <p class="text-white/65 italic leading-relaxed">Nao vendemos apenas marketing. Estruturamos posicionamento, aquisicao, comercial e acompanhamento para transformar demanda em crescimento legivel.</p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-6" data-reveal>
+            <article class="border border-white/10 bg-white/[0.02] p-7">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Quem somos e metodologia</span>
+              <ul class="mt-4 space-y-3">
+                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Marketing orientado por dados e leitura constante de performance.</li>
+                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Gestao de indicadores comerciais para menos improviso e mais decisao.</li>
+                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Estruturacao de processos de atendimento, conversao e acompanhamento.</li>
+                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Crescimento sustentavel, escalavel e aderente ao contexto do mercado de saude.</li>
+              </ul>
+            </article>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <article class="border border-white/10 bg-white/[0.02] p-5">
+                <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">Mercados atendidos</div>
+                <div class="text-lg font-medium text-white tracking-tight mt-3">Estetica, dermatologia e odontologia</div>
+                <p class="text-xs text-white/40 leading-relaxed mt-3">Especializacao em clinicas premium com demanda de ticket mais alto.</p>
+              </article>
+              <article class="border border-white/10 bg-white/[0.02] p-5">
+                <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">Foco comercial</div>
+                <div class="text-lg font-medium text-white tracking-tight mt-3">ROI, previsibilidade e autoridade</div>
+                <p class="text-xs text-white/40 leading-relaxed mt-3">Leitura de indicadores, direcao de crescimento e tomada de decisao com mais clareza.</p>
+              </article>
+              <article class="border border-white/10 bg-white/[0.02] p-5">
+                <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">Estrutura operacional</div>
+                <div class="text-lg font-medium text-white tracking-tight mt-3">Processos, conversao e crescimento sustentavel</div>
+                <p class="text-xs text-white/40 leading-relaxed mt-3">Marketing, atendimento e acompanhamento alinhados em uma mesma rotina executiva.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="como-funciona" class="relative bg-[#080808] noise-overlay overflow-hidden">
+      <div class="beam-border-v" style="left: 0;"></div>
+      <div class="beam-border-h" style="bottom: 0;"></div>
+
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+        <div class="max-w-3xl animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
+            <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Como Funciona</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-white">Do diagnostico estrategico a otimizacao continua.</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6 mt-12">
+          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
+            <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">01</span>
+            <h3 class="text-2xl font-medium text-white mt-4">Diagnostico estrategico</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Leitura do momento da clinica, metas, gargalos e potencial de crescimento.</p>
+          </article>
+
+          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
+            <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">02</span>
+            <h3 class="text-2xl font-medium text-white mt-4">Plano de crescimento</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Definicao de escopo, canais, metas, prioridades taticas e direcao comercial.</p>
+          </article>
+
+          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
+            <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">03</span>
+            <h3 class="text-2xl font-medium text-white mt-4">Onboarding estrategico</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Alinhamento, coleta de acessos, setup e organizacao operacional para inicio rapido.</p>
+          </article>
+
+          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
+            <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">04</span>
+            <h3 class="text-2xl font-medium text-white mt-4">Execucao integrada</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Campanhas, conteudo, funil, rotina comercial e acompanhamento trabalhando juntos.</p>
+          </article>
+
+          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
+            <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">05</span>
+            <h3 class="text-2xl font-medium text-white mt-4">Otimizacao continua</h3>
+            <p class="text-white/45 mt-3 leading-relaxed">Leitura semanal de performance, ajustes de rota e evolucao constante da operacao.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="modelo-comercial" class="relative bg-[#080808] noise-overlay overflow-hidden">
+      <div class="beam-border-v" style="left: 0;"></div>
+      <div class="beam-border-v" style="right: 0;"></div>
+
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-7" data-reveal>
+            <div class="border border-white/10 bg-white/[0.02] p-7 md:p-8">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Modelo Comercial</span>
+              <h2 class="text-3xl md:text-4xl font-medium text-white mt-3">A logica do investimento e publica. A proposta detalhada e privada.</h2>
+              <p class="text-white/45 mt-4 leading-relaxed max-w-3xl">Mostramos abaixo a leitura do mercado e a faixa de investimento da Royal Skin. O escopo recomendado, as prioridades e a proposta completa ficam liberados somente apos o diagnostico.</p>
+
+              <div class="mt-7 border border-white/10 bg-[#111111] overflow-hidden">
+                <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 text-sm text-white/65">
+                  <span>Trafego Pago Profissional</span><strong class="text-white">R$ 3.000</strong>
+                </div>
+                <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 text-sm text-white/65">
+                  <span>Social Media Estrategico</span><strong class="text-white">R$ 2.000</strong>
+                </div>
+                <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 text-sm text-white/65">
+                  <span>Consultoria Comercial</span><strong class="text-white">R$ 4.000</strong>
+                </div>
+                <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 text-sm text-white/65">
+                  <span>Estruturacao de Funil</span><strong class="text-white">R$ 3.000</strong>
+                </div>
+                <div class="flex items-center justify-between px-4 py-3 text-sm text-white/65">
+                  <span>Gestao Estrategica</span><strong class="text-white">R$ 5.000</strong>
+                </div>
+              </div>
+
+              <div class="mt-4 p-4 border border-gold-500/25 bg-gold-500/10">
+                <span class="text-xs uppercase tracking-[0.14em] text-gold-300">Investimento total mensal medio</span>
+                <strong class="block text-3xl text-white mt-1">R$ 17.000+</strong>
+                <p class="text-xs text-white/40 mt-2">Comparativo para mostrar o custo de contratar especialistas isolados sem uma estrategia integrada.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 space-y-6">
+            <article class="p-7 border border-white/10 bg-white/[0.02]" data-reveal>
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Investimento Royal Skin</span>
+              <h3 class="text-2xl text-white font-medium mt-3">Solucao completa sob diagnostico estrategico</h3>
+              <p class="text-white/45 mt-3 leading-relaxed">Pacote integrado com estrategia, execucao e gestao continua, ajustado ao porte, a especialidade e ao momento da clinica.</p>
+
+              <div class="mt-6 space-y-4">
+                <div class="flex items-center gap-2 text-sm text-white/60"><iconify-icon icon="solar:check-circle-bold-duotone" width="17" class="text-gold-400"></iconify-icon> Gestao completa de trafego pago</div>
+                <div class="flex items-center gap-2 text-sm text-white/60"><iconify-icon icon="solar:check-circle-bold-duotone" width="17" class="text-gold-400"></iconify-icon> Estrategia de social media e conteudo</div>
+                <div class="flex items-center gap-2 text-sm text-white/60"><iconify-icon icon="solar:check-circle-bold-duotone" width="17" class="text-gold-400"></iconify-icon> Consultoria comercial e funil de vendas</div>
+                <div class="flex items-center gap-2 text-sm text-white/60"><iconify-icon icon="solar:check-circle-bold-duotone" width="17" class="text-gold-400"></iconify-icon> Relatorios de performance e ROI</div>
+              </div>
+
+              <div class="mt-6 p-4 border border-gold-500/25 bg-[#111111]">
+                <span class="text-xs uppercase tracking-[0.14em] text-gold-300">Investimento mensal</span>
+                <strong class="block text-[clamp(2rem,4vw,3rem)] text-white mt-1 leading-none">R$ 3.000 a R$ 6.000</strong>
+                <p class="text-xs text-white/40 mt-2">A proposta completa fica liberada somente apos o diagnostico estrategico.</p>
+              </div>
+            </article>
+
+            <article class="p-7 border border-white/10" data-reveal style="background: linear-gradient(120deg, rgba(15,16,32,0.94), rgba(40,30,15,0.9), rgba(15,16,32,0.94)); background-size: 240% 100%; animation: controlledShine 5s linear infinite;">
+              <h3 class="text-3xl font-medium gradient-text">Solicite a proposta com contexto real</h3>
+              <p class="text-white/45 mt-3 leading-relaxed">Antes de abrir a proposta, entendemos momento, meta e gargalos da clinica para recomendar um escopo coerente com a operacao.</p>
+              <div class="mt-5 space-y-3">
+                <div class="flex items-start gap-2 text-sm text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-gold-400 mt-1"></iconify-icon> Leitura inicial do desafio comercial e do estagio atual.</div>
+                <div class="flex items-start gap-2 text-sm text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-gold-400 mt-1"></iconify-icon> Direcao de escopo mais aderente ao porte e ao potencial de crescimento.</div>
+                <div class="flex items-start gap-2 text-sm text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-gold-400 mt-1"></iconify-icon> Liberacao da proposta privada com proximos passos de onboarding.</div>
+              </div>
+              <div class="mt-5 flex flex-wrap gap-3">
+                <a href="#diagnostico" data-proposal-locked class="btn-shine relative inline-flex items-center justify-center px-5 py-3 bg-gold-500 hover:bg-gold-400 text-dark-900 text-xs font-bold uppercase tracking-[0.16em] transition-colors">Solicitar proposta</a>
+                <a href="proposta.html" data-proposal-unlocked class="hidden btn-shine relative inline-flex items-center justify-center px-5 py-3 bg-gold-500 hover:bg-gold-400 text-dark-900 text-xs font-bold uppercase tracking-[0.16em] transition-colors">Acessar proposta liberada</a>
+                <a href="#como-funciona" class="btn-shine relative inline-flex items-center justify-center px-5 py-3 border border-gold-500/35 bg-gold-500/10 text-gold-300 text-xs font-bold uppercase tracking-[0.16em] hover:bg-gold-500/15 transition-colors">Entender o processo</a>
+              </div>
+              <p data-proposal-unlocked class="hidden mt-4 text-sm text-gold-300">Sua proposta ja esta liberada. O acesso fica disponivel a qualquer momento na pagina privada.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="diagnostico" class="relative bg-[#080808] noise-overlay overflow-hidden">
+      <div class="beam-border-v" style="left: 0;"></div>
+      <div class="beam-border-h" style="top: 0;"></div>
+
+      <div class="absolute bottom-0 left-1/2 w-[540px] h-[540px] opacity-15 pointer-events-none" style="animation: morphBlob 14s ease-in-out infinite; transform: translateX(-50%);">
+        <div class="w-full h-full rounded-full bg-gradient-to-t from-gold-500/40 to-transparent blur-3xl"></div>
+      </div>
+
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24 relative z-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-5 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
+              <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Diagnostico Estrategico</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">Solicite um diagnostico e libere sua proposta comercial.</h2>
+            <p class="mt-6 text-white/45 leading-relaxed max-w-md">Preencha os dados da clinica, descreva o desafio atual e receba uma leitura inicial da Royal Skin para liberar a proposta privada com mais aderencia e clareza comercial.</p>
+            <div class="mt-7 border-l-2 border-gold-500/40 pl-5">
+              <p class="text-white/65 italic leading-relaxed">Fluxo preparado para integracao futura com CRM, automacao comercial ou backend sem reescrever a experiencia.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+              <article class="border border-white/10 bg-white/[0.02] p-4">
+                <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">01</div>
+                <p class="text-sm text-white/60 leading-relaxed mt-3">Leitura do momento atual da clinica.</p>
+              </article>
+              <article class="border border-white/10 bg-white/[0.02] p-4">
+                <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">02</div>
+                <p class="text-sm text-white/60 leading-relaxed mt-3">Direcionamento inicial de escopo e prioridade.</p>
+              </article>
+              <article class="border border-white/10 bg-white/[0.02] p-4">
+                <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">03</div>
+                <p class="text-sm text-white/60 leading-relaxed mt-3">Liberacao da proposta privada da Royal Skin.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out .12s both;">
+            <div class="border border-white/10 bg-white/[0.02] p-7 md:p-9">
+              <h3 class="text-xl font-medium text-white">Formulario de qualificacao</h3>
+              <p class="text-sm text-white/35 mt-2">A proposta sera liberada apos o envio.</p>
+
+              <form id="diagnosticForm" class="space-y-5 mt-6" data-proposal-form data-endpoint="">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="space-y-2"><label class="text-sm text-white/70 font-medium">Nome</label><input type="text" name="name" required placeholder="Dr. Carlos Almeida" class="w-full px-4 py-3 border border-white/10 bg-[#111111] text-white placeholder:text-white/25"/></div>
+                  <div class="space-y-2"><label class="text-sm text-white/70 font-medium">Clinica / Empresa</label><input type="text" name="company" required placeholder="Royal Clinic" class="w-full px-4 py-3 border border-white/10 bg-[#111111] text-white placeholder:text-white/25"/></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="space-y-2"><label class="text-sm text-white/70 font-medium">Especialidade</label><input type="text" name="specialty" required placeholder="Dermatologia, estetica..." class="w-full px-4 py-3 border border-white/10 bg-[#111111] text-white placeholder:text-white/25"/></div>
+                  <div class="space-y-2"><label class="text-sm text-white/70 font-medium">Cidade / Estado</label><input type="text" name="location" required placeholder="Sao Paulo / SP" class="w-full px-4 py-3 border border-white/10 bg-[#111111] text-white placeholder:text-white/25"/></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="space-y-2"><label class="text-sm text-white/70 font-medium">WhatsApp</label><input type="tel" name="phone" required placeholder="(11) 99999-0000" class="w-full px-4 py-3 border border-white/10 bg-[#111111] text-white placeholder:text-white/25"/></div>
+                  <div class="space-y-2"><label class="text-sm text-white/70 font-medium">E-mail</label><input type="email" name="email" required placeholder="contato@clinica.com" class="w-full px-4 py-3 border border-white/10 bg-[#111111] text-white placeholder:text-white/25"/></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="space-y-2">
+                    <label class="text-sm text-white/70 font-medium">Faixa de faturamento / estagio</label>
+                    <select name="revenue_stage" required class="w-full px-4 py-3 border border-white/10 bg-[#111111] text-white">
+                      <option value="" selected disabled>Selecione</option>
+                      <option>Inicio de operacao</option>
+                      <option>Ate R$ 100 mil/mes</option>
+                      <option>De R$ 100 mil a R$ 300 mil/mes</option>
+                      <option>Acima de R$ 300 mil/mes</option>
+                    </select>
+                  </div>
+                  <div class="space-y-2"><label class="text-sm text-white/70 font-medium">Objetivo principal</label><input type="text" name="goal" required placeholder="Escalar captacao, melhorar conversao..." class="w-full px-4 py-3 border border-white/10 bg-[#111111] text-white placeholder:text-white/25"/></div>
+                </div>
+                <div class="space-y-2"><label class="text-sm text-white/70 font-medium">Principal desafio atual</label><textarea name="challenge" rows="4" required placeholder="Conte qual e o principal gargalo comercial, de aquisicao ou posicionamento da clinica hoje." class="w-full px-4 py-3 border border-white/10 bg-[#111111] text-white placeholder:text-white/25 resize-none"></textarea></div>
+                <button type="submit" class="btn-shine relative inline-flex items-center justify-center w-full px-6 py-4 bg-gold-500 hover:bg-gold-400 text-dark-900 text-xs font-bold uppercase tracking-[0.2em] transition-colors"><span data-submit-label>Enviar e liberar proposta</span></button>
+                <p data-form-status class="text-sm text-white/35 min-h-[24px]" aria-live="polite"></p>
+                <a href="proposta.html" data-proposal-unlocked class="hidden btn-shine relative inline-flex items-center justify-center w-full px-6 py-4 border border-gold-500/35 bg-gold-500/10 text-gold-300 text-xs font-bold uppercase tracking-[0.2em] hover:bg-gold-500/15 transition-colors">Acessar proposta liberada</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="relative z-20 border-t border-white/[0.06] py-10 bg-[#080808]">
+    <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-sm text-white/30">
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+        <span class="brand-lockup brand-lockup--footer" aria-hidden="true">
+          <span class="brand-lockup__title">Royal Skin</span>
+          <span class="brand-lockup__subrow">
+            <span class="brand-lockup__line"></span>
+            <span class="brand-lockup__sub">Agency</span>
+            <span class="brand-lockup__line"></span>
+          </span>
+        </span>
+        <p>Growth system para clinicas premium com previsibilidade comercial.</p>
+      </div>
+      <p>&copy; <span id="currentYear"></span> Royal Skin.</p>
+    </div>
+  </footer>
+
+  <div id="executiveModal" class="modal-overlay fixed inset-0 z-[200] flex items-center justify-center bg-black/70 backdrop-blur-sm" onclick="if(event.target===this)this.classList.remove('is-open')">
+    <div class="modal-content max-w-md w-full mx-4 border border-white/10 bg-[#111111]">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-white/[0.06]">
+        <h3 class="text-sm font-bold text-white uppercase tracking-[0.14em]">O que voce recebe no diagnostico</h3>
+        <button id="closeModal" class="w-8 h-8 flex items-center justify-center text-white/45 hover:text-white hover:bg-white/10 transition-colors" type="button" aria-label="Fechar modal">
+          <iconify-icon icon="solar:close-circle-bold-duotone" width="18"></iconify-icon>
+        </button>
+      </div>
+      <div class="px-6 py-6">
+        <p class="text-sm text-white/50 leading-relaxed">O diagnostico estrategico organiza o contexto da clinica antes da proposta e reduz ruido comercial na tomada de decisao.</p>
+        <div class="mt-5 space-y-3">
+          <div class="flex items-start gap-3 text-sm text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-gold-400 mt-1"></iconify-icon> Leitura inicial de posicionamento, aquisicao e operacao comercial.</div>
+          <div class="flex items-start gap-3 text-sm text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-gold-400 mt-1"></iconify-icon> Direcionamento de escopo, prioridades e faixa de investimento.</div>
+          <div class="flex items-start gap-3 text-sm text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-gold-400 mt-1"></iconify-icon> Liberacao da proposta privada com proximos passos de onboarding.</div>
+        </div>
+      </div>
+      <div class="px-6 py-4 border-t border-white/[0.06] flex justify-end gap-3">
+        <button id="dismissModal" class="px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] border border-white/10 text-white/55 hover:text-white hover:border-white/30 transition-colors" type="button">Fechar</button>
+        <a href="#diagnostico" class="btn-shine relative px-4 py-2 bg-gold-500 text-dark-900 text-xs font-bold uppercase tracking-[0.12em] hover:bg-gold-400 transition-colors">Agendar diagnostico</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/scripts/smooth-scroll.js"></script>
+  <script src="assets/scripts/proposal-gate.js"></script>
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('is-open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('is-open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    const modal = document.getElementById('executiveModal');
+    const openModal = document.getElementById('openModal');
+    const closeModal = document.getElementById('closeModal');
+    const dismissModal = document.getElementById('dismissModal');
+
+    const closeExecutiveModal = () => {
+      if (modal) modal.classList.remove('is-open');
+    };
+
+    if (openModal && modal) {
+      openModal.addEventListener('click', () => modal.classList.add('is-open'));
+    }
+    if (closeModal) closeModal.addEventListener('click', closeExecutiveModal);
+    if (dismissModal) dismissModal.addEventListener('click', closeExecutiveModal);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeExecutiveModal();
+    });
+
+    const diagnosticForm = document.getElementById('diagnosticForm');
+    if (window.RoyalProposalGate) {
+      window.RoyalProposalGate.hydrateGateUI(document);
+      if (diagnosticForm) {
+        window.RoyalProposalGate.initProposalForm(diagnosticForm, {
+          redirectTo: 'proposta.html',
+          successMessage: 'Diagnostico recebido. Sua proposta foi liberada.',
+        });
+      }
+    }
+  </script>
+</body>
+</html>
+
+

@@ -11,7 +11,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "index.html",
-        design_system: "desing_system.html",
+        proposal: "proposta.html",
+        design_system: "assets/design_system.html",
       },
     },
   },

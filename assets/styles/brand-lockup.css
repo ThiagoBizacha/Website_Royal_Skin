@@ -1,0 +1,121 @@
+.brand-lockup {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.12rem;
+  line-height: 1;
+  isolation: isolate;
+}
+
+.brand-lockup::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -0.35rem;
+  width: 132%;
+  height: 1rem;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(231, 139, 54, 0.34) 0%, rgba(231, 139, 54, 0.14) 30%, transparent 72%);
+  filter: blur(12px);
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.brand-lockup__title,
+.brand-lockup__sub,
+.brand-lockup__line {
+  transition: color 0.28s ease, opacity 0.28s ease, box-shadow 0.28s ease;
+}
+
+.brand-lockup__title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.6rem, 2vw, 2.1rem);
+  line-height: 0.88;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+  color: #f8f3ed;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.06), 0 0 40px rgba(231, 139, 54, 0.08);
+}
+
+.brand-lockup__subrow {
+  display: flex;
+  align-items: center;
+  gap: 0.48rem;
+}
+
+.brand-lockup__line {
+  width: 1.45rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(231, 139, 54, 0.56), transparent);
+}
+
+.brand-lockup__sub {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.88rem;
+  line-height: 1;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #d9aa63;
+  text-shadow: 0 0 16px rgba(231, 139, 54, 0.16);
+}
+
+.brand-lockup--nav .brand-lockup__title {
+  font-size: clamp(1.45rem, 1.75vw, 1.85rem);
+}
+
+.brand-lockup--nav .brand-lockup__sub {
+  font-size: 0.8rem;
+  letter-spacing: 0.24em;
+}
+
+.brand-lockup--nav .brand-lockup__line {
+  width: 1.2rem;
+}
+
+.brand-lockup--footer {
+  align-items: flex-start;
+}
+
+.brand-lockup--footer::after {
+  left: 0;
+  transform: none;
+  width: 8rem;
+}
+
+.brand-lockup--footer .brand-lockup__title {
+  font-size: clamp(1.8rem, 2.15vw, 2.35rem);
+}
+
+.brand-lockup--footer .brand-lockup__sub {
+  font-size: 0.92rem;
+}
+
+.group:hover .brand-lockup__title {
+  color: #fffaf4;
+  text-shadow: 0 0 22px rgba(255, 255, 255, 0.08), 0 0 48px rgba(231, 139, 54, 0.2);
+}
+
+.group:hover .brand-lockup__sub {
+  color: #e8b96f;
+}
+
+@media (max-width: 767px) {
+  .brand-lockup__title {
+    font-size: 1.45rem;
+  }
+
+  .brand-lockup__sub {
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+  }
+
+  .brand-lockup__line {
+    width: 1rem;
+  }
+
+  .brand-lockup--footer .brand-lockup__title {
+    font-size: 1.65rem;
+  }
+}
