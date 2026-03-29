@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles/brand-lockup.css"/>
 
     <!-- Tailwind Config -->
     <script>
@@ -210,6 +211,118 @@
             border-color: rgba(249, 115, 22, 0.3) !important;
         }
 
+        /* Applied Site Patterns */
+        .story-panel {
+            display: grid;
+            gap: 0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(180deg, rgba(24, 24, 19, 0.92), rgba(16, 16, 13, 0.92));
+            box-shadow: 0 24px 48px -36px rgba(0, 0, 0, 0.85);
+        }
+        .story-row {
+            display: grid;
+            gap: 0.4rem;
+            padding: 1.15rem 1.35rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .story-row:last-child {
+            border-bottom: 0;
+        }
+        .story-row span {
+            color: rgba(249, 115, 22, 0.92);
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+        .service-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.42rem 0.72rem;
+            border: 1px solid rgba(249,115,22,0.2);
+            background: rgba(249,115,22,0.08);
+            color: rgba(255,236,212,0.82);
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+        @keyframes heroAuraPulse {
+            0%, 100% { opacity: 0.8; transform: scale(1) translate3d(0,0,0); }
+            50% { opacity: 1; transform: scale(1.05) translate3d(-1.5%,-1%,0); }
+        }
+        @keyframes heroDustDrift {
+            0%, 100% { opacity: 0.46; transform: translate3d(0,0,0) scale(1); }
+            50% { opacity: 0.72; transform: translate3d(-2%,2%,0) scale(1.03); }
+        }
+        .hero-right-atmosphere,
+        .hero-right-dust,
+        .hero-right-lens {
+            position: absolute;
+            pointer-events: none;
+        }
+        .hero-right-atmosphere {
+            inset: 2% -10% -10% 8%;
+            background:
+                radial-gradient(circle at 72% 44%, rgba(249,115,22,.24) 0%, rgba(249,115,22,.14) 16%, rgba(249,115,22,.05) 34%, transparent 58%),
+                radial-gradient(circle at 58% 74%, rgba(249,115,22,.18) 0%, rgba(249,115,22,.08) 20%, transparent 50%),
+                radial-gradient(circle at 86% 82%, rgba(255,224,188,.12) 0%, transparent 24%);
+            filter: blur(22px);
+            opacity: .96;
+            animation: heroAuraPulse 12s ease-in-out infinite;
+        }
+        .hero-right-dust {
+            inset: 8% -12% -12% 16%;
+            background:
+                radial-gradient(circle at 14% 22%, rgba(249,115,22,.34) 0 1px, transparent 1.8px),
+                radial-gradient(circle at 72% 34%, rgba(255,235,212,.22) 0 1px, transparent 1.8px),
+                radial-gradient(circle at 56% 70%, rgba(249,115,22,.24) 0 1.2px, transparent 2px),
+                radial-gradient(circle at 80% 84%, rgba(249,115,22,.32) 0 1px, transparent 1.6px),
+                radial-gradient(circle at 40% 88%, rgba(255,220,180,.16) 0 .8px, transparent 1.4px),
+                radial-gradient(circle at 88% 58%, rgba(249,115,22,.18) 0 .8px, transparent 1.2px);
+            opacity: .62;
+            filter: blur(.15px);
+            mask-image: radial-gradient(circle at 70% 62%, black 0, rgba(0,0,0,.95) 24%, rgba(0,0,0,.75) 52%, transparent 84%);
+            -webkit-mask-image: radial-gradient(circle at 70% 62%, black 0, rgba(0,0,0,.95) 24%, rgba(0,0,0,.75) 52%, transparent 84%);
+            animation: heroDustDrift 18s linear infinite;
+        }
+        .hero-right-lens {
+            inset: 18% 2% 8% 28%;
+            background:
+                radial-gradient(circle at 66% 56%, rgba(249,115,22,.22), transparent 34%),
+                radial-gradient(circle at 84% 76%, rgba(249,115,22,.18), transparent 22%),
+                linear-gradient(180deg, transparent 0%, rgba(249,115,22,.05) 55%, transparent 100%);
+            mix-blend-mode: screen;
+            opacity: .84;
+            filter: blur(40px);
+            animation: floatLift 10s ease-in-out infinite;
+        }
+        .hero-feature-card {
+            position: absolute;
+            overflow: hidden;
+            isolation: isolate;
+            background: linear-gradient(180deg, rgba(20,20,20,.96), rgba(10,10,10,.93));
+            box-shadow: 0 28px 60px -34px rgba(0,0,0,.88), 0 0 44px -34px rgba(249,115,22,.58);
+        }
+        .hero-feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(249,115,22,.09), transparent 32%, transparent 72%, rgba(249,115,22,.06));
+            pointer-events: none;
+            z-index: -1;
+        }
+        .hero-feature-card::after {
+            content: '';
+            position: absolute;
+            left: 14%;
+            right: 14%;
+            bottom: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(249,115,22,.42), transparent);
+            pointer-events: none;
+        }
+
         /* Button Shine */
         .btn-shine {
             position: relative;
@@ -400,13 +513,18 @@
                 <span class="text-xs font-semibold tracking-[0.25em] uppercase text-white">Royal Skin</span>
                 <span class="text-[10px] tracking-widest uppercase text-white/30 hidden sm:inline">Design System</span>
             </a>
-            <div class="hidden md:flex items-center gap-8 text-xs font-medium tracking-widest text-white/40 uppercase">
+            <div class="hidden md:flex items-center gap-6 text-[10px] font-medium tracking-[0.22em] text-white/40 uppercase">
                 <a class="hover:text-orange-400 transition-colors duration-300" href="#hero">Intro</a>
                 <a class="hover:text-orange-400 transition-colors duration-300" href="#typography">Type</a>
                 <a class="hover:text-orange-400 transition-colors duration-300" href="#colors">Colors</a>
                 <a class="hover:text-orange-400 transition-colors duration-300" href="#components">UI</a>
                 <a class="hover:text-orange-400 transition-colors duration-300" href="#icons">Icons</a>
                 <a class="hover:text-orange-400 transition-colors duration-300" href="#motion">Motion</a>
+                <a class="hidden xl:inline hover:text-orange-400 transition-colors duration-300" href="#spacing">Spacing</a>
+                <a class="hidden xl:inline hover:text-orange-400 transition-colors duration-300" href="#shadows">Depth</a>
+                <a class="hidden xl:inline hover:text-orange-400 transition-colors duration-300" href="#patterns">Patterns</a>
+                <a class="hidden xl:inline hover:text-orange-400 transition-colors duration-300" href="#borders">Surfaces</a>
+                <a class="hidden xl:inline hover:text-orange-400 transition-colors duration-300" href="#applied">Applied</a>
             </div>
             <div class="flex items-center gap-4">
                 <span class="text-[10px] font-bold tracking-[0.2em] text-orange-400 uppercase border border-orange-500/20 bg-orange-500/5 px-3 py-1.5 animate-[borderGlow_3s_ease-in-out_infinite]">
@@ -1395,6 +1513,622 @@
                 </div>
             </div>
 
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+
+    <!-- ================================================================ -->
+    <!-- SECTION 6: SPACING & LAYOUT -->
+    <!-- ================================================================ -->
+    <section id="spacing" class="relative z-20 bg-[#0B0C15] noise-overlay">
+        <div class="beam-border-v" style="left: 0;"></div>
+        <div class="max-w-[90rem] mx-auto px-6 lg:px-12 py-24">
+            <div class="flex items-center gap-4 text-xs font-bold tracking-[0.3em] uppercase mb-4 text-orange-400 animate-on-scroll" style="animation: fadeSlideIn 0.6s ease-out both;">
+                <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-orange-500"></span>
+                06 Spacing & Layout
+            </div>
+            <h2 class="text-4xl md:text-5xl font-medium text-white tracking-tight mb-16 animate-on-scroll" style="animation: fadeSlideIn 0.6s ease-out 0.1s both;">Spacing System</h2>
+
+            <!-- Spacing Scale -->
+            <div data-reveal class="mb-12">
+                <h3 class="text-xs font-bold text-white/30 uppercase tracking-[0.2em] mb-6">Spacing Scale</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-4">
+                        <span class="text-[11px] font-mono text-white/30 w-20 flex-shrink-0">4px</span>
+                        <div class="h-4 bg-orange-500/30 border border-orange-500/20" style="width: 4px;"></div>
+                        <span class="text-[11px] font-mono text-white/20">gap-1 &middot; micro spacing</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-[11px] font-mono text-white/30 w-20 flex-shrink-0">8px</span>
+                        <div class="h-4 bg-orange-500/30 border border-orange-500/20" style="width: 8px;"></div>
+                        <span class="text-[11px] font-mono text-white/20">gap-2 &middot; tight elements</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-[11px] font-mono text-white/30 w-20 flex-shrink-0">12px</span>
+                        <div class="h-4 bg-orange-500/30 border border-orange-500/20" style="width: 12px;"></div>
+                        <span class="text-[11px] font-mono text-white/20">gap-3 &middot; inline spacing</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-[11px] font-mono text-white/30 w-20 flex-shrink-0">16px</span>
+                        <div class="h-4 bg-orange-500/40 border border-orange-500/20" style="width: 16px;"></div>
+                        <span class="text-[11px] font-mono text-white/20">gap-4 &middot; default component gap</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-[11px] font-mono text-white/30 w-20 flex-shrink-0">20px</span>
+                        <div class="h-4 bg-orange-500/40 border border-orange-500/20" style="width: 20px;"></div>
+                        <span class="text-[11px] font-mono text-white/20">gap-5 &middot; card grid gap</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-[11px] font-mono text-white/30 w-20 flex-shrink-0">24px</span>
+                        <div class="h-4 bg-orange-500/50 border border-orange-500/20" style="width: 24px;"></div>
+                        <span class="text-[11px] font-mono text-white/20">gap-6 &middot; section inner spacing</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-[11px] font-mono text-white/30 w-20 flex-shrink-0">40px</span>
+                        <div class="h-4 bg-orange-500/60 border border-orange-500/20" style="width: 40px;"></div>
+                        <span class="text-[11px] font-mono text-white/20">gap-10 &middot; column gap</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-[11px] font-mono text-white/30 w-20 flex-shrink-0">96px</span>
+                        <div class="h-4 bg-orange-500/70 border border-orange-500/20" style="width: 96px;"></div>
+                        <span class="text-[11px] font-mono text-white/20">py-24 &middot; section vertical padding</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Container & Breakpoints -->
+            <div data-reveal class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="p-6 border border-white/5 bg-white/[0.02]">
+                    <h3 class="text-xs font-bold text-white/30 uppercase tracking-[0.2em] mb-6">Container</h3>
+                    <div class="space-y-3 text-[11px] font-mono text-white/30">
+                        <p><span class="text-white/60">max-width:</span> 90rem (1440px)</p>
+                        <p><span class="text-white/60">padding-x:</span> 20px (mobile) &rarr; 32px (md) &rarr; 48px (lg)</p>
+                        <p><span class="text-white/60">class:</span> max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12</p>
+                    </div>
+                </div>
+                <div class="p-6 border border-white/5 bg-white/[0.02]">
+                    <h3 class="text-xs font-bold text-white/30 uppercase tracking-[0.2em] mb-6">Breakpoints</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-orange-500/30"></div><span class="text-[11px] font-mono text-white/30"><span class="text-white/60">sm:</span> 640px</span></div>
+                        <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-orange-500/40"></div><span class="text-[11px] font-mono text-white/30"><span class="text-white/60">md:</span> 768px</span></div>
+                        <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-orange-500/50"></div><span class="text-[11px] font-mono text-white/30"><span class="text-white/60">lg:</span> 1024px</span></div>
+                        <div class="flex items-center gap-3"><div class="w-3 h-3 rounded-full bg-orange-500/60"></div><span class="text-[11px] font-mono text-white/30"><span class="text-white/60">xl:</span> 1280px</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid Patterns -->
+            <div data-reveal>
+                <h3 class="text-xs font-bold text-white/30 uppercase tracking-[0.2em] mb-6">Grid Patterns</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-5 border border-white/5 bg-white/[0.02]">
+                        <span class="text-[10px] font-bold text-orange-400/60 uppercase tracking-[0.2em] block mb-3">12-Column</span>
+                        <div class="grid grid-cols-12 gap-1 h-8">
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                        </div>
+                        <p class="text-[11px] font-mono text-white/20 mt-2">grid-cols-12 gap-10</p>
+                    </div>
+                    <div class="p-5 border border-white/5 bg-white/[0.02]">
+                        <span class="text-[10px] font-bold text-orange-400/60 uppercase tracking-[0.2em] block mb-3">5-Column (Cards)</span>
+                        <div class="grid grid-cols-5 gap-1 h-8">
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                        </div>
+                        <p class="text-[11px] font-mono text-white/20 mt-2">grid-cols-5 gap-5</p>
+                    </div>
+                    <div class="p-5 border border-white/5 bg-white/[0.02]">
+                        <span class="text-[10px] font-bold text-orange-400/60 uppercase tracking-[0.2em] block mb-3">3-Column (Sectors)</span>
+                        <div class="grid grid-cols-3 gap-1 h-8">
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                            <div class="bg-orange-500/20 border border-orange-500/10"></div>
+                        </div>
+                        <p class="text-[11px] font-mono text-white/20 mt-2">grid-cols-3 gap-6</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+
+    <!-- ================================================================ -->
+    <!-- SECTION 7: SHADOWS & DEPTH -->
+    <!-- ================================================================ -->
+    <section id="shadows" class="relative z-20 bg-[#0B0C15] noise-overlay">
+        <div class="beam-border-v" style="right: 0;"></div>
+        <div class="max-w-[90rem] mx-auto px-6 lg:px-12 py-24">
+            <div class="flex items-center gap-4 text-xs font-bold tracking-[0.3em] uppercase mb-4 text-orange-400 animate-on-scroll" style="animation: fadeSlideIn 0.6s ease-out both;">
+                <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-orange-500"></span>
+                07 Shadows & Depth
+            </div>
+            <h2 class="text-4xl md:text-5xl font-medium text-white tracking-tight mb-16 animate-on-scroll" style="animation: fadeSlideIn 0.6s ease-out 0.1s both;">Elevation System</h2>
+
+            <!-- Shadow Scale -->
+            <div data-reveal class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="p-8 border border-white/5 bg-white/[0.02] flex flex-col items-center justify-center h-40 hover:bg-white/[0.04] transition-colors">
+                    <div class="w-16 h-16 bg-[#0f1020] border border-white/10" style="box-shadow: 0 2px 8px -2px rgba(0,0,0,0.3);"></div>
+                    <span class="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] mt-4">Level 1 &mdash; Subtle</span>
+                    <p class="text-[10px] font-mono text-white/15 mt-1">0 2px 8px -2px</p>
+                </div>
+                <div class="p-8 border border-white/5 bg-white/[0.02] flex flex-col items-center justify-center h-40 hover:bg-white/[0.04] transition-colors">
+                    <div class="w-16 h-16 bg-[#0f1020] border border-white/10" style="box-shadow: 0 8px 24px -6px rgba(0,0,0,0.5);"></div>
+                    <span class="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] mt-4">Level 2 &mdash; Card</span>
+                    <p class="text-[10px] font-mono text-white/15 mt-1">0 8px 24px -6px</p>
+                </div>
+                <div class="p-8 border border-white/5 bg-white/[0.02] flex flex-col items-center justify-center h-40 hover:bg-white/[0.04] transition-colors">
+                    <div class="w-16 h-16 bg-[#0f1020] border border-white/10" style="box-shadow: 0 24px 48px -14px rgba(0,0,0,0.6);"></div>
+                    <span class="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] mt-4">Level 3 &mdash; Elevated</span>
+                    <p class="text-[10px] font-mono text-white/15 mt-1">0 24px 48px -14px</p>
+                </div>
+                <div class="p-8 border border-white/5 bg-white/[0.02] flex flex-col items-center justify-center h-40 hover:bg-white/[0.04] transition-colors">
+                    <div class="w-16 h-16 bg-[#0f1020] border border-white/10" style="box-shadow: 0 28px 60px -34px rgba(0,0,0,.88), 0 0 44px -34px rgba(249,115,22,.58);"></div>
+                    <span class="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] mt-4">Level 4 &mdash; Hero Card</span>
+                    <p class="text-[10px] font-mono text-white/15 mt-1">Dual: dark + accent glow</p>
+                </div>
+            </div>
+
+            <!-- Glow Effects -->
+            <div data-reveal>
+                <h3 class="text-xs font-bold text-white/30 uppercase tracking-[0.2em] mb-6">Accent Glow Effects</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-8 border border-white/5 bg-white/[0.02] flex flex-col items-center justify-center h-40 hover:bg-white/[0.04] transition-colors">
+                        <div class="w-16 h-16 rounded-full border-2 border-orange-500/30 bg-orange-500/[0.06]" style="box-shadow:0 0 40px -8px rgba(249,115,22,.2);"></div>
+                        <span class="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] mt-4">Soft Glow</span>
+                        <p class="text-[10px] font-mono text-white/15 mt-1">0 0 40px -8px accent/20%</p>
+                    </div>
+                    <div class="p-8 border border-white/5 bg-white/[0.02] flex flex-col items-center justify-center h-40 hover:bg-white/[0.04] transition-colors">
+                        <div class="w-16 h-16 rounded-full border-2 border-orange-500/30 bg-orange-500/[0.06]" style="box-shadow:0 0 60px -10px rgba(249,115,22,.25), 0 0 120px -20px rgba(249,115,22,.1);"></div>
+                        <span class="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] mt-4">Hub Center Glow</span>
+                        <p class="text-[10px] font-mono text-white/15 mt-1">Dual radial, 60px + 120px</p>
+                    </div>
+                    <div class="p-8 border border-white/5 bg-white/[0.02] flex flex-col items-center justify-center h-40 hover:bg-white/[0.04] transition-colors">
+                        <div class="w-16 h-16 bg-orange-600" style="box-shadow: 0 0 30px -5px rgba(249,115,22,0.4);"></div>
+                        <span class="text-[10px] font-bold text-white/20 uppercase tracking-[0.2em] mt-4">CTA Glow</span>
+                        <p class="text-[10px] font-mono text-white/15 mt-1">0 0 30px -5px accent/40%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+
+    <!-- ================================================================ -->
+    <!-- SECTION 8: VISUAL PATTERNS -->
+    <!-- ================================================================ -->
+    <section id="patterns" class="relative z-20 bg-[#0B0C15] noise-overlay">
+        <div class="beam-border-v" style="left: 0;"></div>
+        <div class="beam-border-h" style="top: 0;"></div>
+        <div class="max-w-[90rem] mx-auto px-6 lg:px-12 py-24">
+            <div class="flex items-center gap-4 text-xs font-bold tracking-[0.3em] uppercase mb-4 text-orange-400 animate-on-scroll" style="animation: fadeSlideIn 0.6s ease-out both;">
+                <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-orange-500"></span>
+                08 Visual Patterns
+            </div>
+            <h2 class="text-4xl md:text-5xl font-medium text-white tracking-tight mb-16 animate-on-scroll" style="animation: fadeSlideIn 0.6s ease-out 0.1s both;">Structural Patterns</h2>
+
+            <!-- Flow Connector Pattern -->
+            <div data-reveal class="mb-12">
+                <h3 class="text-xs font-bold text-white/30 uppercase tracking-[0.2em] mb-6">Flow Connector</h3>
+                <p class="text-sm text-white/30 mb-6 max-w-xl">Horizontal step flow with arrow connectors. Collapses to vertical on smaller breakpoints.</p>
+                <div class="p-8 border border-white/5 bg-white/[0.02]">
+                    <div class="flex flex-col md:flex-row items-stretch gap-0">
+                        <div class="flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
+                            <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-orange-500/30 bg-orange-500/10 mb-3">
+                                <span class="text-xs font-bold text-orange-300">01</span>
+                            </div>
+                            <h4 class="text-sm font-medium text-white">Step One</h4>
+                            <p class="text-white/30 mt-1 text-xs">Description text</p>
+                        </div>
+                        <div class="hidden md:flex items-center justify-center px-2 text-orange-500/40">
+                            <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
+                        </div>
+                        <div class="flex md:hidden items-center justify-center py-2 text-orange-500/40">
+                            <iconify-icon icon="solar:arrow-down-linear" width="20"></iconify-icon>
+                        </div>
+                        <div class="flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
+                            <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-orange-500/30 bg-orange-500/10 mb-3">
+                                <span class="text-xs font-bold text-orange-300">02</span>
+                            </div>
+                            <h4 class="text-sm font-medium text-white">Step Two</h4>
+                            <p class="text-white/30 mt-1 text-xs">Description text</p>
+                        </div>
+                        <div class="hidden md:flex items-center justify-center px-2 text-orange-500/40">
+                            <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
+                        </div>
+                        <div class="flex md:hidden items-center justify-center py-2 text-orange-500/40">
+                            <iconify-icon icon="solar:arrow-down-linear" width="20"></iconify-icon>
+                        </div>
+                        <div class="flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
+                            <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-orange-500/30 bg-orange-500/10 mb-3">
+                                <span class="text-xs font-bold text-orange-300">03</span>
+                            </div>
+                            <h4 class="text-sm font-medium text-white">Step Three</h4>
+                            <p class="text-white/30 mt-1 text-xs">Description text</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hub Diagram Pattern -->
+            <div data-reveal class="mb-12">
+                <h3 class="text-xs font-bold text-white/30 uppercase tracking-[0.2em] mb-6">Hub Diagram</h3>
+                <p class="text-sm text-white/30 mb-6 max-w-xl">Central hub element with spoke connection to surrounding pillars.</p>
+                <div class="p-8 border border-white/5 bg-white/[0.02]">
+                    <div class="text-center mb-6">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full border-2 border-orange-500/30 bg-orange-500/[0.06]" style="box-shadow:0 0 60px -10px rgba(249,115,22,.22);">
+                            <iconify-icon icon="solar:atom-bold-duotone" width="36" class="text-orange-400"></iconify-icon>
+                        </div>
+                        <p class="text-sm text-white/40 mt-3">Central Hub</p>
+                    </div>
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="w-px h-6 bg-gradient-to-b from-orange-500/40 to-transparent"></div>
+                    </div>
+                    <div class="grid grid-cols-3 md:grid-cols-5 gap-3">
+                        <div class="border border-white/10 bg-white/[0.02] p-4 text-center">
+                            <iconify-icon icon="solar:cursor-bold-duotone" width="22" class="text-orange-400/60"></iconify-icon>
+                            <p class="text-xs font-medium text-white mt-2">Spoke A</p>
+                        </div>
+                        <div class="border border-white/10 bg-white/[0.02] p-4 text-center">
+                            <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="22" class="text-orange-400/60"></iconify-icon>
+                            <p class="text-xs font-medium text-white mt-2">Spoke B</p>
+                        </div>
+                        <div class="border border-white/10 bg-white/[0.02] p-4 text-center">
+                            <iconify-icon icon="solar:target-bold-duotone" width="22" class="text-orange-400/60"></iconify-icon>
+                            <p class="text-xs font-medium text-white mt-2">Spoke C</p>
+                        </div>
+                        <div class="border border-white/10 bg-white/[0.02] p-4 text-center">
+                            <iconify-icon icon="solar:chart-square-bold-duotone" width="22" class="text-orange-400/60"></iconify-icon>
+                            <p class="text-xs font-medium text-white mt-2">Spoke D</p>
+                        </div>
+                        <div class="border border-white/10 bg-white/[0.02] p-4 text-center">
+                            <iconify-icon icon="solar:chart-2-bold-duotone" width="22" class="text-orange-400/60"></iconify-icon>
+                            <p class="text-xs font-medium text-white mt-2">Spoke E</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Before / After Comparison -->
+            <div data-reveal class="mb-12">
+                <h3 class="text-xs font-bold text-white/30 uppercase tracking-[0.2em] mb-6">Before / After Comparison</h3>
+                <p class="text-sm text-white/30 mb-6 max-w-xl">Side-by-side comparison using semantic color coding (red for pain, green for outcome).</p>
+                <div class="p-8 border border-white/5 bg-white/[0.02]">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="border border-red-400/20 bg-red-400/[0.03] p-5">
+                            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-red-400">Before</span>
+                            <ul class="mt-4 space-y-3">
+                                <li class="flex items-center gap-2 text-sm text-white/40">
+                                    <iconify-icon icon="solar:close-circle-bold-duotone" width="16" class="text-red-400/60"></iconify-icon> Pain point 1
+                                </li>
+                                <li class="flex items-center gap-2 text-sm text-white/40">
+                                    <iconify-icon icon="solar:close-circle-bold-duotone" width="16" class="text-red-400/60"></iconify-icon> Pain point 2
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="border border-emerald-500/20 bg-emerald-500/[0.03] p-5">
+                            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-400">After</span>
+                            <ul class="mt-4 space-y-3">
+                                <li class="flex items-center gap-2 text-sm text-white/60">
+                                    <iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-emerald-400"></iconify-icon> Outcome 1
+                                </li>
+                                <li class="flex items-center gap-2 text-sm text-white/60">
+                                    <iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-emerald-400"></iconify-icon> Outcome 2
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vertical Timeline -->
+            <div data-reveal class="mb-12">
+                <h3 class="text-xs font-bold text-white/30 uppercase tracking-[0.2em] mb-6">Vertical Timeline</h3>
+                <p class="text-sm text-white/30 mb-6 max-w-xl">Connected step progression with accent nodes and gradient connecting lines.</p>
+                <div class="p-8 border border-white/5 bg-white/[0.02] max-w-md">
+                    <div class="space-y-0">
+                        <div class="flex items-start gap-4 pb-5 relative">
+                            <div class="flex flex-col items-center flex-shrink-0">
+                                <div class="w-8 h-8 rounded-full border border-orange-500/40 bg-orange-500/10 flex items-center justify-center text-[10px] font-bold text-orange-300">01</div>
+                                <div class="w-px h-full bg-gradient-to-b from-orange-500/30 to-transparent absolute top-8 left-4"></div>
+                            </div>
+                            <div><h4 class="text-sm font-medium text-white">Phase One</h4><p class="text-white/30 text-xs mt-1">Description for this phase.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4 pb-5 relative">
+                            <div class="flex flex-col items-center flex-shrink-0">
+                                <div class="w-8 h-8 rounded-full border border-orange-500/40 bg-orange-500/10 flex items-center justify-center text-[10px] font-bold text-orange-300">02</div>
+                                <div class="w-px h-full bg-gradient-to-b from-orange-500/30 to-transparent absolute top-8 left-4"></div>
+                            </div>
+                            <div><h4 class="text-sm font-medium text-white">Phase Two</h4><p class="text-white/30 text-xs mt-1">Description for this phase.</p></div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="flex flex-col items-center flex-shrink-0">
+                                <div class="w-8 h-8 rounded-full border border-orange-500/40 bg-orange-500/10 flex items-center justify-center text-[10px] font-bold text-orange-300">03</div>
+                            </div>
+                            <div><h4 class="text-sm font-medium text-white">Phase Three</h4><p class="text-white/30 text-xs mt-1">Description for this phase.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signal Row (Comparison Indicators) -->
+            <div data-reveal class="mb-12">
+                <h3 class="text-xs font-bold text-white/30 uppercase tracking-[0.2em] mb-6">Signal Indicators</h3>
+                <p class="text-sm text-white/30 mb-6 max-w-xl">Color-coded signal blocks for conveying status, opportunity, or risk at a glance.</p>
+                <div class="p-8 border border-white/5 bg-white/[0.02]">
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-4 p-4 border border-emerald-500/20 bg-emerald-500/[0.04]">
+                            <iconify-icon icon="solar:graph-up-bold-duotone" width="22" class="text-emerald-400 mt-0.5 flex-shrink-0"></iconify-icon>
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-400">Positive Signal</span>
+                                <p class="text-sm text-white/50 mt-1">Opportunity or positive state description.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 border border-red-400/20 bg-red-400/[0.04]">
+                            <iconify-icon icon="solar:danger-triangle-bold-duotone" width="22" class="text-red-400 mt-0.5 flex-shrink-0"></iconify-icon>
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-red-400">Negative Signal</span>
+                                <p class="text-sm text-white/50 mt-1">Risk or problem state description.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 border border-orange-500/20 bg-orange-500/[0.04]">
+                            <iconify-icon icon="solar:star-bold-duotone" width="22" class="text-orange-400 mt-0.5 flex-shrink-0"></iconify-icon>
+                            <div>
+                                <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-orange-400">Accent Signal</span>
+                                <p class="text-sm text-white/50 mt-1">Highlight or neutral state description.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metric Inline -->
+            <div data-reveal>
+                <h3 class="text-xs font-bold text-white/30 uppercase tracking-[0.2em] mb-6">Inline Metrics</h3>
+                <p class="text-sm text-white/30 mb-6 max-w-xl">Compact metric display with dividers. Used for hero proof points and key stats.</p>
+                <div class="p-8 border border-white/5 bg-white/[0.02]">
+                    <div class="flex flex-wrap items-center gap-8">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl text-white font-light tracking-tight">+230</span>
+                            <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-orange-400/70 leading-tight">clients<br>served</span>
+                        </div>
+                        <div class="w-px h-8 bg-white/10"></div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl text-white font-light tracking-tight">3</span>
+                            <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-orange-400/70 leading-tight">premium<br>niches</span>
+                        </div>
+                        <div class="w-px h-8 bg-white/10"></div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl text-white font-light tracking-tight">100%</span>
+                            <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-orange-400/70 leading-tight">integrated<br>system</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+
+    <!-- ================================================================ -->
+    <!-- SECTION 9: BORDERS & SURFACES -->
+    <!-- ================================================================ -->
+    <section id="borders" class="relative z-20 bg-[#0B0C15] noise-overlay">
+        <div class="beam-border-h" style="bottom: 0;"></div>
+        <div class="max-w-[90rem] mx-auto px-6 lg:px-12 py-24">
+            <div class="flex items-center gap-4 text-xs font-bold tracking-[0.3em] uppercase mb-4 text-orange-400 animate-on-scroll" style="animation: fadeSlideIn 0.6s ease-out both;">
+                <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-orange-500"></span>
+                09 Borders & Surfaces
+            </div>
+            <h2 class="text-4xl md:text-5xl font-medium text-white tracking-tight mb-16 animate-on-scroll" style="animation: fadeSlideIn 0.6s ease-out 0.1s both;">Edge & Surface Language</h2>
+
+            <!-- Border Tokens -->
+            <div data-reveal class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="p-6 border border-white/[0.06] bg-white/[0.02]">
+                    <span class="text-[10px] font-bold text-orange-400/60 uppercase tracking-[0.2em] block mb-4">Default</span>
+                    <div class="w-full h-16 border border-white/10"></div>
+                    <p class="text-[11px] font-mono text-white/20 mt-3">border-white/10</p>
+                </div>
+                <div class="p-6 border border-white/[0.06] bg-white/[0.02]">
+                    <span class="text-[10px] font-bold text-orange-400/60 uppercase tracking-[0.2em] block mb-4">Accent</span>
+                    <div class="w-full h-16 border border-orange-500/30 bg-orange-500/[0.03]"></div>
+                    <p class="text-[11px] font-mono text-white/20 mt-3">border-accent/30 + bg-accent/3%</p>
+                </div>
+                <div class="p-6 border border-white/[0.06] bg-white/[0.02]">
+                    <span class="text-[10px] font-bold text-orange-400/60 uppercase tracking-[0.2em] block mb-4">Highlight</span>
+                    <div class="w-full h-16 border border-orange-500/20 bg-orange-500/10"></div>
+                    <p class="text-[11px] font-mono text-white/20 mt-3">border-accent/20 + bg-accent/10</p>
+                </div>
+                <div class="p-6 border border-white/[0.06] bg-white/[0.02]">
+                    <span class="text-[10px] font-bold text-orange-400/60 uppercase tracking-[0.2em] block mb-4">Hover</span>
+                    <div class="w-full h-16 border border-orange-500/40 bg-white/[0.04] transition-colors hover:bg-orange-500/[0.06] cursor-pointer"></div>
+                    <p class="text-[11px] font-mono text-white/20 mt-3">hover:border-accent/40</p>
+                </div>
+            </div>
+
+            <!-- Divider Patterns -->
+            <div data-reveal class="mb-12">
+                <h3 class="text-xs font-bold text-white/30 uppercase tracking-[0.2em] mb-6">Dividers</h3>
+                <div class="space-y-8 p-8 border border-white/5 bg-white/[0.02]">
+                    <div>
+                        <p class="text-[11px] font-mono text-white/25 mb-3">section-divider (gradient glow)</p>
+                        <div class="section-divider"></div>
+                    </div>
+                    <div>
+                        <p class="text-[11px] font-mono text-white/25 mb-3">border-white/[0.06] (subtle line)</p>
+                        <div class="h-px bg-white/[0.06]"></div>
+                    </div>
+                    <div>
+                        <p class="text-[11px] font-mono text-white/25 mb-3">border-white/10 (default)</p>
+                        <div class="h-px bg-white/10"></div>
+                    </div>
+                    <div>
+                        <p class="text-[11px] font-mono text-white/25 mb-3">Gradient connector (spoke line)</p>
+                        <div class="mx-auto w-px h-12 bg-gradient-to-b from-orange-500/40 to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Surface Cards -->
+            <div data-reveal>
+                <h3 class="text-xs font-bold text-white/30 uppercase tracking-[0.2em] mb-6">Surface Treatments</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="h-40 border border-white/10 bg-white/[0.02] flex items-center justify-center">
+                        <span class="text-xs font-mono text-white/25">bg-white/[0.02]</span>
+                    </div>
+                    <div class="h-40 border border-white/10 flex items-center justify-center" style="background: linear-gradient(180deg, rgba(24,24,19,.92), rgba(16,16,13,.92));">
+                        <span class="text-xs font-mono text-white/25">story-panel gradient</span>
+                    </div>
+                    <div class="h-40 border border-white/10 flex items-center justify-center" style="background: linear-gradient(120deg, rgba(15,16,32,0.94), rgba(40,30,15,0.9), rgba(15,16,32,0.94)); background-size: 240% 100%; animation: controlledShine 5s linear infinite;">
+                        <span class="text-xs font-mono text-white/25">controlledShine surface</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="section-divider"></div>
+    </section>
+
+
+    <!-- ================================================================ -->
+    <!-- SECTION 10: APPLIED HOME PATTERNS -->
+    <!-- ================================================================ -->
+    <section id="applied" class="relative z-20 bg-[#0B0C15] noise-overlay">
+        <div class="beam-border-v" style="right: 0;"></div>
+        <div class="beam-border-h" style="top: 0;"></div>
+        <div class="max-w-[90rem] mx-auto px-6 lg:px-12 py-24">
+            <div class="flex items-center gap-4 text-xs font-bold tracking-[0.3em] uppercase mb-4 text-orange-400 animate-on-scroll" style="animation: fadeSlideIn 0.6s ease-out both;">
+                <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-orange-500"></span>
+                10 Applied Home Patterns
+            </div>
+            <h2 class="text-4xl md:text-5xl font-medium text-white tracking-tight mb-6 animate-on-scroll" style="animation: fadeSlideIn 0.6s ease-out 0.1s both;">Patterns em uso na Royal Skin Home</h2>
+            <p class="text-base text-white/40 max-w-3xl mb-16 animate-on-scroll" style="animation: fadeSlideIn 0.6s ease-out 0.2s both;">
+                Esta camada registra os padroes que deixaram de ser apenas tokens e passaram a organizar a experiencia real da home: identidade, narrativa executiva, sintese visual e estados comerciais.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+                <article data-reveal class="lg:col-span-4 p-8 border border-white/10 bg-white/[0.02]">
+                    <span class="text-[10px] font-bold text-orange-400/70 uppercase tracking-[0.2em]">Brand Lockup</span>
+                    <div class="mt-8 min-h-[190px] border border-white/10 bg-[#0c0c0c] flex items-center justify-center">
+                        <span class="brand-lockup brand-lockup--footer" aria-hidden="true">
+                            <span class="brand-lockup__title">Royal Skin</span>
+                            <span class="brand-lockup__subrow">
+                                <span class="brand-lockup__line"></span>
+                                <span class="brand-lockup__sub">Agency</span>
+                                <span class="brand-lockup__line"></span>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="mt-6 space-y-2 text-[11px] font-mono text-white/22">
+                        <p>Uso: header e footer do site e da proposta</p>
+                        <p>Principio: Royal Skin lidera, Agency apoia</p>
+                    </div>
+                </article>
+
+                <article data-reveal class="lg:col-span-4 p-8 border border-white/10 bg-white/[0.02]">
+                    <span class="text-[10px] font-bold text-orange-400/70 uppercase tracking-[0.2em]">Executive Story Panel</span>
+                    <div class="mt-8 story-panel">
+                        <div class="story-row">
+                            <span>Leitura</span>
+                            <p class="text-white/65 leading-relaxed">Condensa uma narrativa complexa em blocos curtos e escaneaveis.</p>
+                        </div>
+                        <div class="story-row">
+                            <span>Uso</span>
+                            <p class="text-white/65 leading-relaxed">Mercado, problema, diferenciais, processo e diagnostico.</p>
+                        </div>
+                        <div class="story-row">
+                            <span>Efeito</span>
+                            <p class="text-white/65 leading-relaxed">Menos densidade textual e mais leitura de apresentacao executiva.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article data-reveal class="lg:col-span-4 p-8 border border-white/10 bg-white/[0.02]">
+                    <span class="text-[10px] font-bold text-orange-400/70 uppercase tracking-[0.2em]">Service Pills</span>
+                    <div class="mt-8 flex flex-wrap gap-2">
+                        <span class="service-pill">Google Ads</span>
+                        <span class="service-pill">Meta Ads</span>
+                        <span class="service-pill">Conteudo</span>
+                        <span class="service-pill">Autoridade</span>
+                        <span class="service-pill">Qualificacao</span>
+                        <span class="service-pill">Follow-up</span>
+                        <span class="service-pill">KPIs</span>
+                        <span class="service-pill">Consultoria</span>
+                    </div>
+                    <div class="mt-8 border border-white/10 bg-[#111111] p-5">
+                        <p class="text-sm text-white/50 leading-relaxed">Transforma escopo em leitura modular e reduz a necessidade de paragrafos repetitivos dentro dos cards de servico.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <article data-reveal class="lg:col-span-7 p-8 border border-white/10 bg-white/[0.02]">
+                    <span class="text-[10px] font-bold text-orange-400/70 uppercase tracking-[0.2em]">Hero Atmosphere</span>
+                    <div class="relative mt-8 h-[340px] border border-white/10 bg-[#0B0C15] overflow-hidden">
+                        <div class="hero-right-atmosphere"></div>
+                        <div class="hero-right-dust"></div>
+                        <div class="hero-right-lens"></div>
+
+                        <div class="hero-feature-card absolute left-[8%] top-[10%] w-[42%] border border-white/10 p-5 backdrop-blur-md rotate-[-4deg]">
+                            <div class="flex items-center justify-between gap-3">
+                                <span class="text-[10px] uppercase tracking-[0.2em] text-orange-400">Proof Card</span>
+                                <iconify-icon icon="solar:medal-ribbons-star-bold-duotone" width="18" class="text-orange-400"></iconify-icon>
+                            </div>
+                            <p class="text-sm text-white/55 leading-relaxed mt-3">Glows, poeira dourada e superficies profundas valorizam o cluster lateral do hero.</p>
+                        </div>
+
+                        <div class="hero-feature-card absolute right-[10%] bottom-[12%] w-[46%] border border-white/10 p-5 backdrop-blur-md rotate-[3deg]">
+                            <div class="flex items-center justify-between gap-3">
+                                <span class="text-[10px] uppercase tracking-[0.18em] text-white/35">Sistema</span>
+                                <iconify-icon icon="solar:chart-square-bold-duotone" width="22" class="text-orange-400"></iconify-icon>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="service-pill">Trafego</span>
+                                <span class="service-pill">Funil</span>
+                                <span class="service-pill">Gestao</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 space-y-2 text-[11px] font-mono text-white/22">
+                        <p>Uso: lado direito do hero principal</p>
+                        <p>Objetivo: criar presenca premium sem comprometer legibilidade</p>
+                    </div>
+                </article>
+
+                <article data-reveal class="lg:col-span-5 p-8 border border-white/10 bg-white/[0.02]">
+                    <span class="text-[10px] font-bold text-orange-400/70 uppercase tracking-[0.2em]">Proposal Gate States</span>
+                    <div class="mt-8 grid grid-cols-1 gap-4">
+                        <div class="p-5 border border-white/10 bg-white/[0.02]">
+                            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-white/30">Locked state</span>
+                            <p class="text-white/55 leading-relaxed mt-3">Mostra contexto, protege a proposta e conduz o usuario ao diagnostico.</p>
+                        </div>
+                        <div class="p-5 border border-orange-500/20 bg-orange-500/[0.08]">
+                            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-orange-300">Unlocked state</span>
+                            <p class="text-white/65 leading-relaxed mt-3">Libera CTA direto, personaliza partes da proposta e mantem o fluxo comercial organizado.</p>
+                        </div>
+                        <div class="p-5 border border-white/10 bg-[#111111]">
+                            <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-white/30">Tech layer</span>
+                            <p class="text-white/50 leading-relaxed mt-3">Hoje usa `localStorage`; amanha pode apontar para CRM, backend ou automacao sem refazer a UX.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </div>
         <div class="section-divider"></div>
     </section>

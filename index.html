@@ -82,6 +82,7 @@
     @keyframes controlledShine { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
     @keyframes heroAuraPulse { 0%,100%{opacity:.8; transform:scale(1) translate3d(0,0,0)} 50%{opacity:1; transform:scale(1.05) translate3d(-1.5%,-1%,0)} }
     @keyframes heroDustDrift { 0%,100%{opacity:.46; transform:translate3d(0,0,0) scale(1)} 50%{opacity:.72; transform:translate3d(-2%,2%,0) scale(1.03)} }
+    @keyframes pulseFade { 0%,100%{opacity:.78; transform:translateY(0)} 50%{opacity:1; transform:translateY(-6px)} }
     .animate-on-scroll { animation-play-state: paused !important; }
     .animate-on-scroll.animate { animation-play-state: running !important; }
     .reveal { opacity:0; transform:translateY(24px); transition:opacity .64s ease, transform .64s ease; }
@@ -172,6 +173,60 @@
       .hero-right-atmosphere { inset: 8% -8% -8% -2%; opacity: .72; }
       .hero-right-dust { inset: 14% -10% -12% 0; opacity: .5; }
       .hero-right-lens { inset: 16% -4% 8% 8%; opacity: .58; }
+    }
+    .type-label {
+      display: inline-block;
+      color: #e7a14f;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    .story-panel {
+      display: grid;
+      gap: 0;
+      border: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(24,24,19,.92), rgba(16,16,13,.92));
+      box-shadow: 0 24px 48px -36px rgba(0,0,0,.85);
+    }
+    .story-row {
+      display: grid;
+      gap: .4rem;
+      padding: 1.15rem 1.35rem;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .story-row:last-child {
+      border-bottom: 0;
+    }
+    .story-row span {
+      color: rgba(231,161,79,.9);
+      font-size: .72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+    }
+    .motion-card--fade {
+      animation: pulseFade 5s ease-in-out infinite;
+    }
+    .motion-card--lift {
+      animation: floatLift 5.8s ease-in-out infinite;
+    }
+    .motion-card--shine {
+      background: linear-gradient(120deg, rgba(24,24,19,.94), rgba(42,31,16,.9), rgba(24,24,19,.94));
+      background-size: 240% 100%;
+      animation: controlledShine 4.8s linear infinite;
+    }
+    .service-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: .42rem .72rem;
+      border: 1px solid rgba(231,139,54,.2);
+      background: rgba(231,139,54,.08);
+      color: rgba(255,236,212,.82);
+      font-size: .63rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
     }
     .btn-shine { position:relative; overflow:hidden; }
     .btn-shine::after { content:''; position:absolute; inset:0; transform:translateX(-110%); background:linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); transition:transform .5s ease; }
@@ -265,7 +320,8 @@
         <a class="hover:text-gold-400 transition-colors" href="#nichos">Nichos</a>
         <a class="hover:text-gold-400 transition-colors" href="#resultados">Resultados</a>
         <a class="hover:text-gold-400 transition-colors" href="#como-funciona">Processo</a>
-        <a class="hover:text-gold-400 transition-colors" href="proposta.html">Proposta</a>
+        <a data-proposal-locked class="hover:text-gold-400 transition-colors" href="#diagnostico">Solicitar proposta</a>
+        <a data-proposal-unlocked class="hidden hover:text-gold-400 transition-colors" href="proposta.html">Proposta</a>
       </nav>
       <div class="flex items-center gap-3">
         <a href="#diagnostico" class="hidden md:inline-flex btn-shine relative px-5 h-11 items-center text-xs font-bold uppercase tracking-[0.18em] text-white border border-white/10 hover:border-gold-500/40 transition-colors">Agendar diagnostico</a>
@@ -284,7 +340,8 @@
       <a href="#resultados" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Resultados</a>
       <a href="#como-funciona" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Processo</a>
       <a href="#diagnostico" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Diagnostico</a>
-      <a href="proposta.html" class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Proposta</a>
+      <a href="#diagnostico" data-proposal-locked class="px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Solicitar proposta</a>
+      <a href="proposta.html" data-proposal-unlocked class="hidden px-4 py-3 text-sm text-white/65 hover:text-white hover:bg-white/[0.03] transition-colors">Proposta</a>
     </div>
   </header>
 
@@ -311,11 +368,11 @@
             <h1 class="animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .22s both;">
               <span class="block text-[4.9rem] sm:text-[6rem] lg:text-[6.35rem] font-semibold leading-[0.84] tracking-[0.025em] hero-brand-primary">Royal Skin</span>
               <span class="block text-[1.85rem] sm:text-[2.2rem] lg:text-[2.55rem] font-medium leading-none tracking-[0.28em] hero-brand-secondary ml-[0.18rem] mt-1">Agency</span>
-              <span class="block text-4xl sm:text-5xl lg:text-[3.15rem] font-light leading-[1.02] text-white/68 mt-5">Crescimento previsivel para clinicas esteticas, dermatologicas e odontologicas.</span>
+              <span class="block text-4xl sm:text-5xl lg:text-[3.15rem] font-light leading-[1.02] text-white/68 mt-5">Crescimento previsivel para clinicas esteticas.</span>
             </h1>
 
             <p class="mt-8 max-w-[640px] text-base sm:text-lg text-white/45 leading-relaxed animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .38s both;">
-              Integramos trafego pago, posicionamento, funil e gestao comercial para gerar autoridade, agenda qualificada e mais previsibilidade de faturamento.
+              Trafego, funil e gestao integrados para atrair pacientes certos e escalar com previsibilidade.
             </p>
 
             <div class="flex flex-wrap gap-4 mt-9 animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .55s both;">
@@ -328,30 +385,28 @@
               </a>
             </div>
 
-            <div class="mt-4 flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[0.16em] text-white/35 animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .63s both;">
-              <span class="inline-flex items-center gap-2">
-                <iconify-icon icon="solar:lock-keyhole-minimalistic-bold-duotone" width="14" class="text-gold-400"></iconify-icon>
-                Proposta comercial liberada apos o diagnostico
-              </span>
-              <a href="#diagnostico" data-proposal-locked class="text-gold-300 hover:text-gold-200 transition-colors">Solicitar proposta privada</a>
-              <a href="proposta.html" data-proposal-unlocked class="hidden text-gold-300 hover:text-gold-200 transition-colors">Acessar proposta liberada</a>
+            <div class="mt-4 flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-white/30 animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .63s both;">
+              <iconify-icon icon="solar:lock-keyhole-minimalistic-bold-duotone" width="13" class="text-gold-400"></iconify-icon>
+              <span>Proposta liberada apos diagnostico</span>
+              <span class="mx-1 text-white/15">&middot;</span>
+              <a href="#diagnostico" data-proposal-locked class="text-gold-300 hover:text-gold-200 transition-colors">Solicitar</a>
+              <a href="proposta.html" data-proposal-unlocked class="hidden text-gold-300 hover:text-gold-200 transition-colors">Acessar proposta</a>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-[720px] mt-12 pt-7 border-t border-white/10 animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .72s both;">
-              <div>
-                <span class="block text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">Prova institucional</span>
-                <span class="block text-2xl text-white font-light tracking-tight mt-2">+230 clinicas</span>
-                <span class="block text-xs text-white/38 leading-relaxed mt-2">Atendidas no Brasil com foco em crescimento estruturado.</span>
+            <div class="flex flex-wrap items-center gap-8 max-w-[720px] mt-12 pt-7 border-t border-white/10 animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .72s both;">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl text-white font-light tracking-tight">+230</span>
+                <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-gold-400/70 leading-tight">clinicas<br>atendidas</span>
               </div>
-              <div>
-                <span class="block text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">Especializacao</span>
-                <span class="block text-2xl text-white font-light tracking-tight mt-2">3 nichos premium</span>
-                <span class="block text-xs text-white/38 leading-relaxed mt-2">Estetica, dermatologia e odontologia.</span>
+              <div class="w-px h-8 bg-white/10"></div>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl text-white font-light tracking-tight">3</span>
+                <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-gold-400/70 leading-tight">nichos<br>premium</span>
               </div>
-              <div>
-                <span class="block text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">Sistema integrado</span>
-                <span class="block text-2xl text-white font-light tracking-tight mt-2">Trafego, funil e gestao</span>
-                <span class="block text-xs text-white/38 leading-relaxed mt-2">Marketing e operacao comercial na mesma estrategia.</span>
+              <div class="w-px h-8 bg-white/10"></div>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl text-white font-light tracking-tight">100%</span>
+                <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-gold-400/70 leading-tight">sistema<br>integrado</span>
               </div>
             </div>
           </div>
@@ -361,33 +416,30 @@
             <div class="hero-right-dust"></div>
             <div class="hero-right-lens"></div>
 
-            <div class="floating-card hero-feature-card left-[8%] top-[6%] w-[62%] border border-white/10 p-5 backdrop-blur-md rotate-[-4deg]">
+            <div class="floating-card hero-feature-card left-[8%] top-[6%] w-[58%] border border-white/10 p-5 backdrop-blur-md rotate-[-4deg]">
               <div class="flex items-center justify-between gap-3">
-                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Prova institucional</span>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">+230 clinicas</span>
                 <iconify-icon icon="solar:medal-ribbons-star-bold-duotone" width="18" class="text-gold-400"></iconify-icon>
               </div>
-              <p class="text-sm text-white/55 leading-relaxed mt-3">Mais de 230 clinicas atendidas em operacoes premium de estetica e saude.</p>
-              <div class="mt-4 h-[1px] bg-gradient-to-r from-transparent via-gold-500/40 to-transparent"></div>
-              <div class="mt-4 flex items-center justify-between text-xs text-white/40"><span>Foco</span><strong class="text-gold-300">ROI e previsibilidade</strong></div>
+              <div class="mt-3 h-[1px] bg-gradient-to-r from-transparent via-gold-500/40 to-transparent"></div>
+              <div class="mt-3 flex items-center justify-between text-xs text-white/40"><span>Foco</span><strong class="text-gold-300">ROI e previsibilidade</strong></div>
             </div>
 
-            <div class="floating-card hero-feature-card right-[4%] top-[20%] w-[38%] border border-white/10 p-5 backdrop-blur-md rotate-[5deg]">
+            <div class="floating-card hero-feature-card right-[4%] top-[20%] w-[36%] border border-white/10 p-4 backdrop-blur-md rotate-[5deg]">
               <iconify-icon icon="solar:stethoscope-bold-duotone" width="20" class="text-gold-400"></iconify-icon>
-              <div class="text-[10px] uppercase tracking-[0.18em] text-white/35 mt-3">Especializacao</div>
-              <p class="text-xs text-white/45 mt-2 leading-relaxed">Estetica, dermatologia e odontologia com posicionamento premium.</p>
+              <div class="text-[10px] uppercase tracking-[0.18em] text-white/45 mt-2">Estetica &middot; Derma &middot; Odonto</div>
             </div>
 
-            <div class="floating-card hero-feature-card right-[10%] bottom-[6%] w-[58%] border border-white/10 p-5 backdrop-blur-md rotate-[2deg]">
+            <div class="floating-card hero-feature-card right-[10%] bottom-[6%] w-[55%] border border-white/10 p-5 backdrop-blur-md rotate-[2deg]">
               <div class="flex items-center justify-between gap-3">
                 <div class="text-[10px] uppercase tracking-[0.18em] text-white/35">Sistema Royal Skin</div>
-                <iconify-icon icon="solar:chart-square-bold-duotone" width="26" class="text-gold-400"></iconify-icon>
+                <iconify-icon icon="solar:chart-square-bold-duotone" width="22" class="text-gold-400"></iconify-icon>
               </div>
-              <div class="mt-4 flex flex-wrap gap-2">
+              <div class="mt-3 flex flex-wrap gap-2">
                 <span class="inline-flex items-center px-3 py-1 border border-gold-500/20 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.16em] text-gold-300">Trafego</span>
                 <span class="inline-flex items-center px-3 py-1 border border-gold-500/20 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.16em] text-gold-300">Funil</span>
                 <span class="inline-flex items-center px-3 py-1 border border-gold-500/20 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.16em] text-gold-300">Gestao</span>
               </div>
-              <p class="text-xs text-white/40 leading-relaxed mt-4">Aquisicao, conversao e acompanhamento comercial na mesma estrategia.</p>
             </div>
           </div>
         </div>
@@ -405,17 +457,33 @@
               <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
               <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Cenario e Oportunidade</span>
             </div>
-            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">O Brasil ja tem demanda. O que falta e posicionamento estrategico.</h2>
-            <p class="mt-6 text-white/45 leading-relaxed max-w-md">
-              O mercado brasileiro ja e potencia em procedimentos esteticos, tratamentos dermatologicos e odontologia estetica.
-              Milhoes de pacientes pesquisam, comparam e decidem todos os dias.
-            </p>
-            <div class="mt-7 border-l-2 border-gold-500/40 pl-5">
-              <p class="text-white/65 italic leading-relaxed">
-                Quem aparece melhor, transmite mais confianca e sustenta uma operacao comercial mais organizada fecha mais.
-              </p>
+            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">O Brasil tem demanda. Falta posicionamento.</h2>
+
+            <div class="mt-8 space-y-3">
+              <div class="flex items-start gap-4 p-4 border border-emerald-500/20 bg-emerald-500/[0.04]">
+                <iconify-icon icon="solar:graph-up-bold-duotone" width="22" class="text-emerald-400 mt-0.5 flex-shrink-0"></iconify-icon>
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-400">Demanda ativa</span>
+                  <p class="text-sm text-white/50 mt-1">Pacientes pesquisam e decidem todos os dias.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-4 border border-red-400/20 bg-red-400/[0.04]">
+                <iconify-icon icon="solar:danger-triangle-bold-duotone" width="22" class="text-red-400 mt-0.5 flex-shrink-0"></iconify-icon>
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-red-400">Posicionamento ausente</span>
+                  <p class="text-sm text-white/50 mt-1">Clinicas excelentes perdem para quem aparece melhor.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-4 border border-gold-500/20 bg-gold-500/[0.04]">
+                <iconify-icon icon="solar:star-bold-duotone" width="22" class="text-gold-400 mt-0.5 flex-shrink-0"></iconify-icon>
+                <div>
+                  <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">Oportunidade</span>
+                  <p class="text-sm text-white/50 mt-1">Marketing + comercial alinhados = mais margem.</p>
+                </div>
+              </div>
             </div>
-            <div class="mt-8 flex flex-wrap gap-3">
+
+            <div class="mt-6 flex flex-wrap gap-3">
               <span class="inline-flex items-center px-4 py-2 border border-gold-500/25 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300">Estetica</span>
               <span class="inline-flex items-center px-4 py-2 border border-gold-500/25 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300">Dermatologia</span>
               <span class="inline-flex items-center px-4 py-2 border border-gold-500/25 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300">Odontologia</span>
@@ -423,22 +491,24 @@
           </div>
 
           <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6" data-reveal>
-            <article class="border border-white/10 bg-white/[0.02] p-7">
-              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Mercado premium</span>
-              <h3 class="text-2xl font-medium text-white mt-4">Demanda existe. Visibilidade e autoridade ainda nao.</h3>
-              <p class="text-white/45 mt-3 leading-relaxed">Clinicas tecnicamente excelentes continuam crescendo abaixo do potencial por ausencia de estrategia comercial e leitura real de performance.</p>
+            <article class="border border-white/10 bg-white/[0.02] p-6">
+              <iconify-icon icon="solar:eye-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+              <h3 class="text-xl font-medium text-white mt-3">Visibilidade gera decisao</h3>
+              <p class="text-white/45 mt-2 text-sm">Quem aparece melhor e transmite confianca converte primeiro.</p>
             </article>
 
-            <article class="border border-white/10 bg-white/[0.02] p-7">
-              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Comportamento de compra</span>
-              <h3 class="text-2xl font-medium text-white mt-4">Google e redes sociais moldam a decisao do paciente.</h3>
-              <p class="text-white/45 mt-3 leading-relaxed">Antes do agendamento, o paciente compara presenca digital, reputacao, prova social e percepcao de confianca.</p>
+            <article class="border border-white/10 bg-white/[0.02] p-6">
+              <iconify-icon icon="solar:smartphone-2-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+              <h3 class="text-xl font-medium text-white mt-3">Digital molda a escolha</h3>
+              <p class="text-white/45 mt-2 text-sm">Reputacao e prova social pesam antes do agendamento.</p>
             </article>
 
-            <article class="md:col-span-2 border border-gold-500/20 bg-gold-500/10 p-7">
-              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-300">Leitura estrategica</span>
-              <h3 class="text-3xl font-medium text-white mt-4">O problema nao e a clinica. O problema e o modelo de aquisicao quebrado.</h3>
-              <p class="text-white/55 mt-3 leading-relaxed max-w-3xl">Quando marketing, comercial, jornada e acompanhamento operam de forma fragmentada, a clinica perde previsibilidade, margem e velocidade de crescimento.</p>
+            <article class="md:col-span-2 border border-gold-500/20 bg-gold-500/10 p-6">
+              <div class="flex items-center gap-3">
+                <iconify-icon icon="solar:bolt-circle-bold-duotone" width="24" class="text-gold-300"></iconify-icon>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-300">Leitura Royal Skin</span>
+              </div>
+              <h3 class="text-2xl font-medium text-white mt-3">O modelo de aquisicao fragmentado e o problema real.</h3>
             </article>
           </div>
         </div>
@@ -456,34 +526,33 @@
             <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Problema</span>
           </div>
           <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-white">Por que a maioria das clinicas nao cresce de forma estruturada.</h2>
-          <p class="mt-5 text-white/45 leading-relaxed">O crescimento trava quando a operacao depende de indicacao, lead irregular e decisoes sem visibilidade real de ROI.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-5 mt-12">
-          <article class="border border-white/10 bg-white/[0.02] p-6" data-reveal>
-            <span class="text-[10px] uppercase tracking-[0.18em] text-gold-400">01</span>
-            <h3 class="text-xl font-medium text-white mt-4">Marketing sem ROI claro</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Investimento pulverizado sem leitura comercial, sem previsao e sem padrao de crescimento.</p>
+          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+            <iconify-icon icon="solar:chart-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-lg font-medium text-white mt-3">Marketing sem ROI</h3>
+            <p class="text-white/40 mt-2 text-sm">Investimento sem leitura de retorno.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-6" data-reveal>
-            <span class="text-[10px] uppercase tracking-[0.18em] text-gold-400">02</span>
-            <h3 class="text-xl font-medium text-white mt-4">Fluxo irregular de leads</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">A agenda oscila, a equipe perde ritmo e a clinica opera sem seguranca de demanda.</p>
+          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+            <iconify-icon icon="solar:users-group-rounded-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-lg font-medium text-white mt-3">Leads irregulares</h3>
+            <p class="text-white/40 mt-2 text-sm">Agenda oscila, equipe perde ritmo.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-6" data-reveal>
-            <span class="text-[10px] uppercase tracking-[0.18em] text-gold-400">03</span>
-            <h3 class="text-xl font-medium text-white mt-4">Dependencia de indicacao</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Sem aquisicao previsivel, o negocio fica vulneravel e cresce abaixo do potencial.</p>
+          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+            <iconify-icon icon="solar:hand-shake-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-lg font-medium text-white mt-3">Dependencia de indicacao</h3>
+            <p class="text-white/40 mt-2 text-sm">Crescimento vulneravel e limitado.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-6" data-reveal>
-            <span class="text-[10px] uppercase tracking-[0.18em] text-gold-400">04</span>
-            <h3 class="text-xl font-medium text-white mt-4">Processos comerciais soltos</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Leads entram, mas atendimento, follow-up e conversao nao seguem um modelo consistente.</p>
+          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+            <iconify-icon icon="solar:settings-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-lg font-medium text-white mt-3">Processos soltos</h3>
+            <p class="text-white/40 mt-2 text-sm">Follow-up e conversao sem modelo.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-6" data-reveal>
-            <span class="text-[10px] uppercase tracking-[0.18em] text-gold-400">05</span>
-            <h3 class="text-xl font-medium text-white mt-4">Faturamento incerto</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Sem indicadores comerciais e previsao, fica dificil decidir com seguranca e acelerar.</p>
+          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+            <iconify-icon icon="solar:question-circle-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-lg font-medium text-white mt-3">Faturamento incerto</h3>
+            <p class="text-white/40 mt-2 text-sm">Decisoes sem indicadores claros.</p>
           </article>
         </div>
       </div>
@@ -495,42 +564,71 @@
       <div class="beam-border-v" style="right: 0;"></div>
       <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          <div class="lg:col-span-4 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
+          <div class="lg:col-span-12 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
             <div class="flex items-center gap-3 mb-4">
               <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
               <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Nova Jornada do Paciente</span>
             </div>
-            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">A decisao acontece antes da conversa com a clinica.</h2>
-            <p class="mt-6 text-white/45 leading-relaxed max-w-md">O paciente premium pesquisa, compara, avalia autoridade e agenda com quem transmite mais seguranca na experiencia digital e comercial.</p>
+            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white max-w-3xl">A decisao acontece antes da conversa com a clinica.</h2>
           </div>
 
-          <div class="lg:col-span-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5" data-reveal>
-              <article class="border border-white/10 bg-white/[0.02] p-6">
-                <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">01</span>
-                <h3 class="text-xl font-medium text-white mt-5">Pesquisa</h3>
-                <p class="text-white/45 mt-3 leading-relaxed">Google, Instagram e redes sociais formam a primeira percepcao.</p>
+          <div class="lg:col-span-12">
+            <div class="flex flex-col xl:flex-row items-stretch gap-0 mt-10" data-reveal>
+              <article class="flex-1 border border-white/10 bg-white/[0.02] p-6 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-gold-500/30 bg-gold-500/10 mb-4">
+                  <iconify-icon icon="solar:magnifer-bold-duotone" width="22" class="text-gold-400"></iconify-icon>
+                </div>
+                <span class="block text-[10px] uppercase tracking-[0.18em] text-gold-400 mb-1">01</span>
+                <h3 class="text-lg font-medium text-white">Pesquisa</h3>
+                <p class="text-white/40 mt-2 text-sm">Google e redes formam a primeira percepcao.</p>
               </article>
-              <article class="border border-white/10 bg-white/[0.02] p-6">
-                <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">02</span>
-                <h3 class="text-xl font-medium text-white mt-5">Comparacao</h3>
-                <p class="text-white/45 mt-3 leading-relaxed">O paciente avalia opcoes, diferenciais e percepcao de valor antes do contato.</p>
+              <div class="hidden xl:flex items-center justify-center px-2 text-gold-500/40">
+                <iconify-icon icon="solar:arrow-right-linear" width="22"></iconify-icon>
+              </div>
+              <div class="flex xl:hidden items-center justify-center py-2 text-gold-500/40">
+                <iconify-icon icon="solar:arrow-down-linear" width="22"></iconify-icon>
+              </div>
+              <article class="flex-1 border border-white/10 bg-white/[0.02] p-6 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-gold-500/30 bg-gold-500/10 mb-4">
+                  <iconify-icon icon="solar:sort-horizontal-bold-duotone" width="22" class="text-gold-400"></iconify-icon>
+                </div>
+                <span class="block text-[10px] uppercase tracking-[0.18em] text-gold-400 mb-1">02</span>
+                <h3 class="text-lg font-medium text-white">Comparacao</h3>
+                <p class="text-white/40 mt-2 text-sm">Avalia opcoes e percepcao de valor.</p>
               </article>
-              <article class="border border-white/10 bg-white/[0.02] p-6">
-                <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">03</span>
-                <h3 class="text-xl font-medium text-white mt-5">Autoridade</h3>
-                <p class="text-white/45 mt-3 leading-relaxed">Quem comunica melhor reputacao, clareza e confianca fica na frente.</p>
+              <div class="hidden xl:flex items-center justify-center px-2 text-gold-500/40">
+                <iconify-icon icon="solar:arrow-right-linear" width="22"></iconify-icon>
+              </div>
+              <div class="flex xl:hidden items-center justify-center py-2 text-gold-500/40">
+                <iconify-icon icon="solar:arrow-down-linear" width="22"></iconify-icon>
+              </div>
+              <article class="flex-1 border border-white/10 bg-white/[0.02] p-6 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-gold-500/30 bg-gold-500/10 mb-4">
+                  <iconify-icon icon="solar:shield-check-bold-duotone" width="22" class="text-gold-400"></iconify-icon>
+                </div>
+                <span class="block text-[10px] uppercase tracking-[0.18em] text-gold-400 mb-1">03</span>
+                <h3 class="text-lg font-medium text-white">Autoridade</h3>
+                <p class="text-white/40 mt-2 text-sm">Confianca e reputacao definem a escolha.</p>
               </article>
-              <article class="border border-white/10 bg-white/[0.02] p-6">
-                <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">04</span>
-                <h3 class="text-xl font-medium text-white mt-5">Agendamento</h3>
-                <p class="text-white/45 mt-3 leading-relaxed">A clinica que aparece melhor e tem processo mais claro converte primeiro.</p>
+              <div class="hidden xl:flex items-center justify-center px-2 text-gold-500/40">
+                <iconify-icon icon="solar:arrow-right-linear" width="22"></iconify-icon>
+              </div>
+              <div class="flex xl:hidden items-center justify-center py-2 text-gold-500/40">
+                <iconify-icon icon="solar:arrow-down-linear" width="22"></iconify-icon>
+              </div>
+              <article class="flex-1 border border-white/10 bg-white/[0.02] p-6 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-gold-500/30 bg-gold-500/10 mb-4">
+                  <iconify-icon icon="solar:calendar-bold-duotone" width="22" class="text-gold-400"></iconify-icon>
+                </div>
+                <span class="block text-[10px] uppercase tracking-[0.18em] text-gold-400 mb-1">04</span>
+                <h3 class="text-lg font-medium text-white">Agendamento</h3>
+                <p class="text-white/40 mt-2 text-sm">Processo claro converte primeiro.</p>
               </article>
             </div>
 
-            <article class="mt-6 border border-gold-500/20 bg-gold-500/10 p-7" data-reveal>
-              <h3 class="text-2xl font-medium text-white">A jornada mudou. A operacao da clinica tambem precisa mudar.</h3>
-              <p class="text-white/55 mt-3 leading-relaxed">Nao basta atrair leads. E preciso construir confianca, qualificar demanda e transformar interesse em comparecimento, fechamento e recorrencia.</p>
+            <article class="mt-6 border border-gold-500/20 bg-gold-500/10 p-5 flex items-center gap-4" data-reveal>
+              <iconify-icon icon="solar:bolt-circle-bold-duotone" width="28" class="text-gold-300 flex-shrink-0"></iconify-icon>
+              <p class="text-lg text-white font-medium">A jornada mudou. A operacao da clinica tambem precisa mudar.</p>
             </article>
           </div>
         </div>
@@ -548,48 +646,59 @@
             <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
             <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Sistema de Crescimento</span>
           </div>
-          <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-white">Uma maquina de crescimento previsivel para clinicas premium.</h2>
-          <p class="mt-5 text-white/45 leading-relaxed">A Royal Skin conecta marketing, comercial, atendimento e leitura de indicadores em um mesmo sistema operacional.</p>
+          <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-white">Sistema de crescimento previsivel.</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6 mt-12">
-          <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300" data-reveal>
-            <iconify-icon icon="solar:cursor-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-            <h3 class="text-2xl font-medium text-white mt-4">Aquisicao</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Campanhas orientadas a demanda qualificada e retorno real.</p>
-          </article>
-          <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300" data-reveal>
-            <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-            <h3 class="text-2xl font-medium text-white mt-4">Funil</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Jornada desenhada para elevar agendamento, comparecimento e fechamento.</p>
-          </article>
-          <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300" data-reveal>
-            <iconify-icon icon="solar:target-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-            <h3 class="text-2xl font-medium text-white mt-4">Processos</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Atendimento, follow-up e conversao com menos improviso e mais controle.</p>
-          </article>
-          <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300" data-reveal>
-            <iconify-icon icon="solar:chart-square-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-            <h3 class="text-2xl font-medium text-white mt-4">Retencao</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Aumento do valor do paciente com relacionamento e recorrencia.</p>
-          </article>
-          <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300" data-reveal>
-            <iconify-icon icon="solar:chart-2-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-            <h3 class="text-2xl font-medium text-white mt-4">Gestao integrada</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">KPIs, ajustes e acompanhamento estrategico em um unico painel.</p>
-          </article>
-        </div>
-
-        <article class="mt-8 p-7 border border-white/10" data-reveal style="background: linear-gradient(120deg, rgba(15,16,32,0.94), rgba(40,30,15,0.9), rgba(15,16,32,0.94)); background-size: 240% 100%; animation: controlledShine 5s linear infinite;">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            <div class="lg:col-span-8">
-              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-300">Operacao integrada</span>
-              <h3 class="text-3xl font-medium gradient-text mt-3">Marketing, comercial e acompanhamento na mesma direcao.</h3>
-              <p class="text-white/50 mt-3 leading-relaxed max-w-3xl">A integracao reduz ruido, acelera execucao e transforma crescimento em algo mais legivel, mais rentavel e mais sustentavel.</p>
+        <div class="mt-14" data-reveal>
+          <div class="mx-auto max-w-xs text-center mb-8">
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full border-2 border-gold-500/30 bg-gold-500/[0.06]" style="box-shadow:0 0 60px -10px rgba(231,139,54,.22), 0 0 120px -20px rgba(231,139,54,.08);">
+              <iconify-icon icon="solar:atom-bold-duotone" width="36" class="text-gold-400"></iconify-icon>
             </div>
-            <div class="lg:col-span-4 flex flex-wrap gap-3 lg:justify-end">
+            <p class="text-sm text-white/50 mt-3">Crescimento previsivel</p>
+          </div>
+
+          <div class="flex items-center justify-center mb-6">
+            <div class="w-px h-8 bg-gradient-to-b from-gold-500/40 to-transparent"></div>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
+            <article class="group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300">
+              <iconify-icon icon="solar:cursor-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
+              <h3 class="text-lg font-medium text-white mt-3">Aquisicao</h3>
+              <p class="text-white/40 mt-1 text-sm">Demanda qualificada</p>
+            </article>
+            <article class="group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300">
+              <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
+              <h3 class="text-lg font-medium text-white mt-3">Funil</h3>
+              <p class="text-white/40 mt-1 text-sm">Jornada ate o fechamento</p>
+            </article>
+            <article class="group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300">
+              <iconify-icon icon="solar:target-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
+              <h3 class="text-lg font-medium text-white mt-3">Processos</h3>
+              <p class="text-white/40 mt-1 text-sm">Follow-up e conversao</p>
+            </article>
+            <article class="group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300">
+              <iconify-icon icon="solar:chart-square-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
+              <h3 class="text-lg font-medium text-white mt-3">Retencao</h3>
+              <p class="text-white/40 mt-1 text-sm">Valor e recorrencia</p>
+            </article>
+            <article class="group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300 col-span-2 md:col-span-1">
+              <iconify-icon icon="solar:chart-2-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
+              <h3 class="text-lg font-medium text-white mt-3">Gestao</h3>
+              <p class="text-white/40 mt-1 text-sm">KPIs e otimizacao</p>
+            </article>
+          </div>
+        </div>
+
+        <article class="mt-8 p-6 border border-white/10" data-reveal style="background: linear-gradient(120deg, rgba(15,16,32,0.94), rgba(40,30,15,0.9), rgba(15,16,32,0.94)); background-size: 240% 100%; animation: controlledShine 5s linear infinite;">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-5">
+            <div class="flex items-center gap-4">
+              <iconify-icon icon="solar:link-circle-bold-duotone" width="28" class="text-gold-300 flex-shrink-0"></iconify-icon>
+              <h3 class="text-2xl font-medium gradient-text">Tudo conectado. Tudo mensuravel.</h3>
+            </div>
+            <div class="flex flex-wrap gap-3">
               <a href="#servicos" class="btn-shine relative inline-flex items-center justify-center px-5 py-3 bg-gold-500 hover:bg-gold-400 text-dark-900 text-xs font-bold uppercase tracking-[0.16em] transition-colors">Ver servicos</a>
-              <button id="openModal" class="btn-shine relative px-5 py-3 border border-gold-500/35 bg-gold-500/10 text-gold-300 text-xs font-bold uppercase tracking-[0.16em] hover:bg-gold-500/15 transition-colors" type="button">O que recebe no diagnostico</button>
+              <button id="openModal" class="btn-shine relative px-5 py-3 border border-gold-500/35 bg-gold-500/10 text-gold-300 text-xs font-bold uppercase tracking-[0.16em] hover:bg-gold-500/15 transition-colors" type="button">Ver diagnostico</button>
             </div>
           </div>
         </article>
@@ -602,45 +711,72 @@
       <div class="beam-border-v" style="left: 0;"></div>
       <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          <div class="lg:col-span-4 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
+          <div class="lg:col-span-12 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
             <div class="flex items-center gap-3 mb-4">
               <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
               <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Servicos Integrados</span>
             </div>
-            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">Tudo o que a clinica precisa para crescer com clareza comercial.</h2>
-            <p class="mt-6 text-white/45 leading-relaxed max-w-md">Cada frente resolve uma parte da operacao. Juntas, elas criam previsibilidade, autoridade e crescimento mais consistente.</p>
+            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white max-w-3xl">Cada frente resolve uma parte. Juntas, geram previsibilidade.</h2>
           </div>
 
-          <div class="lg:col-span-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" data-reveal>
-              <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300">
-                <iconify-icon icon="solar:cursor-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-                <h3 class="text-2xl font-medium text-white mt-4">Trafego Pago</h3>
-                <p class="text-white/45 mt-3 leading-relaxed">Gestao profissional em Google Ads e Meta Ads focada em conversao, demanda qualificada e ROI.</p>
+          <div class="lg:col-span-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mt-10" data-reveal>
+              <article class="group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
+                <iconify-icon icon="solar:cursor-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
+                <h3 class="text-xl font-medium text-white mt-3">Trafego Pago</h3>
+                <p class="text-white/40 mt-2 text-sm">Conversao e demanda qualificada.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="service-pill">Google Ads</span>
+                  <span class="service-pill">Meta Ads</span>
+                  <span class="service-pill">ROI</span>
+                </div>
               </article>
-              <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300">
-                <iconify-icon icon="solar:gallery-wide-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-                <h3 class="text-2xl font-medium text-white mt-4">Social Media</h3>
-                <p class="text-white/45 mt-3 leading-relaxed">Conteudo orientado a autoridade, reputacao e engajamento qualificado para o nicho premium.</p>
+              <article class="group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
+                <iconify-icon icon="solar:gallery-wide-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
+                <h3 class="text-xl font-medium text-white mt-3">Social Media</h3>
+                <p class="text-white/40 mt-2 text-sm">Autoridade e engajamento premium.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="service-pill">Conteudo</span>
+                  <span class="service-pill">Autoridade</span>
+                  <span class="service-pill">Reputacao</span>
+                </div>
               </article>
-              <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300">
-                <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-                <h3 class="text-2xl font-medium text-white mt-4">Funil de Vendas</h3>
-                <p class="text-white/45 mt-3 leading-relaxed">Estruturacao da jornada do lead ate o agendamento, comparecimento e fidelizacao.</p>
+              <article class="group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
+                <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
+                <h3 class="text-xl font-medium text-white mt-3">Funil de Vendas</h3>
+                <p class="text-white/40 mt-2 text-sm">Do lead ao agendamento e fidelizacao.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="service-pill">Qualificacao</span>
+                  <span class="service-pill">Agendamento</span>
+                  <span class="service-pill">Fidelizacao</span>
+                </div>
               </article>
-              <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300">
-                <iconify-icon icon="solar:target-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-                <h3 class="text-2xl font-medium text-white mt-4">Mentoria Comercial</h3>
-                <p class="text-white/45 mt-3 leading-relaxed">Direcao pratica para discurso, atendimento, follow-up e conversao da equipe comercial.</p>
+              <article class="group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
+                <iconify-icon icon="solar:target-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
+                <h3 class="text-xl font-medium text-white mt-3">Mentoria Comercial</h3>
+                <p class="text-white/40 mt-2 text-sm">Script, follow-up e fechamento.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="service-pill">Script</span>
+                  <span class="service-pill">Follow-up</span>
+                  <span class="service-pill">Fechamento</span>
+                </div>
               </article>
-              <article class="group border border-white/10 bg-white/[0.02] p-7 hover:border-gold-500/30 transition-all duration-300">
-                <iconify-icon icon="solar:chart-2-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-                <h3 class="text-2xl font-medium text-white mt-4">Gestao de Crescimento</h3>
-                <p class="text-white/45 mt-3 leading-relaxed">KPIs, leitura de performance, otimizacao continua e consultoria estrategica.</p>
+              <article class="group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
+                <iconify-icon icon="solar:chart-2-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
+                <h3 class="text-xl font-medium text-white mt-3">Gestao de Crescimento</h3>
+                <p class="text-white/40 mt-2 text-sm">KPIs, performance e consultoria.</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <span class="service-pill">KPIs</span>
+                  <span class="service-pill">Otimizacao</span>
+                  <span class="service-pill">Consultoria</span>
+                </div>
               </article>
-              <article class="group border border-gold-500/20 bg-gold-500/10 p-7">
-                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-300">Porque tudo junto faz mais sentido</span>
-                <p class="text-white/65 mt-4 leading-relaxed">Uma unica estrategia, uma leitura comum de indicadores e uma cadencia operacional mais rapida do que contratar frentes isoladas.</p>
+              <article class="group border border-gold-500/20 bg-gold-500/10 p-6 flex items-start gap-4">
+                <iconify-icon icon="solar:link-circle-bold-duotone" width="28" class="text-gold-300 flex-shrink-0 mt-1"></iconify-icon>
+                <div>
+                  <span class="text-[10px] uppercase tracking-[0.2em] text-gold-300">Integracao</span>
+                  <p class="text-white/60 mt-2 text-sm">Uma estrategia, uma leitura de indicadores, uma cadencia operacional.</p>
+                </div>
               </article>
             </div>
           </div>
@@ -663,9 +799,6 @@
             <span class="w-10 h-[1px] bg-gradient-to-l from-transparent to-gold-500"></span>
           </div>
           <h2 class="text-4xl md:text-6xl font-medium tracking-tight text-white">Especialistas em mercados premium.</h2>
-          <p class="mt-5 text-white/48 leading-relaxed">
-            Estrutura executiva desenhada para clinicas de estetica, dermatologia e odontologia que querem escalar com autoridade, posicionamento e previsibilidade comercial.
-          </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
@@ -678,7 +811,7 @@
               <div>
                 <div class="sector-card-line mb-6"></div>
                 <h3 class="sector-card-title text-gold-200">Clinicas de Estetica</h3>
-                <p class="mt-4 text-white/72 text-lg leading-relaxed max-w-[16rem]">Alta performance e escala para operacoes premium focadas em desejo, conversao e recorrencia.</p>
+                <p class="mt-4 text-white/72 text-base leading-relaxed max-w-[16rem]">Performance e escala para operacoes focadas em conversao e recorrencia.</p>
               </div>
             </div>
           </article>
@@ -692,7 +825,7 @@
               <div>
                 <div class="sector-card-line mb-6"></div>
                 <h3 class="sector-card-title text-gold-200">Dermatologia</h3>
-                <p class="mt-4 text-white/72 text-lg leading-relaxed max-w-[16rem]">Autoridade medica, elegancia visual e aquisicao qualificada para tickets de maior valor.</p>
+                <p class="mt-4 text-white/72 text-base leading-relaxed max-w-[16rem]">Autoridade medica e aquisicao qualificada para tickets de maior valor.</p>
               </div>
             </div>
           </article>
@@ -706,7 +839,7 @@
               <div>
                 <div class="sector-card-line mb-6"></div>
                 <h3 class="sector-card-title text-gold-200">Odontologia</h3>
-                <p class="mt-4 text-white/72 text-lg leading-relaxed max-w-[16rem]">Valorizacao do sorriso com posicionamento premium, reputacao e agenda comercial consistente.</p>
+                <p class="mt-4 text-white/72 text-base leading-relaxed max-w-[16rem]">Posicionamento premium, reputacao e agenda comercial consistente.</p>
               </div>
             </div>
           </article>
@@ -724,34 +857,35 @@
             <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
             <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Diferenciais</span>
           </div>
-          <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-white">Especializacao real em clinicas premium e mercados de ticket alto.</h2>
+          <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-white">Especializacao real em mercados de ticket alto.</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-12">
-          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
-            <iconify-icon icon="solar:face-scan-circle-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-            <h3 class="text-2xl font-medium text-white mt-4">Psicologia do paciente</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Entendimento de desejo, confianca, risco percebido e gatilhos de decisao no setor.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 mt-12">
+          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+            <iconify-icon icon="solar:face-scan-circle-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-lg font-medium text-white mt-3">Psicologia do paciente</h3>
+            <p class="text-white/40 mt-2 text-sm">Desejo, confianca e gatilhos de decisao.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
-            <iconify-icon icon="solar:graph-up-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-            <h3 class="text-2xl font-medium text-white mt-4">Ticket alto</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Atuacao em operacoes que exigem posicionamento, reputacao e fechamento consultivo.</p>
+          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+            <iconify-icon icon="solar:graph-up-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-lg font-medium text-white mt-3">Ticket alto</h3>
+            <p class="text-white/40 mt-2 text-sm">Posicionamento e fechamento consultivo.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
-            <iconify-icon icon="solar:shield-check-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-            <h3 class="text-2xl font-medium text-white mt-4">Confianca e autoridade</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Construimos presenca digital premium para reduzir friccao e elevar percepcao de valor.</p>
+          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+            <iconify-icon icon="solar:shield-check-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-lg font-medium text-white mt-3">Confianca e autoridade</h3>
+            <p class="text-white/40 mt-2 text-sm">Presenca premium, menos friccao.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
-            <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
-            <h3 class="text-2xl font-medium text-white mt-4">Compliance no setor de saude</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Respeito ao contexto regulatorio, linguagem adequada e entendimento do mercado de saude.</p>
+          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+            <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
+            <h3 class="text-lg font-medium text-white mt-3">Compliance em saude</h3>
+            <p class="text-white/40 mt-2 text-sm">Linguagem e contexto regulatorio.</p>
           </article>
         </div>
 
-        <article class="mt-8 border border-gold-500/20 bg-gold-500/10 p-7" data-reveal>
-          <p class="text-xl text-white leading-relaxed max-w-4xl">A Royal Skin nao vende apenas marketing. Entrega crescimento estruturado, autoridade de marca e mais previsibilidade para a tomada de decisao da clinica.</p>
+        <article class="mt-8 border border-gold-500/20 bg-gold-500/10 p-5 flex items-center gap-4" data-reveal>
+          <iconify-icon icon="solar:star-shine-bold-duotone" width="28" class="text-gold-300 flex-shrink-0"></iconify-icon>
+          <p class="text-lg text-white font-medium">Crescimento estruturado, autoridade de marca e previsibilidade comercial.</p>
         </article>
       </div>
     </section>
@@ -764,33 +898,67 @@
       <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div class="lg:col-span-6" data-reveal>
-            <div class="border border-white/10 bg-white/[0.02] p-7 md:p-8">
-              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Transformacao em 90 dias</span>
-              <h2 class="text-3xl md:text-4xl font-medium text-white mt-3">O que muda quando a clinica passa a operar com previsibilidade.</h2>
-              <ul class="mt-7 space-y-4">
-                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Agenda mais cheia e previsivel.</li>
-                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Faturamento mais legivel, escalavel e menos dependente de improviso.</li>
-                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Autoridade de marca e percepcao premium no mercado.</li>
-                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Mais controle sobre crescimento, operacao e tomada de decisao.</li>
-                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Eficiencia operacional com atendimento e conversao melhor estruturados.</li>
-              </ul>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Transformacao em 90 dias</span>
+            <h2 class="text-3xl md:text-4xl font-medium text-white mt-3 mb-8">Antes vs Depois da Royal Skin.</h2>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="border border-red-400/20 bg-red-400/[0.03] p-5">
+                <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-red-400">Antes</span>
+                <ul class="mt-4 space-y-3">
+                  <li class="flex items-start gap-2 text-sm text-white/45"><iconify-icon icon="solar:close-circle-bold-duotone" width="16" class="text-red-400/60 mt-0.5 flex-shrink-0"></iconify-icon> Agenda imprevisivel</li>
+                  <li class="flex items-start gap-2 text-sm text-white/45"><iconify-icon icon="solar:close-circle-bold-duotone" width="16" class="text-red-400/60 mt-0.5 flex-shrink-0"></iconify-icon> Faturamento oscilante</li>
+                  <li class="flex items-start gap-2 text-sm text-white/45"><iconify-icon icon="solar:close-circle-bold-duotone" width="16" class="text-red-400/60 mt-0.5 flex-shrink-0"></iconify-icon> Sem autoridade digital</li>
+                  <li class="flex items-start gap-2 text-sm text-white/45"><iconify-icon icon="solar:close-circle-bold-duotone" width="16" class="text-red-400/60 mt-0.5 flex-shrink-0"></iconify-icon> Decisoes no escuro</li>
+                </ul>
+              </div>
+              <div class="border border-emerald-500/20 bg-emerald-500/[0.03] p-5">
+                <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-400">Depois</span>
+                <ul class="mt-4 space-y-3">
+                  <li class="flex items-start gap-2 text-sm text-white/65"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-emerald-400 mt-0.5 flex-shrink-0"></iconify-icon> Agenda previsivel</li>
+                  <li class="flex items-start gap-2 text-sm text-white/65"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-emerald-400 mt-0.5 flex-shrink-0"></iconify-icon> Faturamento escalavel</li>
+                  <li class="flex items-start gap-2 text-sm text-white/65"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-emerald-400 mt-0.5 flex-shrink-0"></iconify-icon> Autoridade de marca</li>
+                  <li class="flex items-start gap-2 text-sm text-white/65"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-emerald-400 mt-0.5 flex-shrink-0"></iconify-icon> Controle por indicadores</li>
+                </ul>
+              </div>
             </div>
           </div>
 
           <div class="lg:col-span-6 space-y-6" data-reveal>
-            <article class="border border-white/10 bg-white/[0.02] p-7">
-              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Modelos escalaveis</span>
-              <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="border border-white/10 bg-[#111111] p-5"><div class="text-[10px] uppercase tracking-[0.18em] text-gold-400">Fase 01</div><h3 class="text-xl font-medium text-white mt-3">Captacao</h3><p class="text-white/45 mt-2 leading-relaxed">Gerar demanda qualificada e estabilizar o fluxo de oportunidades.</p></div>
-                <div class="border border-white/10 bg-[#111111] p-5"><div class="text-[10px] uppercase tracking-[0.18em] text-gold-400">Fase 02</div><h3 class="text-xl font-medium text-white mt-3">Escala</h3><p class="text-white/45 mt-2 leading-relaxed">Aumentar volume com mais controle comercial e leitura de margem.</p></div>
-                <div class="border border-white/10 bg-[#111111] p-5"><div class="text-[10px] uppercase tracking-[0.18em] text-gold-400">Fase 03</div><h3 class="text-xl font-medium text-white mt-3">Consolidacao</h3><p class="text-white/45 mt-2 leading-relaxed">Fortalecer processo, reputacao, recorrencia e estabilidade operacional.</p></div>
-                <div class="border border-white/10 bg-[#111111] p-5"><div class="text-[10px] uppercase tracking-[0.18em] text-gold-400">Fase 04</div><h3 class="text-xl font-medium text-white mt-3">Expansao</h3><p class="text-white/45 mt-2 leading-relaxed">Abrir espaco para novos tickets, novas frentes e crescimento sustentavel.</p></div>
+            <article class="border border-white/10 bg-white/[0.02] p-6">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400 mb-5 block">Timeline de maturidade</span>
+              <div class="space-y-0">
+                <div class="flex items-start gap-4 pb-5 relative">
+                  <div class="flex flex-col items-center flex-shrink-0">
+                    <div class="w-8 h-8 rounded-full border border-gold-500/40 bg-gold-500/10 flex items-center justify-center text-[10px] font-bold text-gold-300">01</div>
+                    <div class="w-px h-full bg-gradient-to-b from-gold-500/30 to-transparent absolute top-8 left-4"></div>
+                  </div>
+                  <div><h3 class="text-base font-medium text-white">Captacao</h3><p class="text-white/40 text-sm mt-1">Estabilizar demanda qualificada.</p></div>
+                </div>
+                <div class="flex items-start gap-4 pb-5 relative">
+                  <div class="flex flex-col items-center flex-shrink-0">
+                    <div class="w-8 h-8 rounded-full border border-gold-500/40 bg-gold-500/10 flex items-center justify-center text-[10px] font-bold text-gold-300">02</div>
+                    <div class="w-px h-full bg-gradient-to-b from-gold-500/30 to-transparent absolute top-8 left-4"></div>
+                  </div>
+                  <div><h3 class="text-base font-medium text-white">Escala</h3><p class="text-white/40 text-sm mt-1">Mais volume com controle comercial.</p></div>
+                </div>
+                <div class="flex items-start gap-4 pb-5 relative">
+                  <div class="flex flex-col items-center flex-shrink-0">
+                    <div class="w-8 h-8 rounded-full border border-gold-500/40 bg-gold-500/10 flex items-center justify-center text-[10px] font-bold text-gold-300">03</div>
+                    <div class="w-px h-full bg-gradient-to-b from-gold-500/30 to-transparent absolute top-8 left-4"></div>
+                  </div>
+                  <div><h3 class="text-base font-medium text-white">Consolidacao</h3><p class="text-white/40 text-sm mt-1">Reputacao e estabilidade operacional.</p></div>
+                </div>
+                <div class="flex items-start gap-4">
+                  <div class="flex flex-col items-center flex-shrink-0">
+                    <div class="w-8 h-8 rounded-full border border-gold-500/40 bg-gold-500/10 flex items-center justify-center text-[10px] font-bold text-gold-300">04</div>
+                  </div>
+                  <div><h3 class="text-base font-medium text-white">Expansao</h3><p class="text-white/40 text-sm mt-1">Novos tickets e crescimento sustentavel.</p></div>
+                </div>
               </div>
             </article>
 
-            <article class="border border-gold-500/20 bg-gold-500/10 p-7">
-              <h3 class="text-2xl font-medium text-white">A decisao e simples.</h3>
-              <p class="text-white/55 mt-3 leading-relaxed">Continuar operando no improviso ou construir um sistema de crescimento previsivel com estrategia, execucao e acompanhamento.</p>
+            <article class="border border-gold-500/20 bg-gold-500/10 p-5 flex items-center gap-4">
+              <iconify-icon icon="solar:arrow-right-up-bold-duotone" width="28" class="text-gold-300 flex-shrink-0"></iconify-icon>
+              <p class="text-lg text-white font-medium">Improviso ou sistema. A decisao e simples.</p>
             </article>
           </div>
         </div>
@@ -808,41 +976,58 @@
               <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
               <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Sobre a Royal Skin</span>
             </div>
-            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">Especializacao em crescimento previsivel para clinicas premium.</h2>
-            <p class="mt-6 text-white/45 leading-relaxed max-w-md">
-              A Royal Skin Agency ja atendeu mais de 230 clinicas no Brasil e opera com foco em ROI, previsibilidade, performance comercial e crescimento sustentavel.
+            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">+230 clinicas. 3 nichos premium.</h2>
+            <p class="mt-5 text-white/45 leading-relaxed max-w-md">
+              ROI, previsibilidade e crescimento sustentavel para estetica, dermatologia e odontologia.
             </p>
-            <div class="mt-7 border-l-2 border-gold-500/40 pl-5">
-              <p class="text-white/65 italic leading-relaxed">Nao vendemos apenas marketing. Estruturamos posicionamento, aquisicao, comercial e acompanhamento para transformar demanda em crescimento legivel.</p>
-            </div>
           </div>
 
           <div class="lg:col-span-7 space-y-6" data-reveal>
-            <article class="border border-white/10 bg-white/[0.02] p-7">
-              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Quem somos e metodologia</span>
-              <ul class="mt-4 space-y-3">
-                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Marketing orientado por dados e leitura constante de performance.</li>
-                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Gestao de indicadores comerciais para menos improviso e mais decisao.</li>
-                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Estruturacao de processos de atendimento, conversao e acompanhamento.</li>
-                <li class="flex items-start gap-3 text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="18" class="text-gold-400 mt-1"></iconify-icon> Crescimento sustentavel, escalavel e aderente ao contexto do mercado de saude.</li>
-              </ul>
+            <article class="border border-white/10 bg-white/[0.02] p-6">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400 mb-5 block">Metodologia Royal Skin</span>
+              <div class="flex flex-col sm:flex-row items-stretch gap-0">
+                <div class="flex-1 text-center p-4 border border-white/10 bg-white/[0.02]">
+                  <iconify-icon icon="solar:database-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
+                  <h3 class="text-sm font-medium text-white mt-2">Dados</h3>
+                  <p class="text-white/35 text-xs mt-1">Performance e indicadores</p>
+                </div>
+                <div class="hidden sm:flex items-center px-1 text-gold-500/40">
+                  <iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon>
+                </div>
+                <div class="flex sm:hidden items-center justify-center py-1 text-gold-500/40">
+                  <iconify-icon icon="solar:arrow-down-linear" width="18"></iconify-icon>
+                </div>
+                <div class="flex-1 text-center p-4 border border-white/10 bg-white/[0.02]">
+                  <iconify-icon icon="solar:settings-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
+                  <h3 class="text-sm font-medium text-white mt-2">Processos</h3>
+                  <p class="text-white/35 text-xs mt-1">Atendimento e conversao</p>
+                </div>
+                <div class="hidden sm:flex items-center px-1 text-gold-500/40">
+                  <iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon>
+                </div>
+                <div class="flex sm:hidden items-center justify-center py-1 text-gold-500/40">
+                  <iconify-icon icon="solar:arrow-down-linear" width="18"></iconify-icon>
+                </div>
+                <div class="flex-1 text-center p-4 border border-white/10 bg-white/[0.02]">
+                  <iconify-icon icon="solar:graph-up-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
+                  <h3 class="text-sm font-medium text-white mt-2">Crescimento</h3>
+                  <p class="text-white/35 text-xs mt-1">Escalavel e sustentavel</p>
+                </div>
+              </div>
             </article>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <article class="border border-white/10 bg-white/[0.02] p-5">
-                <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">Mercados atendidos</div>
-                <div class="text-lg font-medium text-white tracking-tight mt-3">Estetica, dermatologia e odontologia</div>
-                <p class="text-xs text-white/40 leading-relaxed mt-3">Especializacao em clinicas premium com demanda de ticket mais alto.</p>
+              <article class="border border-white/10 bg-white/[0.02] p-5 text-center">
+                <iconify-icon icon="solar:leaf-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+                <div class="text-sm font-medium text-white mt-2">Estetica, Derma e Odonto</div>
               </article>
-              <article class="border border-white/10 bg-white/[0.02] p-5">
-                <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">Foco comercial</div>
-                <div class="text-lg font-medium text-white tracking-tight mt-3">ROI, previsibilidade e autoridade</div>
-                <p class="text-xs text-white/40 leading-relaxed mt-3">Leitura de indicadores, direcao de crescimento e tomada de decisao com mais clareza.</p>
+              <article class="border border-white/10 bg-white/[0.02] p-5 text-center">
+                <iconify-icon icon="solar:chart-square-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+                <div class="text-sm font-medium text-white mt-2">ROI e Previsibilidade</div>
               </article>
-              <article class="border border-white/10 bg-white/[0.02] p-5">
-                <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">Estrutura operacional</div>
-                <div class="text-lg font-medium text-white tracking-tight mt-3">Processos, conversao e crescimento sustentavel</div>
-                <p class="text-xs text-white/40 leading-relaxed mt-3">Marketing, atendimento e acompanhamento alinhados em uma mesma rotina executiva.</p>
+              <article class="border border-white/10 bg-white/[0.02] p-5 text-center">
+                <iconify-icon icon="solar:link-circle-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
+                <div class="text-sm font-medium text-white mt-2">Operacao Integrada</div>
               </article>
             </div>
           </div>
@@ -862,39 +1047,71 @@
             <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
             <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Como Funciona</span>
           </div>
-          <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-white">Do diagnostico estrategico a otimizacao continua.</h2>
+          <h2 class="text-4xl md:text-5xl font-medium tracking-tight text-white">Do diagnostico a otimizacao continua.</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6 mt-12">
-          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
-            <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">01</span>
-            <h3 class="text-2xl font-medium text-white mt-4">Diagnostico estrategico</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Leitura do momento da clinica, metas, gargalos e potencial de crescimento.</p>
-          </article>
-
-          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
-            <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">02</span>
-            <h3 class="text-2xl font-medium text-white mt-4">Plano de crescimento</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Definicao de escopo, canais, metas, prioridades taticas e direcao comercial.</p>
-          </article>
-
-          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
-            <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">03</span>
-            <h3 class="text-2xl font-medium text-white mt-4">Onboarding estrategico</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Alinhamento, coleta de acessos, setup e organizacao operacional para inicio rapido.</p>
-          </article>
-
-          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
-            <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">04</span>
-            <h3 class="text-2xl font-medium text-white mt-4">Execucao integrada</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Campanhas, conteudo, funil, rotina comercial e acompanhamento trabalhando juntos.</p>
-          </article>
-
-          <article class="border border-white/10 bg-white/[0.02] p-7" data-reveal>
-            <span class="inline-flex items-center justify-center px-3 h-8 border border-gold-500/25 bg-gold-500/10 text-gold-300 text-xs font-bold tracking-[0.12em] uppercase">05</span>
-            <h3 class="text-2xl font-medium text-white mt-4">Otimizacao continua</h3>
-            <p class="text-white/45 mt-3 leading-relaxed">Leitura semanal de performance, ajustes de rota e evolucao constante da operacao.</p>
-          </article>
+        <div class="mt-12" data-reveal>
+          <div class="flex flex-col xl:flex-row items-stretch gap-0">
+            <article class="flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
+              <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold-500/30 bg-gold-500/10 mb-3">
+                <span class="text-xs font-bold text-gold-300">01</span>
+              </div>
+              <h3 class="text-lg font-medium text-white">Diagnostico</h3>
+              <p class="text-white/40 mt-1 text-sm">Metas, gargalos e potencial.</p>
+            </article>
+            <div class="hidden xl:flex items-center justify-center px-1 text-gold-500/40">
+              <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
+            </div>
+            <div class="flex xl:hidden items-center justify-center py-1 text-gold-500/40">
+              <iconify-icon icon="solar:arrow-down-linear" width="20"></iconify-icon>
+            </div>
+            <article class="flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
+              <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold-500/30 bg-gold-500/10 mb-3">
+                <span class="text-xs font-bold text-gold-300">02</span>
+              </div>
+              <h3 class="text-lg font-medium text-white">Plano</h3>
+              <p class="text-white/40 mt-1 text-sm">Escopo, canais e prioridades.</p>
+            </article>
+            <div class="hidden xl:flex items-center justify-center px-1 text-gold-500/40">
+              <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
+            </div>
+            <div class="flex xl:hidden items-center justify-center py-1 text-gold-500/40">
+              <iconify-icon icon="solar:arrow-down-linear" width="20"></iconify-icon>
+            </div>
+            <article class="flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
+              <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold-500/30 bg-gold-500/10 mb-3">
+                <span class="text-xs font-bold text-gold-300">03</span>
+              </div>
+              <h3 class="text-lg font-medium text-white">Onboarding</h3>
+              <p class="text-white/40 mt-1 text-sm">Setup e alinhamento rapido.</p>
+            </article>
+            <div class="hidden xl:flex items-center justify-center px-1 text-gold-500/40">
+              <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
+            </div>
+            <div class="flex xl:hidden items-center justify-center py-1 text-gold-500/40">
+              <iconify-icon icon="solar:arrow-down-linear" width="20"></iconify-icon>
+            </div>
+            <article class="flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
+              <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold-500/30 bg-gold-500/10 mb-3">
+                <span class="text-xs font-bold text-gold-300">04</span>
+              </div>
+              <h3 class="text-lg font-medium text-white">Execucao</h3>
+              <p class="text-white/40 mt-1 text-sm">Tudo integrado e mensuravel.</p>
+            </article>
+            <div class="hidden xl:flex items-center justify-center px-1 text-gold-500/40">
+              <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
+            </div>
+            <div class="flex xl:hidden items-center justify-center py-1 text-gold-500/40">
+              <iconify-icon icon="solar:arrow-down-linear" width="20"></iconify-icon>
+            </div>
+            <article class="flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
+              <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold-500/30 bg-gold-500/10 mb-3">
+                <span class="text-xs font-bold text-gold-300">05</span>
+              </div>
+              <h3 class="text-lg font-medium text-white">Otimizacao</h3>
+              <p class="text-white/40 mt-1 text-sm">Ajustes semanais de rota.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -909,69 +1126,55 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div class="lg:col-span-7" data-reveal>
             <div class="border border-white/10 bg-white/[0.02] p-7 md:p-8">
-              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Modelo Comercial</span>
-              <h2 class="text-3xl md:text-4xl font-medium text-white mt-3">A logica do investimento e publica. A proposta detalhada e privada.</h2>
-              <p class="text-white/45 mt-4 leading-relaxed max-w-3xl">Mostramos abaixo a leitura do mercado e a faixa de investimento da Royal Skin. O escopo recomendado, as prioridades e a proposta completa ficam liberados somente apos o diagnostico.</p>
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Proposta Privada</span>
+              <h2 class="text-3xl md:text-4xl font-medium text-white mt-3">A proposta comercial nao fica aberta na pagina principal.</h2>
+              <p class="mt-4 max-w-2xl text-white/55 leading-relaxed">
+                Primeiro entendemos o momento da clinica. Depois liberamos uma proposta privada com escopo, prioridades e direcionamento comercial coerentes com o diagnostico.
+              </p>
 
-              <div class="mt-7 border border-white/10 bg-[#111111] overflow-hidden">
-                <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 text-sm text-white/65">
-                  <span>Trafego Pago Profissional</span><strong class="text-white">R$ 3.000</strong>
+              <div class="mt-7 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="border border-white/10 bg-[#111111] p-5">
+                  <span class="text-[10px] uppercase tracking-[0.18em] text-gold-300">1. Envio</span>
+                  <p class="mt-3 text-sm text-white/60 leading-relaxed">Voce envia os dados principais da clinica e do desafio atual.</p>
                 </div>
-                <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 text-sm text-white/65">
-                  <span>Social Media Estrategico</span><strong class="text-white">R$ 2.000</strong>
+                <div class="border border-white/10 bg-[#111111] p-5">
+                  <span class="text-[10px] uppercase tracking-[0.18em] text-gold-300">2. Leitura</span>
+                  <p class="mt-3 text-sm text-white/60 leading-relaxed">A Royal Skin organiza o contexto comercial antes de abrir a proposta.</p>
                 </div>
-                <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 text-sm text-white/65">
-                  <span>Consultoria Comercial</span><strong class="text-white">R$ 4.000</strong>
+                <div class="border border-white/10 bg-[#111111] p-5">
+                  <span class="text-[10px] uppercase tracking-[0.18em] text-gold-300">3. Liberacao</span>
+                  <p class="mt-3 text-sm text-white/60 leading-relaxed">O acesso privado fica disponivel com recomendacao de escopo e proximo passo.</p>
                 </div>
-                <div class="flex items-center justify-between px-4 py-3 border-b border-white/10 text-sm text-white/65">
-                  <span>Estruturacao de Funil</span><strong class="text-white">R$ 3.000</strong>
-                </div>
-                <div class="flex items-center justify-between px-4 py-3 text-sm text-white/65">
-                  <span>Gestao Estrategica</span><strong class="text-white">R$ 5.000</strong>
-                </div>
-              </div>
-
-              <div class="mt-4 p-4 border border-gold-500/25 bg-gold-500/10">
-                <span class="text-xs uppercase tracking-[0.14em] text-gold-300">Investimento total mensal medio</span>
-                <strong class="block text-3xl text-white mt-1">R$ 17.000+</strong>
-                <p class="text-xs text-white/40 mt-2">Comparativo para mostrar o custo de contratar especialistas isolados sem uma estrategia integrada.</p>
               </div>
             </div>
           </div>
 
           <div class="lg:col-span-5 space-y-6">
             <article class="p-7 border border-white/10 bg-white/[0.02]" data-reveal>
-              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Investimento Royal Skin</span>
-              <h3 class="text-2xl text-white font-medium mt-3">Solucao completa sob diagnostico estrategico</h3>
-              <p class="text-white/45 mt-3 leading-relaxed">Pacote integrado com estrategia, execucao e gestao continua, ajustado ao porte, a especialidade e ao momento da clinica.</p>
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">O que e liberado</span>
+              <h3 class="text-2xl text-white font-medium mt-3">Acesso condicionado ao formulario</h3>
 
               <div class="mt-6 space-y-4">
-                <div class="flex items-center gap-2 text-sm text-white/60"><iconify-icon icon="solar:check-circle-bold-duotone" width="17" class="text-gold-400"></iconify-icon> Gestao completa de trafego pago</div>
-                <div class="flex items-center gap-2 text-sm text-white/60"><iconify-icon icon="solar:check-circle-bold-duotone" width="17" class="text-gold-400"></iconify-icon> Estrategia de social media e conteudo</div>
-                <div class="flex items-center gap-2 text-sm text-white/60"><iconify-icon icon="solar:check-circle-bold-duotone" width="17" class="text-gold-400"></iconify-icon> Consultoria comercial e funil de vendas</div>
-                <div class="flex items-center gap-2 text-sm text-white/60"><iconify-icon icon="solar:check-circle-bold-duotone" width="17" class="text-gold-400"></iconify-icon> Relatorios de performance e ROI</div>
-              </div>
-
-              <div class="mt-6 p-4 border border-gold-500/25 bg-[#111111]">
-                <span class="text-xs uppercase tracking-[0.14em] text-gold-300">Investimento mensal</span>
-                <strong class="block text-[clamp(2rem,4vw,3rem)] text-white mt-1 leading-none">R$ 3.000 a R$ 6.000</strong>
-                <p class="text-xs text-white/40 mt-2">A proposta completa fica liberada somente apos o diagnostico estrategico.</p>
+                <div class="flex items-center gap-2 text-sm text-white/60"><iconify-icon icon="solar:lock-keyhole-bold-duotone" width="17" class="text-gold-400"></iconify-icon> Escopo recomendado para o momento da clinica</div>
+                <div class="flex items-center gap-2 text-sm text-white/60"><iconify-icon icon="solar:document-text-bold-duotone" width="17" class="text-gold-400"></iconify-icon> Direcionamento comercial e operacional</div>
+                <div class="flex items-center gap-2 text-sm text-white/60"><iconify-icon icon="solar:chart-square-bold-duotone" width="17" class="text-gold-400"></iconify-icon> Prioridades de crescimento e implantacao</div>
+                <div class="flex items-center gap-2 text-sm text-white/60"><iconify-icon icon="solar:shield-check-bold-duotone" width="17" class="text-gold-400"></iconify-icon> Acesso privado preparado para integracao futura</div>
               </div>
             </article>
 
             <article class="p-7 border border-white/10" data-reveal style="background: linear-gradient(120deg, rgba(15,16,32,0.94), rgba(40,30,15,0.9), rgba(15,16,32,0.94)); background-size: 240% 100%; animation: controlledShine 5s linear infinite;">
-              <h3 class="text-3xl font-medium gradient-text">Solicite a proposta com contexto real</h3>
-              <p class="text-white/45 mt-3 leading-relaxed">Antes de abrir a proposta, entendemos momento, meta e gargalos da clinica para recomendar um escopo coerente com a operacao.</p>
-              <div class="mt-5 space-y-3">
-                <div class="flex items-start gap-2 text-sm text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-gold-400 mt-1"></iconify-icon> Leitura inicial do desafio comercial e do estagio atual.</div>
-                <div class="flex items-start gap-2 text-sm text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-gold-400 mt-1"></iconify-icon> Direcao de escopo mais aderente ao porte e ao potencial de crescimento.</div>
-                <div class="flex items-start gap-2 text-sm text-white/60 leading-relaxed"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-gold-400 mt-1"></iconify-icon> Liberacao da proposta privada com proximos passos de onboarding.</div>
+              <h3 class="text-3xl font-medium gradient-text">Fluxo privado de proposta</h3>
+              <div class="mt-4 flex flex-wrap gap-4">
+                <div class="flex items-center gap-2 text-sm text-white/55"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-gold-400"></iconify-icon> Proposta oculta na home</div>
+                <div class="flex items-center gap-2 text-sm text-white/55"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-gold-400"></iconify-icon> Liberacao apos envio</div>
+                <div class="flex items-center gap-2 text-sm text-white/55"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-gold-400"></iconify-icon> Acesso privado persistido</div>
               </div>
               <div class="mt-5 flex flex-wrap gap-3">
                 <a href="#diagnostico" data-proposal-locked class="btn-shine relative inline-flex items-center justify-center px-5 py-3 bg-gold-500 hover:bg-gold-400 text-dark-900 text-xs font-bold uppercase tracking-[0.16em] transition-colors">Solicitar proposta</a>
                 <a href="proposta.html" data-proposal-unlocked class="hidden btn-shine relative inline-flex items-center justify-center px-5 py-3 bg-gold-500 hover:bg-gold-400 text-dark-900 text-xs font-bold uppercase tracking-[0.16em] transition-colors">Acessar proposta liberada</a>
                 <a href="#como-funciona" class="btn-shine relative inline-flex items-center justify-center px-5 py-3 border border-gold-500/35 bg-gold-500/10 text-gold-300 text-xs font-bold uppercase tracking-[0.16em] hover:bg-gold-500/15 transition-colors">Entender o processo</a>
               </div>
+              <p data-proposal-locked class="mt-4 text-sm text-white/48">Enquanto o formulario nao for enviado, a proposta permanece oculta e o acesso fica bloqueado.</p>
               <p data-proposal-unlocked class="hidden mt-4 text-sm text-gold-300">Sua proposta ja esta liberada. O acesso fica disponivel a qualquer momento na pagina privada.</p>
             </article>
           </div>
@@ -996,11 +1199,7 @@
               <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
               <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Diagnostico Estrategico</span>
             </div>
-            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">Solicite um diagnostico e libere sua proposta comercial.</h2>
-            <p class="mt-6 text-white/45 leading-relaxed max-w-md">Preencha os dados da clinica, descreva o desafio atual e receba uma leitura inicial da Royal Skin para liberar a proposta privada com mais aderencia e clareza comercial.</p>
-            <div class="mt-7 border-l-2 border-gold-500/40 pl-5">
-              <p class="text-white/65 italic leading-relaxed">Fluxo preparado para integracao futura com CRM, automacao comercial ou backend sem reescrever a experiencia.</p>
-            </div>
+            <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">Solicite um diagnostico e libere sua proposta.</h2>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
               <article class="border border-white/10 bg-white/[0.02] p-4">
                 <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">01</div>
@@ -1021,6 +1220,26 @@
             <div class="border border-white/10 bg-white/[0.02] p-7 md:p-9">
               <h3 class="text-xl font-medium text-white">Formulario de qualificacao</h3>
               <p class="text-sm text-white/35 mt-2">A proposta sera liberada apos o envio.</p>
+              <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="story-panel">
+                  <div class="story-row">
+                    <span>Porte</span>
+                    <p class="text-white/65 leading-relaxed">Momento da clinica e faixa de faturamento.</p>
+                  </div>
+                </div>
+                <div class="story-panel motion-card--lift">
+                  <div class="story-row">
+                    <span>Especialidade</span>
+                    <p class="text-white/65 leading-relaxed">Segmento, ticket e contexto do atendimento.</p>
+                  </div>
+                </div>
+                <div class="story-panel">
+                  <div class="story-row">
+                    <span>Gargalo</span>
+                    <p class="text-white/65 leading-relaxed">Aquisicao, conversao, posicionamento ou escala.</p>
+                  </div>
+                </div>
+              </div>
 
               <form id="diagnosticForm" class="space-y-5 mt-6" data-proposal-form data-endpoint="">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1152,5 +1371,3 @@
   </script>
 </body>
 </html>
-
-
