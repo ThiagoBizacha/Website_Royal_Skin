@@ -1,0 +1,261 @@
+.design-page {
+  padding-top: 92px;
+}
+
+.ds-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(13, 13, 11, 0.74);
+  backdrop-filter: blur(18px);
+}
+
+.ds-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 92px;
+}
+
+.ds-hero {
+  padding-top: 48px;
+}
+
+.ds-hero-grid,
+.token-grid,
+.type-grid,
+.motion-grid,
+.usage-grid {
+  display: grid;
+  gap: 22px;
+}
+
+.ds-hero-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+  align-items: start;
+}
+
+.ds-story {
+  display: grid;
+  gap: 16px;
+  padding: 30px;
+}
+
+.story-row {
+  display: grid;
+  gap: 6px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.story-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.story-row span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.swatch-grid,
+.component-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.swatch-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 22px;
+}
+
+.swatch-card,
+.token-card,
+.type-card,
+.demo-card,
+.usage-card,
+.motion-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, rgba(24, 24, 19, 0.92), rgba(18, 18, 14, 0.92));
+  box-shadow: var(--shadow-md);
+}
+
+.swatch-card {
+  padding: 22px;
+}
+
+.swatch {
+  height: 120px;
+  margin-bottom: 18px;
+  border-radius: 18px;
+}
+
+.swatch--bg {
+  background: var(--bg);
+}
+
+.swatch--surface {
+  background: #171711;
+}
+
+.swatch--accent {
+  background: var(--accent);
+}
+
+.swatch--muted {
+  background: var(--muted);
+}
+
+.swatch-card h3,
+.token-card h3,
+.type-card h3,
+.demo-card h3,
+.usage-card h3,
+.motion-card h3 {
+  margin: 0 0 10px;
+}
+
+.swatch-card p,
+.token-card p,
+.motion-card p,
+.usage-card p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.token-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.token-card,
+.type-card,
+.demo-card,
+.usage-card,
+.motion-card {
+  padding: 24px;
+}
+
+.type-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.type-label {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.type-sample {
+  margin: 0;
+}
+
+.type-sample--display {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  line-height: 0.98;
+}
+
+.type-sample--heading {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1.05;
+}
+
+.type-sample--body {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.type-sample--eyebrow {
+  color: var(--accent);
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.component-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.demo-stack {
+  display: grid;
+  gap: 14px;
+}
+
+.demo-stack--inline {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.motion-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.motion-card--fade {
+  animation: pulseFade 5s ease-in-out infinite;
+}
+
+.motion-card--lift {
+  animation: floatLift 5.8s ease-in-out infinite;
+}
+
+.motion-card--shine {
+  background:
+    linear-gradient(120deg, rgba(24, 24, 19, 0.94), rgba(42, 35, 19, 0.9), rgba(24, 24, 19, 0.94));
+  background-size: 240% 100%;
+  animation: controlledShine 4.8s linear infinite;
+}
+
+.usage-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 1080px) {
+  .swatch-grid,
+  .component-grid,
+  .motion-grid,
+  .token-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .ds-nav,
+  .ds-hero-grid,
+  .type-grid,
+  .usage-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-nav {
+    display: grid;
+    min-height: auto;
+    padding: 20px 0;
+  }
+
+  .ds-nav .header-actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .swatch-grid,
+  .component-grid,
+  .motion-grid,
+  .token-grid {
+    grid-template-columns: 1fr;
+  }
+}
