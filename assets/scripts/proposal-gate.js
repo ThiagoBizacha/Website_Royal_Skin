@@ -63,7 +63,7 @@
     });
 
     scope.querySelectorAll("[data-proposal-clinic]").forEach((node) => {
-      node.textContent = state.lead?.company || "sua clinica";
+      node.textContent = state.lead?.company || "sua clínica";
     });
 
     scope.querySelectorAll("[data-proposal-name]").forEach((node) => {
@@ -104,7 +104,7 @@
 
     const settings = {
       redirectTo: "proposta.html",
-      successMessage: "Diagnostico recebido. Sua proposta foi liberada.",
+      successMessage: "Diagnóstico recebido. Sua proposta foi liberada.",
       redirectDelay: 1200,
       ...options,
     };
@@ -139,7 +139,7 @@
         }, settings.redirectDelay);
       } catch (error) {
         console.error(error);
-        setStatus("Nao foi possivel enviar agora. Revise a integracao e tente novamente.", "error");
+        setStatus("Não foi possível enviar agora. Revise a integração e tente novamente.", "error");
       } finally {
         if (submitLabel instanceof HTMLElement) {
           submitLabel.textContent = "Enviar e liberar proposta";
