@@ -228,6 +228,77 @@
       letter-spacing: .14em;
       text-transform: uppercase;
     }
+    .section-ambient-glow {
+      position: absolute;
+      width: 34rem;
+      height: 34rem;
+      border-radius: 999px;
+      pointer-events: none;
+      filter: blur(72px);
+      opacity: .18;
+      background:
+        radial-gradient(circle, rgba(231,139,54,.26) 0%, rgba(231,139,54,.1) 26%, transparent 70%);
+    }
+    .section-ambient-glow--left { top: 6%; left: -12%; }
+    .section-ambient-glow--right { top: 10%; right: -12%; }
+    .section-ambient-glow--center { top: 4%; left: 50%; transform: translateX(-50%); }
+    .premium-panel {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow: 0 24px 48px -38px rgba(0,0,0,.92), inset 0 1px 0 rgba(255,255,255,.03);
+      backdrop-filter: blur(10px);
+      transition: transform .35s cubic-bezier(.25,.46,.45,.94), border-color .35s ease, box-shadow .35s ease, background-color .35s ease;
+    }
+    .premium-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at top right, rgba(231,139,54,.14), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,.03), transparent 28%);
+      opacity: .95;
+      z-index: 0;
+    }
+    .premium-panel::after {
+      content: '';
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(231,139,54,.34), transparent);
+      opacity: .76;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .premium-panel > * {
+      position: relative;
+      z-index: 1;
+    }
+    .premium-panel:hover {
+      transform: translateY(-6px);
+      border-color: rgba(231,139,54,.28) !important;
+      box-shadow: 0 32px 64px -40px rgba(0,0,0,.95), 0 0 30px -30px rgba(231,139,54,.6);
+    }
+    .premium-panel--warm::before {
+      background:
+        radial-gradient(circle at top right, rgba(231,139,54,.18), transparent 38%),
+        linear-gradient(180deg, rgba(255,248,238,.05), transparent 24%);
+    }
+    .premium-panel > iconify-icon:first-child {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      box-sizing: border-box;
+      border-radius: 999px;
+      border: 1px solid rgba(231,139,54,.28);
+      background: rgba(231,139,54,.08);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.03) inset, 0 22px 44px -30px rgba(231,139,54,.46);
+    }
     .btn-shine { position:relative; overflow:hidden; }
     .btn-shine::after { content:''; position:absolute; inset:0; transform:translateX(-110%); background:linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); transition:transform .5s ease; }
     .btn-shine:hover::after { transform:translateX(110%); }
@@ -450,7 +521,8 @@
 
     <section id="mercado" class="relative bg-[#080808] noise-overlay overflow-hidden">
       <div class="beam-border-v" style="left: 0;"></div>
-      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+      <div class="section-ambient-glow section-ambient-glow--right"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24 relative z-20">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div class="lg:col-span-5 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
             <div class="flex items-center gap-3 mb-4">
@@ -491,19 +563,19 @@
           </div>
 
           <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6" data-reveal>
-            <article class="border border-white/10 bg-white/[0.02] p-6">
+            <article class="premium-panel border border-white/10 bg-white/[0.02] p-6">
               <iconify-icon icon="solar:eye-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
               <h3 class="text-xl font-medium text-white mt-3">Visibilidade gera decisao</h3>
               <p class="text-white/45 mt-2 text-sm">Quem aparece melhor e transmite confianca converte primeiro.</p>
             </article>
 
-            <article class="border border-white/10 bg-white/[0.02] p-6">
+            <article class="premium-panel border border-white/10 bg-white/[0.02] p-6">
               <iconify-icon icon="solar:smartphone-2-bold-duotone" width="24" class="text-gold-400/80"></iconify-icon>
               <h3 class="text-xl font-medium text-white mt-3">Digital molda a escolha</h3>
               <p class="text-white/45 mt-2 text-sm">Reputacao e prova social pesam antes do agendamento.</p>
             </article>
 
-            <article class="md:col-span-2 border border-gold-500/20 bg-gold-500/10 p-6">
+            <article class="premium-panel premium-panel--warm motion-card--fade md:col-span-2 border border-gold-500/20 bg-gold-500/10 p-6">
               <div class="flex items-center gap-3">
                 <iconify-icon icon="solar:bolt-circle-bold-duotone" width="24" class="text-gold-300"></iconify-icon>
                 <span class="text-[10px] uppercase tracking-[0.2em] text-gold-300">Leitura Royal Skin</span>
@@ -519,7 +591,8 @@
 
     <section id="problema" class="relative bg-[#080808] noise-overlay overflow-hidden">
       <div class="beam-border-h" style="top: 0;"></div>
-      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+      <div class="section-ambient-glow section-ambient-glow--left"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24 relative z-20">
         <div class="max-w-3xl animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
           <div class="flex items-center gap-3 mb-4">
             <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
@@ -529,27 +602,27 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-5 mt-12">
-          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+          <article class="premium-panel border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
             <iconify-icon icon="solar:chart-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
             <h3 class="text-lg font-medium text-white mt-3">Marketing sem ROI</h3>
             <p class="text-white/40 mt-2 text-sm">Investimento sem leitura de retorno.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+          <article class="premium-panel border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
             <iconify-icon icon="solar:users-group-rounded-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
             <h3 class="text-lg font-medium text-white mt-3">Leads irregulares</h3>
             <p class="text-white/40 mt-2 text-sm">Agenda oscila, equipe perde ritmo.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+          <article class="premium-panel border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
             <iconify-icon icon="solar:hand-shake-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
             <h3 class="text-lg font-medium text-white mt-3">Dependencia de indicacao</h3>
             <p class="text-white/40 mt-2 text-sm">Crescimento vulneravel e limitado.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+          <article class="premium-panel border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
             <iconify-icon icon="solar:settings-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
             <h3 class="text-lg font-medium text-white mt-3">Processos soltos</h3>
             <p class="text-white/40 mt-2 text-sm">Follow-up e conversao sem modelo.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+          <article class="premium-panel border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
             <iconify-icon icon="solar:question-circle-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
             <h3 class="text-lg font-medium text-white mt-3">Faturamento incerto</h3>
             <p class="text-white/40 mt-2 text-sm">Decisoes sem indicadores claros.</p>
@@ -574,7 +647,7 @@
 
           <div class="lg:col-span-12">
             <div class="flex flex-col xl:flex-row items-stretch gap-0 mt-10" data-reveal>
-              <article class="flex-1 border border-white/10 bg-white/[0.02] p-6 text-center">
+              <article class="premium-panel flex-1 border border-white/10 bg-white/[0.02] p-6 text-center">
                 <div class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-gold-500/30 bg-gold-500/10 mb-4">
                   <iconify-icon icon="solar:magnifer-bold-duotone" width="22" class="text-gold-400"></iconify-icon>
                 </div>
@@ -588,7 +661,7 @@
               <div class="flex xl:hidden items-center justify-center py-2 text-gold-500/40">
                 <iconify-icon icon="solar:arrow-down-linear" width="22"></iconify-icon>
               </div>
-              <article class="flex-1 border border-white/10 bg-white/[0.02] p-6 text-center">
+              <article class="premium-panel flex-1 border border-white/10 bg-white/[0.02] p-6 text-center">
                 <div class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-gold-500/30 bg-gold-500/10 mb-4">
                   <iconify-icon icon="solar:sort-horizontal-bold-duotone" width="22" class="text-gold-400"></iconify-icon>
                 </div>
@@ -602,7 +675,7 @@
               <div class="flex xl:hidden items-center justify-center py-2 text-gold-500/40">
                 <iconify-icon icon="solar:arrow-down-linear" width="22"></iconify-icon>
               </div>
-              <article class="flex-1 border border-white/10 bg-white/[0.02] p-6 text-center">
+              <article class="premium-panel flex-1 border border-white/10 bg-white/[0.02] p-6 text-center">
                 <div class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-gold-500/30 bg-gold-500/10 mb-4">
                   <iconify-icon icon="solar:shield-check-bold-duotone" width="22" class="text-gold-400"></iconify-icon>
                 </div>
@@ -616,7 +689,7 @@
               <div class="flex xl:hidden items-center justify-center py-2 text-gold-500/40">
                 <iconify-icon icon="solar:arrow-down-linear" width="22"></iconify-icon>
               </div>
-              <article class="flex-1 border border-white/10 bg-white/[0.02] p-6 text-center">
+              <article class="premium-panel flex-1 border border-white/10 bg-white/[0.02] p-6 text-center">
                 <div class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-gold-500/30 bg-gold-500/10 mb-4">
                   <iconify-icon icon="solar:calendar-bold-duotone" width="22" class="text-gold-400"></iconify-icon>
                 </div>
@@ -626,7 +699,7 @@
               </article>
             </div>
 
-            <article class="mt-6 border border-gold-500/20 bg-gold-500/10 p-5 flex items-center gap-4" data-reveal>
+            <article class="premium-panel premium-panel--warm motion-card--fade mt-6 border border-gold-500/20 bg-gold-500/10 p-5 flex items-center gap-4" data-reveal>
               <iconify-icon icon="solar:bolt-circle-bold-duotone" width="28" class="text-gold-300 flex-shrink-0"></iconify-icon>
               <p class="text-lg text-white font-medium">A jornada mudou. A operacao da clinica tambem precisa mudar.</p>
             </article>
@@ -640,7 +713,8 @@
     <section id="sistema" class="relative bg-[#080808] noise-overlay overflow-hidden">
       <div class="beam-border-v" style="right: 0;"></div>
       <div class="beam-border-h" style="top: 0;"></div>
-      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+      <div class="section-ambient-glow section-ambient-glow--center"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24 relative z-20">
         <div class="max-w-3xl animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
           <div class="flex items-center gap-3 mb-4">
             <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
@@ -662,27 +736,27 @@
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
-            <article class="group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300">
+            <article class="premium-panel group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300">
               <iconify-icon icon="solar:cursor-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
               <h3 class="text-lg font-medium text-white mt-3">Aquisicao</h3>
               <p class="text-white/40 mt-1 text-sm">Demanda qualificada</p>
             </article>
-            <article class="group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300">
+            <article class="premium-panel group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300">
               <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
               <h3 class="text-lg font-medium text-white mt-3">Funil</h3>
               <p class="text-white/40 mt-1 text-sm">Jornada ate o fechamento</p>
             </article>
-            <article class="group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300">
+            <article class="premium-panel group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300">
               <iconify-icon icon="solar:target-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
               <h3 class="text-lg font-medium text-white mt-3">Processos</h3>
               <p class="text-white/40 mt-1 text-sm">Follow-up e conversao</p>
             </article>
-            <article class="group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300">
+            <article class="premium-panel group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300">
               <iconify-icon icon="solar:chart-square-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
               <h3 class="text-lg font-medium text-white mt-3">Retencao</h3>
               <p class="text-white/40 mt-1 text-sm">Valor e recorrencia</p>
             </article>
-            <article class="group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300 col-span-2 md:col-span-1">
+            <article class="premium-panel group border border-white/10 bg-white/[0.02] p-5 text-center hover:border-gold-500/30 transition-all duration-300 col-span-2 md:col-span-1">
               <iconify-icon icon="solar:chart-2-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
               <h3 class="text-lg font-medium text-white mt-3">Gestao</h3>
               <p class="text-white/40 mt-1 text-sm">KPIs e otimizacao</p>
@@ -709,7 +783,8 @@
 
     <section id="servicos" class="relative bg-[#080808] noise-overlay overflow-hidden">
       <div class="beam-border-v" style="left: 0;"></div>
-      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+      <div class="section-ambient-glow section-ambient-glow--left"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24 relative z-20">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div class="lg:col-span-12 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
             <div class="flex items-center gap-3 mb-4">
@@ -721,7 +796,7 @@
 
           <div class="lg:col-span-12">
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 mt-10" data-reveal>
-              <article class="group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
+              <article class="premium-panel group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
                 <iconify-icon icon="solar:cursor-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
                 <h3 class="text-xl font-medium text-white mt-3">Trafego Pago</h3>
                 <p class="text-white/40 mt-2 text-sm">Conversao e demanda qualificada.</p>
@@ -731,7 +806,7 @@
                   <span class="service-pill">ROI</span>
                 </div>
               </article>
-              <article class="group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
+              <article class="premium-panel group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
                 <iconify-icon icon="solar:gallery-wide-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
                 <h3 class="text-xl font-medium text-white mt-3">Social Media</h3>
                 <p class="text-white/40 mt-2 text-sm">Autoridade e engajamento premium.</p>
@@ -741,7 +816,7 @@
                   <span class="service-pill">Reputacao</span>
                 </div>
               </article>
-              <article class="group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
+              <article class="premium-panel group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
                 <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
                 <h3 class="text-xl font-medium text-white mt-3">Funil de Vendas</h3>
                 <p class="text-white/40 mt-2 text-sm">Do lead ao agendamento e fidelizacao.</p>
@@ -751,7 +826,7 @@
                   <span class="service-pill">Fidelizacao</span>
                 </div>
               </article>
-              <article class="group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
+              <article class="premium-panel group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
                 <iconify-icon icon="solar:target-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
                 <h3 class="text-xl font-medium text-white mt-3">Mentoria Comercial</h3>
                 <p class="text-white/40 mt-2 text-sm">Script, follow-up e fechamento.</p>
@@ -761,7 +836,7 @@
                   <span class="service-pill">Fechamento</span>
                 </div>
               </article>
-              <article class="group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
+              <article class="premium-panel group border border-white/10 bg-white/[0.02] p-6 hover:border-gold-500/30 transition-all duration-300">
                 <iconify-icon icon="solar:chart-2-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
                 <h3 class="text-xl font-medium text-white mt-3">Gestao de Crescimento</h3>
                 <p class="text-white/40 mt-2 text-sm">KPIs, performance e consultoria.</p>
@@ -771,7 +846,7 @@
                   <span class="service-pill">Consultoria</span>
                 </div>
               </article>
-              <article class="group border border-gold-500/20 bg-gold-500/10 p-6 flex items-start gap-4">
+              <article class="premium-panel premium-panel--warm motion-card--fade group border border-gold-500/20 bg-gold-500/10 p-6 flex items-start gap-4">
                 <iconify-icon icon="solar:link-circle-bold-duotone" width="28" class="text-gold-300 flex-shrink-0 mt-1"></iconify-icon>
                 <div>
                   <span class="text-[10px] uppercase tracking-[0.2em] text-gold-300">Integracao</span>
@@ -851,7 +926,8 @@
 
     <section id="diferenciais" class="relative bg-[#080808] noise-overlay overflow-hidden">
       <div class="beam-border-h" style="bottom: 0;"></div>
-      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+      <div class="section-ambient-glow section-ambient-glow--right"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24 relative z-20">
         <div class="max-w-3xl animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
           <div class="flex items-center gap-3 mb-4">
             <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
@@ -861,29 +937,29 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 mt-12">
-          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+          <article class="premium-panel border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
             <iconify-icon icon="solar:face-scan-circle-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
             <h3 class="text-lg font-medium text-white mt-3">Psicologia do paciente</h3>
             <p class="text-white/40 mt-2 text-sm">Desejo, confianca e gatilhos de decisao.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+          <article class="premium-panel border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
             <iconify-icon icon="solar:graph-up-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
             <h3 class="text-lg font-medium text-white mt-3">Ticket alto</h3>
             <p class="text-white/40 mt-2 text-sm">Posicionamento e fechamento consultivo.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+          <article class="premium-panel border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
             <iconify-icon icon="solar:shield-check-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
             <h3 class="text-lg font-medium text-white mt-3">Confianca e autoridade</h3>
             <p class="text-white/40 mt-2 text-sm">Presenca premium, menos friccao.</p>
           </article>
-          <article class="border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
+          <article class="premium-panel border border-white/10 bg-white/[0.02] p-6 text-center" data-reveal>
             <iconify-icon icon="solar:layers-minimalistic-bold-duotone" width="32" class="text-gold-400/80"></iconify-icon>
             <h3 class="text-lg font-medium text-white mt-3">Compliance em saude</h3>
             <p class="text-white/40 mt-2 text-sm">Linguagem e contexto regulatorio.</p>
           </article>
         </div>
 
-        <article class="mt-8 border border-gold-500/20 bg-gold-500/10 p-5 flex items-center gap-4" data-reveal>
+            <article class="premium-panel premium-panel--warm motion-card--fade mt-8 border border-gold-500/20 bg-gold-500/10 p-5 flex items-center gap-4" data-reveal>
           <iconify-icon icon="solar:star-shine-bold-duotone" width="28" class="text-gold-300 flex-shrink-0"></iconify-icon>
           <p class="text-lg text-white font-medium">Crescimento estruturado, autoridade de marca e previsibilidade comercial.</p>
         </article>
@@ -895,13 +971,14 @@
     <section id="resultados" class="relative bg-[#080808] noise-overlay overflow-hidden">
       <div class="beam-border-v" style="right: 0;"></div>
       <div class="beam-border-h" style="top: 0;"></div>
-      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+      <div class="section-ambient-glow section-ambient-glow--center"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24 relative z-20">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div class="lg:col-span-6" data-reveal>
             <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Transformacao em 90 dias</span>
             <h2 class="text-3xl md:text-4xl font-medium text-white mt-3 mb-8">Antes vs Depois da Royal Skin.</h2>
             <div class="grid grid-cols-2 gap-4">
-              <div class="border border-red-400/20 bg-red-400/[0.03] p-5">
+              <div class="premium-panel border border-red-400/20 bg-red-400/[0.03] p-5">
                 <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-red-400">Antes</span>
                 <ul class="mt-4 space-y-3">
                   <li class="flex items-start gap-2 text-sm text-white/45"><iconify-icon icon="solar:close-circle-bold-duotone" width="16" class="text-red-400/60 mt-0.5 flex-shrink-0"></iconify-icon> Agenda imprevisivel</li>
@@ -910,7 +987,7 @@
                   <li class="flex items-start gap-2 text-sm text-white/45"><iconify-icon icon="solar:close-circle-bold-duotone" width="16" class="text-red-400/60 mt-0.5 flex-shrink-0"></iconify-icon> Decisoes no escuro</li>
                 </ul>
               </div>
-              <div class="border border-emerald-500/20 bg-emerald-500/[0.03] p-5">
+              <div class="premium-panel border border-emerald-500/20 bg-emerald-500/[0.03] p-5">
                 <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-400">Depois</span>
                 <ul class="mt-4 space-y-3">
                   <li class="flex items-start gap-2 text-sm text-white/65"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-emerald-400 mt-0.5 flex-shrink-0"></iconify-icon> Agenda previsivel</li>
@@ -923,7 +1000,7 @@
           </div>
 
           <div class="lg:col-span-6 space-y-6" data-reveal>
-            <article class="border border-white/10 bg-white/[0.02] p-6">
+            <article class="premium-panel border border-white/10 bg-white/[0.02] p-6">
               <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400 mb-5 block">Timeline de maturidade</span>
               <div class="space-y-0">
                 <div class="flex items-start gap-4 pb-5 relative">
@@ -956,7 +1033,7 @@
               </div>
             </article>
 
-            <article class="border border-gold-500/20 bg-gold-500/10 p-5 flex items-center gap-4">
+            <article class="premium-panel premium-panel--warm motion-card--fade border border-gold-500/20 bg-gold-500/10 p-5 flex items-center gap-4">
               <iconify-icon icon="solar:arrow-right-up-bold-duotone" width="28" class="text-gold-300 flex-shrink-0"></iconify-icon>
               <p class="text-lg text-white font-medium">Improviso ou sistema. A decisao e simples.</p>
             </article>
@@ -969,7 +1046,8 @@
 
     <section id="sobre" class="relative bg-[#080808] noise-overlay">
       <div class="beam-border-v" style="left: 0;"></div>
-      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+      <div class="section-ambient-glow section-ambient-glow--left"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24 relative z-20">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div class="lg:col-span-5 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
             <div class="flex items-center gap-3 mb-4">
@@ -983,10 +1061,10 @@
           </div>
 
           <div class="lg:col-span-7 space-y-6" data-reveal>
-            <article class="border border-white/10 bg-white/[0.02] p-6">
+            <article class="premium-panel border border-white/10 bg-white/[0.02] p-6">
               <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400 mb-5 block">Metodologia Royal Skin</span>
               <div class="flex flex-col sm:flex-row items-stretch gap-0">
-                <div class="flex-1 text-center p-4 border border-white/10 bg-white/[0.02]">
+                <div class="premium-panel flex-1 text-center p-4 border border-white/10 bg-white/[0.02]">
                   <iconify-icon icon="solar:database-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
                   <h3 class="text-sm font-medium text-white mt-2">Dados</h3>
                   <p class="text-white/35 text-xs mt-1">Performance e indicadores</p>
@@ -997,7 +1075,7 @@
                 <div class="flex sm:hidden items-center justify-center py-1 text-gold-500/40">
                   <iconify-icon icon="solar:arrow-down-linear" width="18"></iconify-icon>
                 </div>
-                <div class="flex-1 text-center p-4 border border-white/10 bg-white/[0.02]">
+                <div class="premium-panel flex-1 text-center p-4 border border-white/10 bg-white/[0.02]">
                   <iconify-icon icon="solar:settings-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
                   <h3 class="text-sm font-medium text-white mt-2">Processos</h3>
                   <p class="text-white/35 text-xs mt-1">Atendimento e conversao</p>
@@ -1008,7 +1086,7 @@
                 <div class="flex sm:hidden items-center justify-center py-1 text-gold-500/40">
                   <iconify-icon icon="solar:arrow-down-linear" width="18"></iconify-icon>
                 </div>
-                <div class="flex-1 text-center p-4 border border-white/10 bg-white/[0.02]">
+                <div class="premium-panel flex-1 text-center p-4 border border-white/10 bg-white/[0.02]">
                   <iconify-icon icon="solar:graph-up-bold-duotone" width="28" class="text-gold-400/80"></iconify-icon>
                   <h3 class="text-sm font-medium text-white mt-2">Crescimento</h3>
                   <p class="text-white/35 text-xs mt-1">Escalavel e sustentavel</p>
@@ -1040,8 +1118,9 @@
     <section id="como-funciona" class="relative bg-[#080808] noise-overlay overflow-hidden">
       <div class="beam-border-v" style="left: 0;"></div>
       <div class="beam-border-h" style="bottom: 0;"></div>
+      <div class="section-ambient-glow section-ambient-glow--right"></div>
 
-      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24 relative z-20">
         <div class="max-w-3xl animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
           <div class="flex items-center gap-3 mb-4">
             <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
@@ -1052,7 +1131,7 @@
 
         <div class="mt-12" data-reveal>
           <div class="flex flex-col xl:flex-row items-stretch gap-0">
-            <article class="flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
+            <article class="premium-panel flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
               <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold-500/30 bg-gold-500/10 mb-3">
                 <span class="text-xs font-bold text-gold-300">01</span>
               </div>
@@ -1065,7 +1144,7 @@
             <div class="flex xl:hidden items-center justify-center py-1 text-gold-500/40">
               <iconify-icon icon="solar:arrow-down-linear" width="20"></iconify-icon>
             </div>
-            <article class="flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
+            <article class="premium-panel flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
               <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold-500/30 bg-gold-500/10 mb-3">
                 <span class="text-xs font-bold text-gold-300">02</span>
               </div>
@@ -1078,7 +1157,7 @@
             <div class="flex xl:hidden items-center justify-center py-1 text-gold-500/40">
               <iconify-icon icon="solar:arrow-down-linear" width="20"></iconify-icon>
             </div>
-            <article class="flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
+            <article class="premium-panel flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
               <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold-500/30 bg-gold-500/10 mb-3">
                 <span class="text-xs font-bold text-gold-300">03</span>
               </div>
@@ -1091,7 +1170,7 @@
             <div class="flex xl:hidden items-center justify-center py-1 text-gold-500/40">
               <iconify-icon icon="solar:arrow-down-linear" width="20"></iconify-icon>
             </div>
-            <article class="flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
+            <article class="premium-panel flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
               <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold-500/30 bg-gold-500/10 mb-3">
                 <span class="text-xs font-bold text-gold-300">04</span>
               </div>
@@ -1104,7 +1183,7 @@
             <div class="flex xl:hidden items-center justify-center py-1 text-gold-500/40">
               <iconify-icon icon="solar:arrow-down-linear" width="20"></iconify-icon>
             </div>
-            <article class="flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
+            <article class="premium-panel flex-1 border border-white/10 bg-white/[0.02] p-5 text-center">
               <div class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold-500/30 bg-gold-500/10 mb-3">
                 <span class="text-xs font-bold text-gold-300">05</span>
               </div>
@@ -1121,11 +1200,12 @@
     <section id="modelo-comercial" class="relative bg-[#080808] noise-overlay overflow-hidden">
       <div class="beam-border-v" style="left: 0;"></div>
       <div class="beam-border-v" style="right: 0;"></div>
+      <div class="section-ambient-glow section-ambient-glow--right"></div>
 
-      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24">
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-24 relative z-20">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div class="lg:col-span-7" data-reveal>
-            <div class="border border-white/10 bg-white/[0.02] p-7 md:p-8">
+            <div class="premium-panel border border-white/10 bg-white/[0.02] p-7 md:p-8">
               <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">Proposta Privada</span>
               <h2 class="text-3xl md:text-4xl font-medium text-white mt-3">A proposta comercial nao fica aberta na pagina principal.</h2>
               <p class="mt-4 max-w-2xl text-white/55 leading-relaxed">
@@ -1133,15 +1213,15 @@
               </p>
 
               <div class="mt-7 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="border border-white/10 bg-[#111111] p-5">
+                <div class="premium-panel border border-white/10 bg-[#111111] p-5">
                   <span class="text-[10px] uppercase tracking-[0.18em] text-gold-300">1. Envio</span>
                   <p class="mt-3 text-sm text-white/60 leading-relaxed">Voce envia os dados principais da clinica e do desafio atual.</p>
                 </div>
-                <div class="border border-white/10 bg-[#111111] p-5">
+                <div class="premium-panel border border-white/10 bg-[#111111] p-5">
                   <span class="text-[10px] uppercase tracking-[0.18em] text-gold-300">2. Leitura</span>
                   <p class="mt-3 text-sm text-white/60 leading-relaxed">A Royal Skin organiza o contexto comercial antes de abrir a proposta.</p>
                 </div>
-                <div class="border border-white/10 bg-[#111111] p-5">
+                <div class="premium-panel border border-white/10 bg-[#111111] p-5">
                   <span class="text-[10px] uppercase tracking-[0.18em] text-gold-300">3. Liberacao</span>
                   <p class="mt-3 text-sm text-white/60 leading-relaxed">O acesso privado fica disponivel com recomendacao de escopo e proximo passo.</p>
                 </div>
@@ -1150,7 +1230,7 @@
           </div>
 
           <div class="lg:col-span-5 space-y-6">
-            <article class="p-7 border border-white/10 bg-white/[0.02]" data-reveal>
+            <article class="premium-panel p-7 border border-white/10 bg-white/[0.02]" data-reveal>
               <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">O que e liberado</span>
               <h3 class="text-2xl text-white font-medium mt-3">Acesso condicionado ao formulario</h3>
 
@@ -1162,7 +1242,7 @@
               </div>
             </article>
 
-            <article class="p-7 border border-white/10" data-reveal style="background: linear-gradient(120deg, rgba(15,16,32,0.94), rgba(40,30,15,0.9), rgba(15,16,32,0.94)); background-size: 240% 100%; animation: controlledShine 5s linear infinite;">
+            <article class="premium-panel p-7 border border-white/10" data-reveal style="background: linear-gradient(120deg, rgba(15,16,32,0.94), rgba(40,30,15,0.9), rgba(15,16,32,0.94)); background-size: 240% 100%; animation: controlledShine 5s linear infinite;">
               <h3 class="text-3xl font-medium gradient-text">Fluxo privado de proposta</h3>
               <div class="mt-4 flex flex-wrap gap-4">
                 <div class="flex items-center gap-2 text-sm text-white/55"><iconify-icon icon="solar:check-circle-bold-duotone" width="16" class="text-gold-400"></iconify-icon> Proposta oculta na home</div>
@@ -1201,15 +1281,15 @@
             </div>
             <h2 class="text-4xl md:text-5xl font-medium leading-tight tracking-tight text-white">Solicite um diagnostico e libere sua proposta.</h2>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
-              <article class="border border-white/10 bg-white/[0.02] p-4">
+              <article class="premium-panel border border-white/10 bg-white/[0.02] p-4">
                 <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">01</div>
                 <p class="text-sm text-white/60 leading-relaxed mt-3">Leitura do momento atual da clinica.</p>
               </article>
-              <article class="border border-white/10 bg-white/[0.02] p-4">
+              <article class="premium-panel border border-white/10 bg-white/[0.02] p-4">
                 <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">02</div>
                 <p class="text-sm text-white/60 leading-relaxed mt-3">Direcionamento inicial de escopo e prioridade.</p>
               </article>
-              <article class="border border-white/10 bg-white/[0.02] p-4">
+              <article class="premium-panel border border-white/10 bg-white/[0.02] p-4">
                 <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400">03</div>
                 <p class="text-sm text-white/60 leading-relaxed mt-3">Liberacao da proposta privada da Royal Skin.</p>
               </article>
@@ -1217,7 +1297,7 @@
           </div>
 
           <div class="lg:col-span-7 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out .12s both;">
-            <div class="border border-white/10 bg-white/[0.02] p-7 md:p-9">
+            <div class="premium-panel border border-white/10 bg-white/[0.02] p-7 md:p-9">
               <h3 class="text-xl font-medium text-white">Formulario de qualificacao</h3>
               <p class="text-sm text-white/35 mt-2">A proposta sera liberada apos o envio.</p>
               <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -1371,3 +1451,4 @@
   </script>
 </body>
 </html>
+
