@@ -295,10 +295,71 @@
       background: linear-gradient(90deg, transparent, rgba(231,139,54,.42), transparent);
       pointer-events: none;
     }
+    .context-card-stage {
+      position: relative;
+      min-height: 31rem;
+      isolation: isolate;
+    }
+    .context-card-stage .hero-right-atmosphere {
+      inset: 4% -2% -6% 10%;
+      opacity: .9;
+      filter: blur(28px);
+    }
+    .context-card-stage .hero-right-dust {
+      inset: 12% -8% -10% 14%;
+      opacity: .52;
+    }
+    .context-card-stage .hero-right-lens {
+      inset: 16% -2% 10% 26%;
+      opacity: .66;
+      filter: blur(36px);
+    }
+    .context-card-stage .hero-feature-card {
+      backdrop-filter: blur(14px);
+    }
+    .context-card--proof {
+      left: 2%;
+      top: 4%;
+      width: 58%;
+      transform: rotate(-4deg);
+      z-index: 3;
+    }
+    .context-card--niches {
+      right: 6%;
+      top: 27%;
+      width: 38%;
+      transform: rotate(5deg);
+      z-index: 4;
+    }
+    .context-card--system {
+      left: 24%;
+      bottom: 6%;
+      width: 58%;
+      transform: rotate(1.5deg);
+      z-index: 2;
+    }
     @media (max-width: 1023px) {
       .hero-right-atmosphere { inset: 8% -8% -8% -2%; opacity: .72; }
       .hero-right-dust { inset: 14% -10% -12% 0; opacity: .5; }
       .hero-right-lens { inset: 16% -4% 8% 8%; opacity: .58; }
+      .context-card-stage {
+        min-height: 24rem;
+        max-width: 34rem;
+        margin-inline: auto;
+      }
+      .context-card--proof {
+        left: 4%;
+        width: 58%;
+      }
+      .context-card--niches {
+        right: 4%;
+        top: 26%;
+        width: 36%;
+      }
+      .context-card--system {
+        left: 18%;
+        width: 62%;
+      }
     }
     @media (max-width: 767px) {
       html,
@@ -628,50 +689,89 @@
         display: none !important;
       }
       #hero .hero-visual-stack {
-        display: grid;
-        align-content: start;
-        gap: .8rem;
-        height: auto !important;
-        max-width: 100%;
+        display: block;
+        position: relative;
+        height: 18.75rem !important;
+        max-width: 22rem;
         margin-inline: auto;
-        margin-top: .15rem;
+        margin-top: .3rem;
         overflow: hidden;
       }
       #hero .hero-right-atmosphere {
-        inset: 4% -8% auto -8%;
-        height: 13rem;
-        opacity: .34;
-        filter: blur(36px);
+        inset: 8% -10% 2% -4%;
+        height: auto;
+        opacity: .42;
+        filter: blur(34px);
       }
       #hero .hero-right-dust,
       #hero .hero-right-lens {
         display: none;
       }
       #hero .hero-feature-card {
-        position: relative !important;
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        bottom: auto !important;
-        width: 100% !important;
-        transform: none !important;
+        position: absolute !important;
         box-shadow: 0 22px 40px -28px rgba(0,0,0,.88), 0 0 26px -28px rgba(231,139,54,.46);
       }
       #hero .hero-card--proof {
-        order: 1;
+        left: 3% !important;
+        top: 4% !important;
+        width: 61% !important;
+        padding: .85rem .95rem !important;
+        transform: rotate(-3deg) !important;
+        z-index: 3;
       }
       #hero .hero-card--niches {
-        order: 2;
+        right: 4% !important;
+        top: 31% !important;
+        width: 45% !important;
+        padding: .8rem .95rem !important;
+        transform: rotate(4deg) !important;
+        z-index: 4;
       }
       #hero .hero-card--system {
-        order: 3;
-      }
-      #hero .hero-card--proof,
-      #hero .hero-card--system {
+        left: 16% !important;
+        bottom: 5% !important;
+        width: 70% !important;
         padding: .9rem 1rem !important;
+        transform: rotate(1.5deg) !important;
+        z-index: 2;
       }
-      #hero .hero-card--niches {
-        padding: .85rem 1rem !important;
+      .context-card-stage {
+        min-height: 18.75rem;
+        max-width: 22rem;
+        margin: 1rem auto 0;
+      }
+      .context-card-stage .hero-right-atmosphere {
+        inset: 8% -10% 2% -4%;
+        opacity: .42;
+        filter: blur(34px);
+      }
+      .context-card-stage .hero-right-dust,
+      .context-card-stage .hero-right-lens {
+        display: none;
+      }
+      .context-card-stage .hero-feature-card {
+        box-shadow: 0 22px 40px -28px rgba(0,0,0,.88), 0 0 26px -28px rgba(231,139,54,.46);
+      }
+      .context-card--proof {
+        left: 3%;
+        top: 4%;
+        width: 61%;
+        padding: .85rem .95rem !important;
+        transform: rotate(-3deg);
+      }
+      .context-card--niches {
+        right: 4%;
+        top: 31%;
+        width: 45%;
+        padding: .8rem .95rem !important;
+        transform: rotate(4deg);
+      }
+      .context-card--system {
+        left: 16%;
+        bottom: 5%;
+        width: 70%;
+        padding: .9rem 1rem !important;
+        transform: rotate(1.5deg);
       }
       footer .max-w-\[90rem\] {
         align-items: center;
@@ -788,13 +888,13 @@
       <div class="beam-border-h" style="bottom: 0;"></div>
 
       <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-center min-h-[auto] lg:min-h-[80vh]">
-          <div class="lg:col-span-7">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-center min-h-[auto] lg:min-h-[82vh]">
+          <div class="lg:col-span-7 xl:col-span-6 max-w-[44rem]">
             <div class="flex items-center gap-3 mb-5 sm:mb-8 animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .1s both;">
               <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
               <span class="text-[0.62rem] sm:text-xs font-bold tracking-[0.22em] sm:tracking-[0.3em] uppercase text-gold-400">
-                <span class="sm:hidden">Clínicas premium</span>
-                <span class="hidden sm:inline">Marketing de alta performance para clínicas premium</span>
+                <span class="sm:hidden">Clínicas estéticas premium</span>
+                <span class="hidden sm:inline">Para clínicas estéticas premium</span>
               </span>
             </div>
 
@@ -804,76 +904,86 @@
               <span class="hero-value-headline block text-[2rem] sm:text-5xl lg:text-[3.15rem] font-light leading-[1.02] text-white/68 mt-3 sm:mt-5">Crescimento previsível para clínicas estéticas.</span>
             </h1>
 
-            <p class="hero-subheadline mt-4 sm:mt-8 max-w-[640px] text-[0.99rem] sm:text-lg text-white/45 leading-relaxed animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .38s both;">
-              <span class="sm:hidden">Tráfego, funil e gestão para atrair pacientes certos com previsibilidade.</span>
-              <span class="hidden sm:inline">Tráfego, funil e gestão integrados para atrair pacientes certos e escalar com previsibilidade.</span>
+            <p class="hero-subheadline mt-4 sm:mt-8 max-w-[560px] text-[0.99rem] sm:text-lg text-white/45 leading-relaxed animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .38s both;">
+              <span class="sm:hidden">Uma operação integrada para agenda qualificada e crescimento consistente.</span>
+              <span class="hidden sm:inline">Uma operação integrada para gerar agenda qualificada e crescimento consistente.</span>
             </p>
 
             <div class="hero-cta-group flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-9 animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .55s both;">
               <a href="#diagnostico" class="btn-shine relative inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-gold-500 hover:bg-gold-400 text-dark-900 text-xs font-bold uppercase tracking-[0.18em] sm:tracking-[0.2em] transition-colors">Agendar diagnóstico estratégico</a>
-              <a href="#como-funciona" class="spinning-border group relative isolate inline-flex items-center justify-center w-full sm:w-auto gap-2 overflow-hidden px-8 py-4 text-xs font-bold uppercase tracking-[0.16em] sm:tracking-[0.2em] text-white transition-all duration-300 hover:shadow-[0_0_30px_-5px_rgba(231,139,54,0.38)]">
+              <a href="#diagnostico" class="spinning-border group relative isolate inline-flex items-center justify-center w-full sm:w-auto gap-2 overflow-hidden px-8 py-4 text-xs font-bold uppercase tracking-[0.16em] sm:tracking-[0.2em] text-white transition-all duration-300 hover:shadow-[0_0_30px_-5px_rgba(231,139,54,0.38)]">
                 <div class="border-spin"><div></div></div>
                 <div class="border-fill"></div>
                 <iconify-icon icon="solar:map-point-wave-bold-duotone" width="16" class="text-gold-500"></iconify-icon>
-                <span class="relative z-10">Ver como funciona</span>
+                <span class="relative z-10">Solicitar proposta</span>
               </a>
             </div>
 
-            <div class="hero-proposal-note hidden sm:flex mt-3 sm:mt-4 flex-wrap items-center gap-2 text-[10px] sm:text-[11px] uppercase tracking-[0.11em] sm:tracking-[0.16em] text-white/30 animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .63s both;">
-              <iconify-icon icon="solar:lock-keyhole-minimalistic-bold-duotone" width="13" class="text-gold-400"></iconify-icon>
-              <span>Proposta liberada após diagnóstico</span>
-              <span class="hidden sm:inline mx-1 text-white/15">&middot;</span>
-              <a href="#diagnostico" data-proposal-locked class="text-gold-300 hover:text-gold-200 transition-colors">Solicitar</a>
-              <a href="proposta.html" data-proposal-unlocked class="hidden text-gold-300 hover:text-gold-200 transition-colors">Acessar proposta</a>
-            </div>
-
-            <div class="hero-proof-grid hidden sm:flex flex-wrap items-center gap-8 max-w-[720px] mt-8 sm:mt-12 pt-5 sm:pt-7 border-t border-white/10 animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .72s both;">
-              <div class="hero-proof-item flex items-center gap-3">
-                <span class="text-2xl text-white font-light tracking-tight">+230</span>
-                <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-gold-400/70 leading-tight">clínicas<br>atendidas</span>
-              </div>
-              <div class="w-px h-8 bg-white/10"></div>
-              <div class="hero-proof-item flex items-center gap-3">
-                <span class="text-2xl text-white font-light tracking-tight">3</span>
-                <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-gold-400/70 leading-tight">nichos<br>premium</span>
-              </div>
-              <div class="w-px h-8 bg-white/10"></div>
-              <div class="hero-proof-item flex items-center gap-3">
-                <span class="text-2xl text-white font-light tracking-tight">100%</span>
-                <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-gold-400/70 leading-tight">sistema<br>integrado</span>
-              </div>
-            </div>
           </div>
 
-          <div class="hero-visual-stack lg:col-span-5 relative h-[220px] sm:h-[360px] lg:h-[480px] xl:h-[560px] w-full max-w-[22rem] sm:max-w-none mx-auto lg:mx-0 animate-on-scroll isolate" style="animation: fadeSlideIn .8s ease-out .85s both;">
+          <div class="hero-visual-stack hidden lg:block lg:col-span-5 xl:col-span-6 relative h-[480px] xl:h-[560px] w-full animate-on-scroll isolate" style="animation: fadeSlideIn .8s ease-out .85s both;">
             <div class="hero-right-atmosphere"></div>
             <div class="hero-right-dust"></div>
             <div class="hero-right-lens"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="hero-card--proof floating-card hero-feature-card left-[6%] sm:left-[12%] top-[4%] sm:top-[8%] w-[58%] sm:w-[54%] border border-white/10 p-4 sm:p-5 backdrop-blur-md rotate-[-4deg]">
-              <div class="flex items-center justify-between gap-3">
-                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">+230 clínicas</span>
-                <iconify-icon icon="solar:medal-ribbons-star-bold-duotone" width="18" class="text-gold-400"></iconify-icon>
-              </div>
-              <div class="mt-3 h-[1px] bg-gradient-to-r from-transparent via-gold-500/40 to-transparent"></div>
-              <div class="mt-3 flex items-center justify-between text-xs text-white/40"><span>Foco</span><strong class="text-gold-300">ROI e previsibilidade</strong></div>
+    <div class="section-divider"></div>
+
+    <section id="abertura-contexto" class="relative bg-[#080808] noise-overlay overflow-hidden">
+      <div class="beam-border-h" style="top: 0;"></div>
+      <div class="section-ambient-glow section-ambient-glow--center"></div>
+      <div class="max-w-[90rem] mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-20 relative z-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div class="lg:col-span-5 animate-on-scroll" style="animation: fadeSlideIn .7s ease-out both;">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-[1px] bg-gradient-to-r from-transparent to-gold-500"></span>
+              <span class="text-xs font-bold tracking-[0.28em] uppercase text-gold-400">Prova Institucional</span>
             </div>
-
-            <div class="hero-card--niches floating-card hero-feature-card right-[8%] top-[22%] sm:top-[23%] w-[38%] sm:w-[40%] border border-white/10 p-3 sm:p-4 backdrop-blur-md rotate-[5deg]">
-              <iconify-icon icon="solar:stethoscope-bold-duotone" width="20" class="text-gold-400"></iconify-icon>
-              <div class="text-[10px] uppercase tracking-[0.18em] text-white/45 mt-2">Estética &middot; Derma &middot; Odonto</div>
+            <h2 class="text-3xl md:text-4xl font-medium leading-tight tracking-tight text-white">Autoridade construída em nichos premium de saúde.</h2>
+            <p class="mt-4 text-white/45 max-w-xl leading-relaxed">Mais de 230 clínicas atendidas com foco em previsibilidade, posicionamento e operação integrada de crescimento.</p>
+            <div class="mt-8 premium-panel premium-panel--warm border border-gold-500/20 bg-gold-500/10 p-5">
+              <div class="flex items-center gap-3">
+                <iconify-icon icon="solar:shield-check-bold-duotone" width="20" class="text-gold-300"></iconify-icon>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-300">Leitura Royal Skin</span>
+              </div>
+              <p class="mt-3 text-sm text-white/60">Uma operação integrada entre captação, conversão e acompanhamento comercial para clínicas estéticas, dermatológicas e odontológicas.</p>
             </div>
+          </div>
 
-            <div class="hero-card--system floating-card hero-feature-card right-[4%] sm:right-[9%] bottom-[8%] sm:bottom-[16%] w-[58%] sm:w-[52%] border border-white/10 p-4 sm:p-5 backdrop-blur-md rotate-[2deg]">
-              <div class="flex items-center justify-between gap-3">
-                <div class="text-[10px] uppercase tracking-[0.18em] text-white/35">Sistema Royal Skin</div>
-                <iconify-icon icon="solar:chart-square-bold-duotone" width="22" class="text-gold-400"></iconify-icon>
-              </div>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="inline-flex items-center px-3 py-1 border border-gold-500/20 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.16em] text-gold-300">Tráfego</span>
-                <span class="inline-flex items-center px-3 py-1 border border-gold-500/20 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.16em] text-gold-300">Funil</span>
-                <span class="inline-flex items-center px-3 py-1 border border-gold-500/20 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.16em] text-gold-300">Gestão</span>
-              </div>
+          <div class="lg:col-span-7">
+            <div class="context-card-stage animate-on-scroll" style="animation: fadeSlideIn .8s ease-out .12s both;">
+              <div class="hero-right-atmosphere"></div>
+              <div class="hero-right-dust"></div>
+              <div class="hero-right-lens"></div>
+
+              <article class="context-card--proof floating-card hero-feature-card border border-white/10 p-4 sm:p-5">
+                <div class="flex items-center justify-between gap-3">
+                  <span class="text-[10px] uppercase tracking-[0.2em] text-gold-400">+230 clínicas</span>
+                  <iconify-icon icon="solar:medal-ribbons-star-bold-duotone" width="18" class="text-gold-400"></iconify-icon>
+                </div>
+                <div class="mt-3 h-[1px] bg-gradient-to-r from-transparent via-gold-500/40 to-transparent"></div>
+                <div class="mt-3 flex items-center justify-between text-xs text-white/40"><span>Foco</span><strong class="text-gold-300">ROI e previsibilidade</strong></div>
+              </article>
+
+              <article class="context-card--niches floating-card hero-feature-card border border-white/10 p-3 sm:p-4">
+                <iconify-icon icon="solar:stethoscope-bold-duotone" width="20" class="text-gold-400"></iconify-icon>
+                <div class="text-[10px] uppercase tracking-[0.18em] text-white/45 mt-2">Estética &middot; Derma &middot; Odonto</div>
+              </article>
+
+              <article class="context-card--system floating-card hero-feature-card border border-white/10 p-4 sm:p-5">
+                <div class="flex items-center justify-between gap-3">
+                  <div class="text-[10px] uppercase tracking-[0.18em] text-white/35">Sistema Royal Skin</div>
+                  <iconify-icon icon="solar:chart-square-bold-duotone" width="22" class="text-gold-400"></iconify-icon>
+                </div>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  <span class="inline-flex items-center px-3 py-1 border border-gold-500/20 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.16em] text-gold-300">Tráfego</span>
+                  <span class="inline-flex items-center px-3 py-1 border border-gold-500/20 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.16em] text-gold-300">Funil</span>
+                  <span class="inline-flex items-center px-3 py-1 border border-gold-500/20 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.16em] text-gold-300">Gestão</span>
+                </div>
+              </article>
             </div>
           </div>
         </div>
@@ -918,11 +1028,6 @@
               </div>
             </div>
 
-            <div class="mt-6 flex flex-wrap gap-3">
-              <span class="inline-flex items-center px-4 py-2 border border-gold-500/25 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300">Estética</span>
-              <span class="inline-flex items-center px-4 py-2 border border-gold-500/25 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300">Dermatologia</span>
-              <span class="inline-flex items-center px-4 py-2 border border-gold-500/25 bg-gold-500/10 text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300">Odontologia</span>
-            </div>
           </div>
 
           <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6" data-reveal>
